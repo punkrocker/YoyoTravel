@@ -1,0 +1,325 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TravelModelStoreContainer" CdmEntityContainer="TravelEntities">
+    <EntitySetMapping Name="T_Agents">
+      <EntityTypeMapping TypeName="TravelModel.T_Agents">
+        <MappingFragment StoreEntitySet="T_Agents">
+          <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="AgentID" ColumnName="AgentID" />
+          <ScalarProperty Name="AgentName" ColumnName="AgentName" />
+          <ScalarProperty Name="Tel" ColumnName="Tel" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_AirportDetails">
+      <EntityTypeMapping TypeName="TravelModel.T_AirportDetails">
+        <MappingFragment StoreEntitySet="T_AirportDetails">
+          <ScalarProperty Name="BillID" ColumnName="BillID" />
+          <ScalarProperty Name="PickUpFlightNo" ColumnName="PickUpFlightNo" />
+          <ScalarProperty Name="PickUpDate" ColumnName="PickUpDate" />
+          <ScalarProperty Name="PickUpDriverID" ColumnName="PickUpDriverID" />
+          <ScalarProperty Name="PickUpFee" ColumnName="PickUpFee" />
+          <ScalarProperty Name="PickUpMoneyID" ColumnName="PickUpMoneyID" />
+          <ScalarProperty Name="PickUpRealTimeFee" ColumnName="PickUpRealTimeFee" />
+          <ScalarProperty Name="SendFlightNo" ColumnName="SendFlightNo" />
+          <ScalarProperty Name="SendDate" ColumnName="SendDate" />
+          <ScalarProperty Name="SendDriverID" ColumnName="SendDriverID" />
+          <ScalarProperty Name="SendFee" ColumnName="SendFee" />
+          <ScalarProperty Name="SendMoneyID" ColumnName="SendMoneyID" />
+          <ScalarProperty Name="SendRealTimeFee" ColumnName="SendRealTimeFee" />
+          <ScalarProperty Name="VIPServerID" ColumnName="VIPServerID" />
+          <ScalarProperty Name="VIPMoneyID" ColumnName="VIPMoneyID" />
+          <ScalarProperty Name="VIPFee" ColumnName="VIPFee" />
+          <ScalarProperty Name="VIPRealTimeFee" ColumnName="VIPRealTimeFee" />
+          <ScalarProperty Name="RealTimeFee" ColumnName="RealTimeFee" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_Bills">
+      <EntityTypeMapping TypeName="TravelModel.T_Bills">
+        <MappingFragment StoreEntitySet="T_Bills">
+          <ScalarProperty Name="BillID" ColumnName="BillID" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+          <ScalarProperty Name="Tel" ColumnName="Tel" />
+          <ScalarProperty Name="WeChat" ColumnName="WeChat" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="AdultCount" ColumnName="AdultCount" />
+          <ScalarProperty Name="ChildCount" ColumnName="ChildCount" />
+          <ScalarProperty Name="MoneyID" ColumnName="MoneyID" />
+          <ScalarProperty Name="HasPaid" ColumnName="HasPaid" />
+          <ScalarProperty Name="BusinessRecordID" ColumnName="BusinessRecordID" />
+          <ScalarProperty Name="BusinessDate" ColumnName="BusinessDate" />
+          <ScalarProperty Name="DispatchRecordID" ColumnName="DispatchRecordID" />
+          <ScalarProperty Name="DispatchDate" ColumnName="DispatchDate" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="RealTimeFee" ColumnName="RealTimeFee" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_CarDetails">
+      <EntityTypeMapping TypeName="TravelModel.T_CarDetails">
+        <MappingFragment StoreEntitySet="T_CarDetails">
+          <ScalarProperty Name="BillID" ColumnName="BillID" />
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+          <ScalarProperty Name="DriverID" ColumnName="DriverID" />
+          <ScalarProperty Name="Fee" ColumnName="Fee" />
+          <ScalarProperty Name="MoneyID" ColumnName="MoneyID" />
+          <ScalarProperty Name="TravelDate" ColumnName="TravelDate" />
+          <ScalarProperty Name="RealTimeFee" ColumnName="RealTimeFee" />
+          <ScalarProperty Name="CarType" ColumnName="CarType" />
+          <ScalarProperty Name="OverTime" ColumnName="OverTime" />
+          <ScalarProperty Name="OverTimeFee" ColumnName="OverTimeFee" />
+          <ScalarProperty Name="DayCount" ColumnName="DayCount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_Customers">
+      <EntityTypeMapping TypeName="TravelModel.T_Customers">
+        <MappingFragment StoreEntitySet="T_Customers">
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="Tel" ColumnName="Tel" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_Drivers">
+      <EntityTypeMapping TypeName="TravelModel.T_Drivers">
+        <MappingFragment StoreEntitySet="T_Drivers">
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="DriverID" ColumnName="DriverID" />
+          <ScalarProperty Name="DriverName" ColumnName="DriverName" />
+          <ScalarProperty Name="Tel" ColumnName="Tel" />
+          <ScalarProperty Name="BigCarFee" ColumnName="BigCarFee" />
+          <ScalarProperty Name="SmallCarFee" ColumnName="SmallCarFee" />
+          <ScalarProperty Name="BigCarPickAirportFee" ColumnName="BigCarPickAirportFee" />
+          <ScalarProperty Name="SmallCarPickAirportFee" ColumnName="SmallCarPickAirportFee" />
+          <ScalarProperty Name="BigCarSendAirportFee" ColumnName="BigCarSendAirportFee" />
+          <ScalarProperty Name="SmallCarSendAirportFee" ColumnName="SmallCarSendAirportFee" />
+          <ScalarProperty Name="AgentBigCarFee" ColumnName="AgentBigCarFee" />
+          <ScalarProperty Name="AgentSmallCarFee" ColumnName="AgentSmallCarFee" />
+          <ScalarProperty Name="AgentBigCarPickAirportFee" ColumnName="AgentBigCarPickAirportFee" />
+          <ScalarProperty Name="AgentSmallCarPickAirportFee" ColumnName="AgentSmallCarPickAirportFee" />
+          <ScalarProperty Name="AgentBigCarSendAirportFee" ColumnName="AgentBigCarSendAirportFee" />
+          <ScalarProperty Name="AgentSmallCarSendAirportFee" ColumnName="AgentSmallCarSendAirportFee" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_Functions">
+      <EntityTypeMapping TypeName="TravelModel.T_Functions">
+        <MappingFragment StoreEntitySet="T_Functions">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_GuideDetails">
+      <EntityTypeMapping TypeName="TravelModel.T_GuideDetails">
+        <MappingFragment StoreEntitySet="T_GuideDetails">
+          <ScalarProperty Name="BillID" ColumnName="BillID" />
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+          <ScalarProperty Name="GuideID" ColumnName="GuideID" />
+          <ScalarProperty Name="Fee" ColumnName="Fee" />
+          <ScalarProperty Name="MoneyID" ColumnName="MoneyID" />
+          <ScalarProperty Name="TravelDate" ColumnName="TravelDate" />
+          <ScalarProperty Name="LandDay" ColumnName="LandDay" />
+          <ScalarProperty Name="SeaDay" ColumnName="SeaDay" />
+          <ScalarProperty Name="RealTimeFee" ColumnName="RealTimeFee" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_Guides">
+      <EntityTypeMapping TypeName="TravelModel.T_Guides">
+        <MappingFragment StoreEntitySet="T_Guides">
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="AgentSeaFee" ColumnName="AgentSeaFee" />
+          <ScalarProperty Name="AgentLandFee" ColumnName="AgentLandFee" />
+          <ScalarProperty Name="SeaFee" ColumnName="SeaFee" />
+          <ScalarProperty Name="GuideID" ColumnName="GuideID" />
+          <ScalarProperty Name="GuideName" ColumnName="GuideName" />
+          <ScalarProperty Name="Tel" ColumnName="Tel" />
+          <ScalarProperty Name="LandFee" ColumnName="LandFee" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_LiveDetails">
+      <EntityTypeMapping TypeName="TravelModel.T_LiveDetails">
+        <MappingFragment StoreEntitySet="T_LiveDetails">
+          <ScalarProperty Name="BillID" ColumnName="BillID" />
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+          <ScalarProperty Name="LiveID" ColumnName="LiveID" />
+          <ScalarProperty Name="CheckInDate" ColumnName="CheckInDate" />
+          <ScalarProperty Name="CheckOutDate" ColumnName="CheckOutDate" />
+          <ScalarProperty Name="RoomCount" ColumnName="RoomCount" />
+          <ScalarProperty Name="DayCount" ColumnName="DayCount" />
+          <ScalarProperty Name="MoneyID" ColumnName="MoneyID" />
+          <ScalarProperty Name="Fee" ColumnName="Fee" />
+          <ScalarProperty Name="RealTimeFee" ColumnName="RealTimeFee" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_LiveProjects">
+      <EntityTypeMapping TypeName="TravelModel.T_LiveProjects">
+        <MappingFragment StoreEntitySet="T_LiveProjects">
+          <ScalarProperty Name="HouseID" ColumnName="HouseID" />
+          <ScalarProperty Name="HouseName" ColumnName="HouseName" />
+          <ScalarProperty Name="Fee" ColumnName="Fee" />
+          <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CoverPic" ColumnName="CoverPic" />
+          <ScalarProperty Name="AgentFee" ColumnName="AgentFee" />
+          <ScalarProperty Name="Pics" ColumnName="Pics" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_Logs">
+      <EntityTypeMapping TypeName="TravelModel.T_Logs">
+        <MappingFragment StoreEntitySet="T_Logs">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="OperID" ColumnName="OperID" />
+          <ScalarProperty Name="OperTime" ColumnName="OperTime" />
+          <ScalarProperty Name="Operation" ColumnName="Operation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_Moneys">
+      <EntityTypeMapping TypeName="TravelModel.T_Moneys">
+        <MappingFragment StoreEntitySet="T_Moneys">
+          <ScalarProperty Name="MoneyID" ColumnName="MoneyID" />
+          <ScalarProperty Name="MoneyName" ColumnName="MoneyName" />
+          <ScalarProperty Name="ExchangeRate" ColumnName="ExchangeRate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_RoleFunction">
+      <EntityTypeMapping TypeName="TravelModel.T_RoleFunction">
+        <MappingFragment StoreEntitySet="T_RoleFunction">
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="FunctionID" ColumnName="FunctionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_Roles">
+      <EntityTypeMapping TypeName="TravelModel.T_Roles">
+        <MappingFragment StoreEntitySet="T_Roles">
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_Status">
+      <EntityTypeMapping TypeName="TravelModel.T_Status">
+        <MappingFragment StoreEntitySet="T_Status">
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+          <ScalarProperty Name="StatusType" ColumnName="StatusType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_Suppliers">
+      <EntityTypeMapping TypeName="TravelModel.T_Suppliers">
+        <MappingFragment StoreEntitySet="T_Suppliers">
+          <ScalarProperty Name="HasService" ColumnName="HasService" />
+          <ScalarProperty Name="HasHotel" ColumnName="HasHotel" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+          <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+          <ScalarProperty Name="SupplierType" ColumnName="SupplierType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_TravelDetails">
+      <EntityTypeMapping TypeName="TravelModel.T_TravelDetails">
+        <MappingFragment StoreEntitySet="T_TravelDetails">
+          <ScalarProperty Name="BillID" ColumnName="BillID" />
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+          <ScalarProperty Name="TravelProjectID" ColumnName="TravelProjectID" />
+          <ScalarProperty Name="Fee" ColumnName="Fee" />
+          <ScalarProperty Name="MoneyID" ColumnName="MoneyID" />
+          <ScalarProperty Name="TravelDate" ColumnName="TravelDate" />
+          <ScalarProperty Name="RealTimeFee" ColumnName="RealTimeFee" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_TravelProjects">
+      <EntityTypeMapping TypeName="TravelModel.T_TravelProjects">
+        <MappingFragment StoreEntitySet="T_TravelProjects">
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+          <ScalarProperty Name="AdultFee" ColumnName="AdultFee" />
+          <ScalarProperty Name="ChildFee" ColumnName="ChildFee" />
+          <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+          <ScalarProperty Name="ProjectTypeID" ColumnName="ProjectTypeID" />
+          <ScalarProperty Name="AgentAdultFee" ColumnName="AgentAdultFee" />
+          <ScalarProperty Name="AgentChildFee" ColumnName="AgentChildFee" />
+          <ScalarProperty Name="CoverPic" ColumnName="CoverPic" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_TravelProjectTypes">
+      <EntityTypeMapping TypeName="TravelModel.T_TravelProjectTypes">
+        <MappingFragment StoreEntitySet="T_TravelProjectTypes">
+          <ScalarProperty Name="ProjectTypeID" ColumnName="ProjectTypeID" />
+          <ScalarProperty Name="ProjectTypeName" ColumnName="ProjectTypeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_Users">
+      <EntityTypeMapping TypeName="TravelModel.T_Users">
+        <MappingFragment StoreEntitySet="T_Users">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_VIPs">
+      <EntityTypeMapping TypeName="TravelModel.T_VIPs">
+        <MappingFragment StoreEntitySet="T_VIPs">
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="ServerID" ColumnName="ServerID" />
+          <ScalarProperty Name="ServerName" ColumnName="ServerName" />
+          <ScalarProperty Name="Tel" ColumnName="Tel" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_Schedule">
+      <EntityTypeMapping TypeName="TravelModel.T_Schedule">
+        <MappingFragment StoreEntitySet="T_Schedule">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Fee" ColumnName="Fee" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="AgentID" ColumnName="AgentID" />
+          <ScalarProperty Name="ScheduleName" ColumnName="ScheduleName" />
+          <ScalarProperty Name="ScheduleID" ColumnName="ScheduleID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_ScheduleDetail">
+      <EntityTypeMapping TypeName="TravelModel.T_ScheduleDetail">
+        <MappingFragment StoreEntitySet="T_ScheduleDetail">
+          <ScalarProperty Name="ProjectList" ColumnName="ProjectList" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Seq" ColumnName="Seq" />
+          <ScalarProperty Name="ScheduleID" ColumnName="ScheduleID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

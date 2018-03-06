@@ -1,0 +1,89 @@
+﻿@model TravelService.Models.AllServiceViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>业务说明</h2>
+
+<div class="col-md-12">
+    <!-- BEGIN SAMPLE TABLE PORTLET-->
+    <div class="portlet">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-bell-o"></i>业务列表
+            </div>
+            <div class="actions">
+                <label>服务类型 
+                    <select name="type_option" aria-controls="sample_1" class="form-control input-md input-large input-inline" onchange="changeType(this.options[this.options.selectedIndex].value)">
+                        @foreach (var serviceType in Model.AllTypes)
+                        {
+                            if (@serviceType.ProjectTypeID == Model.TypeID)
+                            {
+                                <option value="@serviceType.ProjectTypeID" selected="selected">@serviceType.ProjectTypeName</option>
+                            }
+                            else
+                            {
+                                <option value="@serviceType.ProjectTypeID">@serviceType.ProjectTypeName</option>
+                            }
+                        }
+                    </select>
+                </label>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <div class="table-scrollable">
+                <table class="table table-striped table-bordered table-advance table-hover">
+                    <thead>
+                        <tr>
+                            <th>
+                                <i class="fa fa-briefcase"></i> 业务名称
+                            </th>                            
+                            <th>
+                                <i class="fa fa-briefcase"></i> 业务类型
+                            </th>                            
+                            <th class="hidden-xs">
+                                <i class="fa fa-user"></i> 业务描述
+                            </th>
+                            <th>
+                                <i class="fa fa-shopping-cart"></i> 操作
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.AllServices != null && Model.AllServices.Count > 0)
+                        {
+                            foreach (var service in Model.AllServices)
+                            {
+                                <tr>
+                                    <td class="highlight" width="10%">
+                                        @service.Name
+                                    </td>
+                                    <td class="highlight" width="10%">
+                                        @service.TypeName
+                                    </td>
+                                    <td class="hidden-xs" width="70%"> @service.Description</td>
+                                    <td width="10%">
+                                        <a onclick="detail(@service.ID, @service.Type)" class="btn btn-outline btn-circle btn-sm purple">
+                                            <i class="fa fa-edit"></i> 详情
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- END SAMPLE TABLE PORTLET-->
+</div>
+
+<script>
+    function changeType(v) {
+        window.location.href = "/Business/Index?typeID=" + v;
+    }
+
+    function detail(id, type) {
+        window.location.href = "/Business/Detail?serviceID=" + id + "&typeID=" + type;
+    }
+</script>

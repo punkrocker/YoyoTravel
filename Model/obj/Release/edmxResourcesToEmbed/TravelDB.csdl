@@ -1,0 +1,330 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TravelModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="T_Agents">
+    <Key>
+      <PropertyRef Name="AgentID" />
+    </Key>
+    <Property Name="AgentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AgentName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Tel" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ParentID" Type="Int32" />
+    <Property Name="Status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="LoginName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="T_AirportDetails">
+    <Key>
+      <PropertyRef Name="BillID" />
+    </Key>
+    <Property Name="BillID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PickUpFlightNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="PickUpDate" Type="DateTime" Precision="3" />
+    <Property Name="PickUpDriverID" Type="Int32" />
+    <Property Name="PickUpFee" Type="Double" />
+    <Property Name="PickUpMoneyID" Type="Int32" />
+    <Property Name="PickUpRealTimeFee" Type="Double" />
+    <Property Name="SendFlightNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="SendDate" Type="DateTime" Precision="3" />
+    <Property Name="SendDriverID" Type="Int32" />
+    <Property Name="SendFee" Type="Double" />
+    <Property Name="SendMoneyID" Type="Int32" />
+    <Property Name="SendRealTimeFee" Type="Double" />
+    <Property Name="VIPServerID" Type="Int32" />
+    <Property Name="VIPMoneyID" Type="Int32" />
+    <Property Name="VIPFee" Type="Double" />
+    <Property Name="VIPRealTimeFee" Type="Double" />
+    <Property Name="RealTimeFee" Type="Double" />
+  </EntityType>
+  <EntityType Name="T_Bills">
+    <Key>
+      <PropertyRef Name="BillID" />
+    </Key>
+    <Property Name="BillID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CustomerID" Type="Int32" />
+    <Property Name="ContactName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Tel" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="WeChat" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="AdultCount" Type="Int32" />
+    <Property Name="ChildCount" Type="Int32" />
+    <Property Name="MoneyID" Type="Int32" />
+    <Property Name="HasPaid" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="BusinessRecordID" Type="Int32" />
+    <Property Name="BusinessDate" Type="DateTime" Precision="3" />
+    <Property Name="DispatchRecordID" Type="Int32" />
+    <Property Name="DispatchDate" Type="DateTime" Precision="3" />
+    <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="RealTimeFee" Type="Double" />
+  </EntityType>
+  <EntityType Name="T_CarDetails">
+    <Key>
+      <PropertyRef Name="BillID" />
+      <PropertyRef Name="Seq" />
+    </Key>
+    <Property Name="BillID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Seq" Type="Int32" Nullable="false" />
+    <Property Name="DriverID" Type="Int32" />
+    <Property Name="Fee" Type="Double" />
+    <Property Name="MoneyID" Type="Int32" />
+    <Property Name="TravelDate" Type="DateTime" Precision="0" />
+    <Property Name="RealTimeFee" Type="Double" />
+    <Property Name="CarType" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="OverTime" Type="Int32" />
+    <Property Name="OverTimeFee" Type="Double" />
+    <Property Name="DayCount" Type="Int32" />
+  </EntityType>
+  <EntityType Name="T_Customers">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+    </Key>
+    <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Tel" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="T_Drivers">
+    <Key>
+      <PropertyRef Name="DriverID" />
+    </Key>
+    <Property Name="DriverID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DriverName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Tel" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="BigCarFee" Type="Double" />
+    <Property Name="SmallCarFee" Type="Double" />
+    <Property Name="BigCarPickAirportFee" Type="Double" />
+    <Property Name="SmallCarPickAirportFee" Type="Double" />
+    <Property Name="BigCarSendAirportFee" Type="Double" />
+    <Property Name="SmallCarSendAirportFee" Type="Double" />
+    <Property Name="AgentBigCarFee" Type="Double" />
+    <Property Name="AgentSmallCarFee" Type="Double" />
+    <Property Name="AgentBigCarPickAirportFee" Type="Double" />
+    <Property Name="AgentSmallCarPickAirportFee" Type="Double" />
+    <Property Name="AgentBigCarSendAirportFee" Type="Double" />
+    <Property Name="AgentSmallCarSendAirportFee" Type="Double" />
+    <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Contact" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="T_Functions">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ParentID" Type="Int32" Nullable="false" />
+    <Property Name="Code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_GuideDetails">
+    <Key>
+      <PropertyRef Name="BillID" />
+      <PropertyRef Name="Seq" />
+    </Key>
+    <Property Name="BillID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Seq" Type="Int32" Nullable="false" />
+    <Property Name="GuideID" Type="Int32" />
+    <Property Name="Fee" Type="Double" />
+    <Property Name="MoneyID" Type="Int32" />
+    <Property Name="TravelDate" Type="DateTime" Precision="0" />
+    <Property Name="LandDay" Type="Int32" />
+    <Property Name="SeaDay" Type="Int32" />
+    <Property Name="RealTimeFee" Type="Double" />
+  </EntityType>
+  <EntityType Name="T_Guides">
+    <Key>
+      <PropertyRef Name="GuideID" />
+    </Key>
+    <Property Name="GuideID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GuideName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Tel" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="LandFee" Type="Double" />
+    <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="SeaFee" Type="Double" />
+    <Property Name="AgentLandFee" Type="Double" />
+    <Property Name="AgentSeaFee" Type="Double" />
+    <Property Name="Contact" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="T_LiveDetails">
+    <Key>
+      <PropertyRef Name="BillID" />
+      <PropertyRef Name="Seq" />
+    </Key>
+    <Property Name="BillID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Seq" Type="Int32" Nullable="false" />
+    <Property Name="LiveID" Type="Int32" />
+    <Property Name="CheckInDate" Type="DateTime" Precision="0" />
+    <Property Name="CheckOutDate" Type="DateTime" Precision="0" />
+    <Property Name="RoomCount" Type="Int32" />
+    <Property Name="DayCount" Type="Int32" />
+    <Property Name="MoneyID" Type="Int32" />
+    <Property Name="Fee" Type="Double" />
+    <Property Name="RealTimeFee" Type="Double" />
+  </EntityType>
+  <EntityType Name="T_LiveProjects">
+    <Key>
+      <PropertyRef Name="HouseID" />
+    </Key>
+    <Property Name="HouseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HouseName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Fee" Type="Double" />
+    <Property Name="SupplierID" Type="Int32" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CoverPic" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="AgentFee" Type="Double" />
+    <Property Name="Pics" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="T_Logs">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OperID" Type="Int32" Nullable="false" />
+    <Property Name="OperTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Operation" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="T_Moneys">
+    <Key>
+      <PropertyRef Name="MoneyID" />
+    </Key>
+    <Property Name="MoneyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MoneyName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ExchangeRate" Type="Double" />
+  </EntityType>
+  <EntityType Name="T_RoleFunction">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="Int32" Nullable="false" />
+    <Property Name="FunctionID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_Roles">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="T_Status">
+    <Key>
+      <PropertyRef Name="StatusID" />
+    </Key>
+    <Property Name="StatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StatusName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="StatusType" Type="Int32" />
+  </EntityType>
+  <EntityType Name="T_Suppliers">
+    <Key>
+      <PropertyRef Name="SupplierID" />
+    </Key>
+    <Property Name="SupplierID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SupplierName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SupplierType" Type="Int32" />
+    <Property Name="Contact" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="HasHotel" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="HasService" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <EntityType Name="T_TravelDetails">
+    <Key>
+      <PropertyRef Name="BillID" />
+      <PropertyRef Name="Seq" />
+    </Key>
+    <Property Name="BillID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Seq" Type="Int32" Nullable="false" />
+    <Property Name="TravelProjectID" Type="Int32" />
+    <Property Name="Fee" Type="Double" />
+    <Property Name="MoneyID" Type="Int32" />
+    <Property Name="TravelDate" Type="DateTime" Precision="0" />
+    <Property Name="RealTimeFee" Type="Double" />
+  </EntityType>
+  <EntityType Name="T_TravelProjects">
+    <Key>
+      <PropertyRef Name="ProjectID" />
+    </Key>
+    <Property Name="ProjectID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProjectName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AdultFee" Type="Double" />
+    <Property Name="ChildFee" Type="Double" />
+    <Property Name="SupplierID" Type="Int32" />
+    <Property Name="ProjectTypeID" Type="Int32" />
+    <Property Name="AgentAdultFee" Type="Double" />
+    <Property Name="AgentChildFee" Type="Double" />
+    <Property Name="CoverPic" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="T_TravelProjectTypes">
+    <Key>
+      <PropertyRef Name="ProjectTypeID" />
+    </Key>
+    <Property Name="ProjectTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProjectTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="T_Users">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="LoginName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="RoleID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_VIPs">
+    <Key>
+      <PropertyRef Name="ServerID" />
+    </Key>
+    <Property Name="ServerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ServerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Tel" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Contact" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="TravelEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="T_Agents" EntityType="Self.T_Agents" />
+    <EntitySet Name="T_AirportDetails" EntityType="Self.T_AirportDetails" />
+    <EntitySet Name="T_Bills" EntityType="Self.T_Bills" />
+    <EntitySet Name="T_CarDetails" EntityType="Self.T_CarDetails" />
+    <EntitySet Name="T_Customers" EntityType="Self.T_Customers" />
+    <EntitySet Name="T_Drivers" EntityType="Self.T_Drivers" />
+    <EntitySet Name="T_Functions" EntityType="Self.T_Functions" />
+    <EntitySet Name="T_GuideDetails" EntityType="Self.T_GuideDetails" />
+    <EntitySet Name="T_Guides" EntityType="Self.T_Guides" />
+    <EntitySet Name="T_LiveDetails" EntityType="Self.T_LiveDetails" />
+    <EntitySet Name="T_LiveProjects" EntityType="Self.T_LiveProjects" />
+    <EntitySet Name="T_Logs" EntityType="Self.T_Logs" />
+    <EntitySet Name="T_Moneys" EntityType="Self.T_Moneys" />
+    <EntitySet Name="T_RoleFunction" EntityType="Self.T_RoleFunction" />
+    <EntitySet Name="T_Roles" EntityType="Self.T_Roles" />
+    <EntitySet Name="T_Status" EntityType="Self.T_Status" />
+    <EntitySet Name="T_Suppliers" EntityType="Self.T_Suppliers" />
+    <EntitySet Name="T_TravelDetails" EntityType="Self.T_TravelDetails" />
+    <EntitySet Name="T_TravelProjects" EntityType="Self.T_TravelProjects" />
+    <EntitySet Name="T_TravelProjectTypes" EntityType="Self.T_TravelProjectTypes" />
+    <EntitySet Name="T_Users" EntityType="Self.T_Users" />
+    <EntitySet Name="T_VIPs" EntityType="Self.T_VIPs" />
+    <EntitySet Name="T_Schedule" EntityType="TravelModel.T_Schedule" />
+    <EntitySet Name="T_ScheduleDetail" EntityType="TravelModel.T_ScheduleDetail" />
+  </EntityContainer>
+  <EntityType Name="T_Schedule">
+    <Key>
+      <PropertyRef Name="ScheduleID" />
+    </Key>
+    <Property Name="ScheduleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ScheduleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AgentID" Type="Int32" />
+    <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Fee" Type="Double" />
+    <Property Name="Status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <EntityType Name="T_ScheduleDetail">
+    <Key>
+      <PropertyRef Name="ScheduleID" />
+      <PropertyRef Name="Seq" />
+    </Key>
+    <Property Name="ScheduleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="None" />
+    <Property Name="Seq" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="ProjectList" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

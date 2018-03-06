@@ -1,0 +1,334 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TravelModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="T_Agents">
+    <Key>
+      <PropertyRef Name="AgentID" />
+    </Key>
+    <Property Name="AgentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AgentName" Type="varchar" MaxLength="50" />
+    <Property Name="LoginName" Type="varchar" MaxLength="20" />
+    <Property Name="Tel" Type="varchar" MaxLength="20" />
+    <Property Name="Remark" Type="varchar" MaxLength="500" />
+    <Property Name="Password" Type="varchar" MaxLength="50" />
+    <Property Name="ParentID" Type="int" />
+    <Property Name="Status" Type="char" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="T_AirportDetails">
+    <Key>
+      <PropertyRef Name="BillID" />
+    </Key>
+    <Property Name="BillID" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="PickUpFlightNo" Type="varchar" MaxLength="10" />
+    <Property Name="PickUpDate" Type="datetime" />
+    <Property Name="PickUpDriverID" Type="int" />
+    <Property Name="PickUpFee" Type="float" />
+    <Property Name="PickUpMoneyID" Type="int" />
+    <Property Name="PickUpRealTimeFee" Type="float" />
+    <Property Name="SendFlightNo" Type="varchar" MaxLength="10" />
+    <Property Name="SendDate" Type="datetime" />
+    <Property Name="SendDriverID" Type="int" />
+    <Property Name="SendFee" Type="float" />
+    <Property Name="SendMoneyID" Type="int" />
+    <Property Name="SendRealTimeFee" Type="float" />
+    <Property Name="VIPServerID" Type="int" />
+    <Property Name="VIPMoneyID" Type="int" />
+    <Property Name="VIPFee" Type="float" />
+    <Property Name="VIPRealTimeFee" Type="float" />
+    <Property Name="RealTimeFee" Type="float" />
+  </EntityType>
+  <EntityType Name="T_Bills">
+    <Key>
+      <PropertyRef Name="BillID" />
+    </Key>
+    <Property Name="BillID" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="CustomerID" Type="int" />
+    <Property Name="ContactName" Type="varchar" MaxLength="20" />
+    <Property Name="Tel" Type="varchar" MaxLength="20" />
+    <Property Name="WeChat" Type="varchar" MaxLength="100" />
+    <Property Name="Address" Type="varchar" MaxLength="200" />
+    <Property Name="AdultCount" Type="int" />
+    <Property Name="ChildCount" Type="int" />
+    <Property Name="MoneyID" Type="int" />
+    <Property Name="HasPaid" Type="char" MaxLength="1" />
+    <Property Name="BusinessRecordID" Type="int" />
+    <Property Name="BusinessDate" Type="datetime" />
+    <Property Name="DispatchRecordID" Type="int" />
+    <Property Name="DispatchDate" Type="datetime" />
+    <Property Name="Remark" Type="varchar" MaxLength="500" />
+    <Property Name="RealTimeFee" Type="float" />
+  </EntityType>
+  <EntityType Name="T_CarDetails">
+    <Key>
+      <PropertyRef Name="BillID" />
+      <PropertyRef Name="Seq" />
+    </Key>
+    <Property Name="BillID" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="Seq" Type="int" Nullable="false" />
+    <Property Name="DriverID" Type="int" />
+    <Property Name="Fee" Type="float" />
+    <Property Name="MoneyID" Type="int" />
+    <Property Name="TravelDate" Type="date" />
+    <Property Name="RealTimeFee" Type="float" />
+    <Property Name="CarType" Type="char" MaxLength="1" />
+    <Property Name="OverTime" Type="int" />
+    <Property Name="OverTimeFee" Type="float" />
+    <Property Name="DayCount" Type="int" />
+  </EntityType>
+  <EntityType Name="T_Customers">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+    </Key>
+    <Property Name="CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerName" Type="varchar" MaxLength="50" />
+    <Property Name="Tel" Type="varchar" MaxLength="20" />
+    <Property Name="Remark" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="T_Drivers">
+    <Key>
+      <PropertyRef Name="DriverID" />
+    </Key>
+    <Property Name="DriverID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DriverName" Type="varchar" MaxLength="50" />
+    <Property Name="Tel" Type="varchar" MaxLength="20" />
+    <Property Name="Contact" Type="varchar" MaxLength="200" />
+    <Property Name="BigCarFee" Type="float" />
+    <Property Name="SmallCarFee" Type="float" />
+    <Property Name="BigCarPickAirportFee" Type="float" />
+    <Property Name="SmallCarPickAirportFee" Type="float" />
+    <Property Name="BigCarSendAirportFee" Type="float" />
+    <Property Name="SmallCarSendAirportFee" Type="float" />
+    <Property Name="AgentBigCarFee" Type="float" />
+    <Property Name="AgentSmallCarFee" Type="float" />
+    <Property Name="AgentBigCarPickAirportFee" Type="float" />
+    <Property Name="AgentSmallCarPickAirportFee" Type="float" />
+    <Property Name="AgentBigCarSendAirportFee" Type="float" />
+    <Property Name="AgentSmallCarSendAirportFee" Type="float" />
+    <Property Name="Remark" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="T_Functions">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ParentID" Type="int" Nullable="false" />
+    <Property Name="Code" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_GuideDetails">
+    <Key>
+      <PropertyRef Name="BillID" />
+      <PropertyRef Name="Seq" />
+    </Key>
+    <Property Name="BillID" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="Seq" Type="int" Nullable="false" />
+    <Property Name="GuideID" Type="int" />
+    <Property Name="Fee" Type="float" />
+    <Property Name="MoneyID" Type="int" />
+    <Property Name="TravelDate" Type="date" />
+    <Property Name="LandDay" Type="int" />
+    <Property Name="SeaDay" Type="int" />
+    <Property Name="RealTimeFee" Type="float" />
+  </EntityType>
+  <EntityType Name="T_Guides">
+    <Key>
+      <PropertyRef Name="GuideID" />
+    </Key>
+    <Property Name="GuideID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GuideName" Type="varchar" MaxLength="50" />
+    <Property Name="Tel" Type="varchar" MaxLength="20" />
+    <Property Name="Contact" Type="varchar" MaxLength="200" />
+    <Property Name="LandFee" Type="float" />
+    <Property Name="SeaFee" Type="float" />
+    <Property Name="Remark" Type="varchar" MaxLength="500" />
+    <Property Name="AgentLandFee" Type="float" />
+    <Property Name="AgentSeaFee" Type="float" />
+  </EntityType>
+  <EntityType Name="T_LiveDetails">
+    <Key>
+      <PropertyRef Name="BillID" />
+      <PropertyRef Name="Seq" />
+    </Key>
+    <Property Name="BillID" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="Seq" Type="int" Nullable="false" />
+    <Property Name="LiveID" Type="int" />
+    <Property Name="CheckInDate" Type="date" />
+    <Property Name="CheckOutDate" Type="date" />
+    <Property Name="RoomCount" Type="int" />
+    <Property Name="DayCount" Type="int" />
+    <Property Name="MoneyID" Type="int" />
+    <Property Name="Fee" Type="float" />
+    <Property Name="RealTimeFee" Type="float" />
+  </EntityType>
+  <EntityType Name="T_LiveProjects">
+    <Key>
+      <PropertyRef Name="HouseID" />
+    </Key>
+    <Property Name="HouseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HouseName" Type="varchar" MaxLength="50" />
+    <Property Name="Fee" Type="float" />
+    <Property Name="SupplierID" Type="int" />
+    <Property Name="Description" Type="varchar(max)" />
+    <Property Name="CoverPic" Type="varchar" MaxLength="100" />
+    <Property Name="AgentFee" Type="float" />
+    <Property Name="Pics" Type="varchar(max)" />
+    <Property Name="Remark" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="T_Logs">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OperID" Type="int" Nullable="false" />
+    <Property Name="OperTime" Type="datetime" Nullable="false" />
+    <Property Name="Operation" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="T_Moneys">
+    <Key>
+      <PropertyRef Name="MoneyID" />
+    </Key>
+    <Property Name="MoneyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MoneyName" Type="varchar" MaxLength="20" />
+    <Property Name="ExchangeRate" Type="float" />
+  </EntityType>
+  <EntityType Name="T_RoleFunction">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="int" Nullable="false" />
+    <Property Name="FunctionID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_Roles">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleName" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="T_Schedule">
+    <Key>
+      <PropertyRef Name="ScheduleID" />
+    </Key>
+    <Property Name="ScheduleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ScheduleName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="AgentID" Type="int" />
+    <Property Name="Remark" Type="varchar" MaxLength="500" />
+    <Property Name="Fee" Type="float" />
+    <Property Name="Status" Type="char" MaxLength="1" />
+    <Property Name="Days" Type="int" />
+    <Property Name="CustomerName" Type="varchar" MaxLength="50" />
+    <Property Name="VisitDate" Type="date" />
+    <Property Name="CustomRequire" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="T_ScheduleDetail">
+    <Key>
+      <PropertyRef Name="ScheduleID" />
+      <PropertyRef Name="Seq" />
+    </Key>
+    <Property Name="ScheduleID" Type="int" Nullable="false" />
+    <Property Name="Seq" Type="int" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="500" />
+    <Property Name="ProjectList" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="T_Status">
+    <Key>
+      <PropertyRef Name="StatusID" />
+    </Key>
+    <Property Name="StatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StatusName" Type="varchar" MaxLength="20" />
+    <Property Name="StatusType" Type="int" />
+  </EntityType>
+  <EntityType Name="T_Suppliers">
+    <Key>
+      <PropertyRef Name="SupplierID" />
+    </Key>
+    <Property Name="SupplierID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SupplierName" Type="varchar" MaxLength="50" />
+    <Property Name="SupplierType" Type="int" />
+    <Property Name="Contact" Type="varchar" MaxLength="50" />
+    <Property Name="HasHotel" Type="char" MaxLength="1" />
+    <Property Name="HasService" Type="char" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="T_TravelDetails">
+    <Key>
+      <PropertyRef Name="BillID" />
+      <PropertyRef Name="Seq" />
+    </Key>
+    <Property Name="BillID" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="Seq" Type="int" Nullable="false" />
+    <Property Name="TravelProjectID" Type="int" />
+    <Property Name="Fee" Type="float" />
+    <Property Name="MoneyID" Type="int" />
+    <Property Name="TravelDate" Type="date" />
+    <Property Name="RealTimeFee" Type="float" />
+  </EntityType>
+  <EntityType Name="T_TravelProjects">
+    <Key>
+      <PropertyRef Name="ProjectID" />
+    </Key>
+    <Property Name="ProjectID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProjectName" Type="varchar" MaxLength="50" />
+    <Property Name="AdultFee" Type="float" />
+    <Property Name="ChildFee" Type="float" />
+    <Property Name="SupplierID" Type="int" />
+    <Property Name="ProjectTypeID" Type="int" />
+    <Property Name="AgentAdultFee" Type="float" />
+    <Property Name="AgentChildFee" Type="float" />
+    <Property Name="CoverPic" Type="varchar" MaxLength="200" />
+    <Property Name="Description" Type="varchar(max)" />
+    <Property Name="Remark" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="T_TravelProjectTypes">
+    <Key>
+      <PropertyRef Name="ProjectTypeID" />
+    </Key>
+    <Property Name="ProjectTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProjectTypeName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="T_Users">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="20" />
+    <Property Name="LoginName" Type="varchar" MaxLength="20" />
+    <Property Name="Password" Type="varchar" MaxLength="50" />
+    <Property Name="Status" Type="char" MaxLength="1" />
+    <Property Name="RoleID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_VIPs">
+    <Key>
+      <PropertyRef Name="ServerID" />
+    </Key>
+    <Property Name="ServerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ServerName" Type="varchar" MaxLength="50" />
+    <Property Name="Tel" Type="varchar" MaxLength="20" />
+    <Property Name="Contact" Type="varchar" MaxLength="200" />
+    <Property Name="Remark" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityContainer Name="TravelModelStoreContainer">
+    <EntitySet Name="T_Agents" EntityType="Self.T_Agents" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_AirportDetails" EntityType="Self.T_AirportDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_Bills" EntityType="Self.T_Bills" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_CarDetails" EntityType="Self.T_CarDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_Customers" EntityType="Self.T_Customers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_Drivers" EntityType="Self.T_Drivers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_Functions" EntityType="Self.T_Functions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_GuideDetails" EntityType="Self.T_GuideDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_Guides" EntityType="Self.T_Guides" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_LiveDetails" EntityType="Self.T_LiveDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_LiveProjects" EntityType="Self.T_LiveProjects" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_Logs" EntityType="Self.T_Logs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_Moneys" EntityType="Self.T_Moneys" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_RoleFunction" EntityType="Self.T_RoleFunction" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_Roles" EntityType="Self.T_Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_Schedule" EntityType="Self.T_Schedule" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_ScheduleDetail" EntityType="Self.T_ScheduleDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_Status" EntityType="Self.T_Status" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_Suppliers" EntityType="Self.T_Suppliers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_TravelDetails" EntityType="Self.T_TravelDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_TravelProjects" EntityType="Self.T_TravelProjects" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_TravelProjectTypes" EntityType="Self.T_TravelProjectTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_Users" EntityType="Self.T_Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_VIPs" EntityType="Self.T_VIPs" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

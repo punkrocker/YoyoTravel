@@ -1,0 +1,1027 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TravelModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="T_Agents">
+          <Key>
+            <PropertyRef Name="AgentID" />
+          </Key>
+          <Property Name="AgentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AgentName" Type="varchar" MaxLength="50" />
+          <Property Name="LoginName" Type="varchar" MaxLength="20" />
+          <Property Name="Tel" Type="varchar" MaxLength="20" />
+          <Property Name="Remark" Type="varchar" MaxLength="500" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="ParentID" Type="int" />
+          <Property Name="Status" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="T_AirportDetails">
+          <Key>
+            <PropertyRef Name="BillID" />
+          </Key>
+          <Property Name="BillID" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="PickUpFlightNo" Type="varchar" MaxLength="10" />
+          <Property Name="PickUpDate" Type="datetime" />
+          <Property Name="PickUpDriverID" Type="int" />
+          <Property Name="PickUpFee" Type="float" />
+          <Property Name="PickUpMoneyID" Type="int" />
+          <Property Name="PickUpRealTimeFee" Type="float" />
+          <Property Name="SendFlightNo" Type="varchar" MaxLength="10" />
+          <Property Name="SendDate" Type="datetime" />
+          <Property Name="SendDriverID" Type="int" />
+          <Property Name="SendFee" Type="float" />
+          <Property Name="SendMoneyID" Type="int" />
+          <Property Name="SendRealTimeFee" Type="float" />
+          <Property Name="VIPServerID" Type="int" />
+          <Property Name="VIPMoneyID" Type="int" />
+          <Property Name="VIPFee" Type="float" />
+          <Property Name="VIPRealTimeFee" Type="float" />
+          <Property Name="RealTimeFee" Type="float" />
+        </EntityType>
+        <EntityType Name="T_Bills">
+          <Key>
+            <PropertyRef Name="BillID" />
+          </Key>
+          <Property Name="BillID" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="CustomerID" Type="int" />
+          <Property Name="ContactName" Type="varchar" MaxLength="20" />
+          <Property Name="Tel" Type="varchar" MaxLength="20" />
+          <Property Name="WeChat" Type="varchar" MaxLength="100" />
+          <Property Name="Address" Type="varchar" MaxLength="200" />
+          <Property Name="AdultCount" Type="int" />
+          <Property Name="ChildCount" Type="int" />
+          <Property Name="MoneyID" Type="int" />
+          <Property Name="HasPaid" Type="char" MaxLength="1" />
+          <Property Name="BusinessRecordID" Type="int" />
+          <Property Name="BusinessDate" Type="datetime" />
+          <Property Name="DispatchRecordID" Type="int" />
+          <Property Name="DispatchDate" Type="datetime" />
+          <Property Name="Remark" Type="varchar" MaxLength="500" />
+          <Property Name="RealTimeFee" Type="float" />
+        </EntityType>
+        <EntityType Name="T_CarDetails">
+          <Key>
+            <PropertyRef Name="BillID" />
+            <PropertyRef Name="Seq" />
+          </Key>
+          <Property Name="BillID" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="Seq" Type="int" Nullable="false" />
+          <Property Name="DriverID" Type="int" />
+          <Property Name="Fee" Type="float" />
+          <Property Name="MoneyID" Type="int" />
+          <Property Name="TravelDate" Type="date" />
+          <Property Name="RealTimeFee" Type="float" />
+          <Property Name="CarType" Type="char" MaxLength="1" />
+          <Property Name="OverTime" Type="int" />
+          <Property Name="OverTimeFee" Type="float" />
+          <Property Name="DayCount" Type="int" />
+        </EntityType>
+        <EntityType Name="T_Customers">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerName" Type="varchar" MaxLength="50" />
+          <Property Name="Tel" Type="varchar" MaxLength="20" />
+          <Property Name="Remark" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="T_Drivers">
+          <Key>
+            <PropertyRef Name="DriverID" />
+          </Key>
+          <Property Name="DriverID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DriverName" Type="varchar" MaxLength="50" />
+          <Property Name="Tel" Type="varchar" MaxLength="20" />
+          <Property Name="Contact" Type="varchar" MaxLength="200" />
+          <Property Name="BigCarFee" Type="float" />
+          <Property Name="SmallCarFee" Type="float" />
+          <Property Name="BigCarPickAirportFee" Type="float" />
+          <Property Name="SmallCarPickAirportFee" Type="float" />
+          <Property Name="BigCarSendAirportFee" Type="float" />
+          <Property Name="SmallCarSendAirportFee" Type="float" />
+          <Property Name="AgentBigCarFee" Type="float" />
+          <Property Name="AgentSmallCarFee" Type="float" />
+          <Property Name="AgentBigCarPickAirportFee" Type="float" />
+          <Property Name="AgentSmallCarPickAirportFee" Type="float" />
+          <Property Name="AgentBigCarSendAirportFee" Type="float" />
+          <Property Name="AgentSmallCarSendAirportFee" Type="float" />
+          <Property Name="Remark" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="T_Functions">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ParentID" Type="int" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_GuideDetails">
+          <Key>
+            <PropertyRef Name="BillID" />
+            <PropertyRef Name="Seq" />
+          </Key>
+          <Property Name="BillID" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="Seq" Type="int" Nullable="false" />
+          <Property Name="GuideID" Type="int" />
+          <Property Name="Fee" Type="float" />
+          <Property Name="MoneyID" Type="int" />
+          <Property Name="TravelDate" Type="date" />
+          <Property Name="LandDay" Type="int" />
+          <Property Name="SeaDay" Type="int" />
+          <Property Name="RealTimeFee" Type="float" />
+        </EntityType>
+        <EntityType Name="T_Guides">
+          <Key>
+            <PropertyRef Name="GuideID" />
+          </Key>
+          <Property Name="GuideID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GuideName" Type="varchar" MaxLength="50" />
+          <Property Name="Tel" Type="varchar" MaxLength="20" />
+          <Property Name="Contact" Type="varchar" MaxLength="200" />
+          <Property Name="LandFee" Type="float" />
+          <Property Name="SeaFee" Type="float" />
+          <Property Name="Remark" Type="varchar" MaxLength="500" />
+          <Property Name="AgentLandFee" Type="float" />
+          <Property Name="AgentSeaFee" Type="float" />
+        </EntityType>
+        <EntityType Name="T_LiveDetails">
+          <Key>
+            <PropertyRef Name="BillID" />
+            <PropertyRef Name="Seq" />
+          </Key>
+          <Property Name="BillID" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="Seq" Type="int" Nullable="false" />
+          <Property Name="LiveID" Type="int" />
+          <Property Name="CheckInDate" Type="date" />
+          <Property Name="CheckOutDate" Type="date" />
+          <Property Name="RoomCount" Type="int" />
+          <Property Name="DayCount" Type="int" />
+          <Property Name="MoneyID" Type="int" />
+          <Property Name="Fee" Type="float" />
+          <Property Name="RealTimeFee" Type="float" />
+        </EntityType>
+        <EntityType Name="T_LiveProjects">
+          <Key>
+            <PropertyRef Name="HouseID" />
+          </Key>
+          <Property Name="HouseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HouseName" Type="varchar" MaxLength="50" />
+          <Property Name="Fee" Type="float" />
+          <Property Name="SupplierID" Type="int" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="CoverPic" Type="varchar" MaxLength="100" />
+          <Property Name="AgentFee" Type="float" />
+          <Property Name="Pics" Type="varchar(max)" />
+          <Property Name="Remark" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="T_Logs">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OperID" Type="int" Nullable="false" />
+          <Property Name="OperTime" Type="datetime" Nullable="false" />
+          <Property Name="Operation" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="T_Moneys">
+          <Key>
+            <PropertyRef Name="MoneyID" />
+          </Key>
+          <Property Name="MoneyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MoneyName" Type="varchar" MaxLength="20" />
+          <Property Name="ExchangeRate" Type="float" />
+        </EntityType>
+        <EntityType Name="T_RoleFunction">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="int" Nullable="false" />
+          <Property Name="FunctionID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_Roles">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="T_Schedule">
+          <Key>
+            <PropertyRef Name="ScheduleID" />
+          </Key>
+          <Property Name="ScheduleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ScheduleName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AgentID" Type="int" />
+          <Property Name="Remark" Type="varchar" MaxLength="500" />
+          <Property Name="Fee" Type="float" />
+          <Property Name="Status" Type="char" MaxLength="1" />
+          <Property Name="Days" Type="int" />
+          <Property Name="CustomerName" Type="varchar" MaxLength="50" />
+          <Property Name="VisitDate" Type="date" />
+          <Property Name="CustomRequire" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="T_ScheduleDetail">
+          <Key>
+            <PropertyRef Name="ScheduleID" />
+            <PropertyRef Name="Seq" />
+          </Key>
+          <Property Name="ScheduleID" Type="int" Nullable="false" />
+          <Property Name="Seq" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="500" />
+          <Property Name="ProjectList" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="T_Status">
+          <Key>
+            <PropertyRef Name="StatusID" />
+          </Key>
+          <Property Name="StatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StatusName" Type="varchar" MaxLength="20" />
+          <Property Name="StatusType" Type="int" />
+        </EntityType>
+        <EntityType Name="T_Suppliers">
+          <Key>
+            <PropertyRef Name="SupplierID" />
+          </Key>
+          <Property Name="SupplierID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SupplierName" Type="varchar" MaxLength="50" />
+          <Property Name="SupplierType" Type="int" />
+          <Property Name="Contact" Type="varchar" MaxLength="50" />
+          <Property Name="HasHotel" Type="char" MaxLength="1" />
+          <Property Name="HasService" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="T_TravelDetails">
+          <Key>
+            <PropertyRef Name="BillID" />
+            <PropertyRef Name="Seq" />
+          </Key>
+          <Property Name="BillID" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="Seq" Type="int" Nullable="false" />
+          <Property Name="TravelProjectID" Type="int" />
+          <Property Name="Fee" Type="float" />
+          <Property Name="MoneyID" Type="int" />
+          <Property Name="TravelDate" Type="date" />
+          <Property Name="RealTimeFee" Type="float" />
+        </EntityType>
+        <EntityType Name="T_TravelProjects">
+          <Key>
+            <PropertyRef Name="ProjectID" />
+          </Key>
+          <Property Name="ProjectID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjectName" Type="varchar" MaxLength="50" />
+          <Property Name="AdultFee" Type="float" />
+          <Property Name="ChildFee" Type="float" />
+          <Property Name="SupplierID" Type="int" />
+          <Property Name="ProjectTypeID" Type="int" />
+          <Property Name="AgentAdultFee" Type="float" />
+          <Property Name="AgentChildFee" Type="float" />
+          <Property Name="CoverPic" Type="varchar" MaxLength="200" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="Remark" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="T_TravelProjectTypes">
+          <Key>
+            <PropertyRef Name="ProjectTypeID" />
+          </Key>
+          <Property Name="ProjectTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjectTypeName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="T_Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="20" />
+          <Property Name="LoginName" Type="varchar" MaxLength="20" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="char" MaxLength="1" />
+          <Property Name="RoleID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_VIPs">
+          <Key>
+            <PropertyRef Name="ServerID" />
+          </Key>
+          <Property Name="ServerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ServerName" Type="varchar" MaxLength="50" />
+          <Property Name="Tel" Type="varchar" MaxLength="20" />
+          <Property Name="Contact" Type="varchar" MaxLength="200" />
+          <Property Name="Remark" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityContainer Name="TravelModelStoreContainer">
+          <EntitySet Name="T_Agents" EntityType="Self.T_Agents" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_AirportDetails" EntityType="Self.T_AirportDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_Bills" EntityType="Self.T_Bills" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_CarDetails" EntityType="Self.T_CarDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_Customers" EntityType="Self.T_Customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_Drivers" EntityType="Self.T_Drivers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_Functions" EntityType="Self.T_Functions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_GuideDetails" EntityType="Self.T_GuideDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_Guides" EntityType="Self.T_Guides" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_LiveDetails" EntityType="Self.T_LiveDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_LiveProjects" EntityType="Self.T_LiveProjects" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_Logs" EntityType="Self.T_Logs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_Moneys" EntityType="Self.T_Moneys" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_RoleFunction" EntityType="Self.T_RoleFunction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_Roles" EntityType="Self.T_Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_Schedule" EntityType="Self.T_Schedule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_ScheduleDetail" EntityType="Self.T_ScheduleDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_Status" EntityType="Self.T_Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_Suppliers" EntityType="Self.T_Suppliers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_TravelDetails" EntityType="Self.T_TravelDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_TravelProjects" EntityType="Self.T_TravelProjects" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_TravelProjectTypes" EntityType="Self.T_TravelProjectTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_Users" EntityType="Self.T_Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_VIPs" EntityType="Self.T_VIPs" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TravelModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="T_Agents">
+          <Key>
+            <PropertyRef Name="AgentID" />
+          </Key>
+          <Property Name="AgentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AgentName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Tel" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ParentID" Type="Int32" />
+          <Property Name="Status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="LoginName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="T_AirportDetails">
+          <Key>
+            <PropertyRef Name="BillID" />
+          </Key>
+          <Property Name="BillID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PickUpFlightNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="PickUpDate" Type="DateTime" Precision="3" />
+          <Property Name="PickUpDriverID" Type="Int32" />
+          <Property Name="PickUpFee" Type="Double" />
+          <Property Name="PickUpMoneyID" Type="Int32" />
+          <Property Name="PickUpRealTimeFee" Type="Double" />
+          <Property Name="SendFlightNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="SendDate" Type="DateTime" Precision="3" />
+          <Property Name="SendDriverID" Type="Int32" />
+          <Property Name="SendFee" Type="Double" />
+          <Property Name="SendMoneyID" Type="Int32" />
+          <Property Name="SendRealTimeFee" Type="Double" />
+          <Property Name="VIPServerID" Type="Int32" />
+          <Property Name="VIPMoneyID" Type="Int32" />
+          <Property Name="VIPFee" Type="Double" />
+          <Property Name="VIPRealTimeFee" Type="Double" />
+          <Property Name="RealTimeFee" Type="Double" />
+        </EntityType>
+        <EntityType Name="T_Bills">
+          <Key>
+            <PropertyRef Name="BillID" />
+          </Key>
+          <Property Name="BillID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CustomerID" Type="Int32" />
+          <Property Name="ContactName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Tel" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="WeChat" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="AdultCount" Type="Int32" />
+          <Property Name="ChildCount" Type="Int32" />
+          <Property Name="MoneyID" Type="Int32" />
+          <Property Name="HasPaid" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="BusinessRecordID" Type="Int32" />
+          <Property Name="BusinessDate" Type="DateTime" Precision="3" />
+          <Property Name="DispatchRecordID" Type="Int32" />
+          <Property Name="DispatchDate" Type="DateTime" Precision="3" />
+          <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="RealTimeFee" Type="Double" />
+        </EntityType>
+        <EntityType Name="T_CarDetails">
+          <Key>
+            <PropertyRef Name="BillID" />
+            <PropertyRef Name="Seq" />
+          </Key>
+          <Property Name="BillID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Seq" Type="Int32" Nullable="false" />
+          <Property Name="DriverID" Type="Int32" />
+          <Property Name="Fee" Type="Double" />
+          <Property Name="MoneyID" Type="Int32" />
+          <Property Name="TravelDate" Type="DateTime" Precision="0" />
+          <Property Name="RealTimeFee" Type="Double" />
+          <Property Name="CarType" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="OverTime" Type="Int32" />
+          <Property Name="OverTimeFee" Type="Double" />
+          <Property Name="DayCount" Type="Int32" />
+        </EntityType>
+        <EntityType Name="T_Customers">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Tel" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="T_Drivers">
+          <Key>
+            <PropertyRef Name="DriverID" />
+          </Key>
+          <Property Name="DriverID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DriverName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Tel" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="BigCarFee" Type="Double" />
+          <Property Name="SmallCarFee" Type="Double" />
+          <Property Name="BigCarPickAirportFee" Type="Double" />
+          <Property Name="SmallCarPickAirportFee" Type="Double" />
+          <Property Name="BigCarSendAirportFee" Type="Double" />
+          <Property Name="SmallCarSendAirportFee" Type="Double" />
+          <Property Name="AgentBigCarFee" Type="Double" />
+          <Property Name="AgentSmallCarFee" Type="Double" />
+          <Property Name="AgentBigCarPickAirportFee" Type="Double" />
+          <Property Name="AgentSmallCarPickAirportFee" Type="Double" />
+          <Property Name="AgentBigCarSendAirportFee" Type="Double" />
+          <Property Name="AgentSmallCarSendAirportFee" Type="Double" />
+          <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Contact" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="T_Functions">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ParentID" Type="Int32" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_GuideDetails">
+          <Key>
+            <PropertyRef Name="BillID" />
+            <PropertyRef Name="Seq" />
+          </Key>
+          <Property Name="BillID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Seq" Type="Int32" Nullable="false" />
+          <Property Name="GuideID" Type="Int32" />
+          <Property Name="Fee" Type="Double" />
+          <Property Name="MoneyID" Type="Int32" />
+          <Property Name="TravelDate" Type="DateTime" Precision="0" />
+          <Property Name="LandDay" Type="Int32" />
+          <Property Name="SeaDay" Type="Int32" />
+          <Property Name="RealTimeFee" Type="Double" />
+        </EntityType>
+        <EntityType Name="T_Guides">
+          <Key>
+            <PropertyRef Name="GuideID" />
+          </Key>
+          <Property Name="GuideID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GuideName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Tel" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="LandFee" Type="Double" />
+          <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="SeaFee" Type="Double" />
+          <Property Name="AgentLandFee" Type="Double" />
+          <Property Name="AgentSeaFee" Type="Double" />
+          <Property Name="Contact" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="T_LiveDetails">
+          <Key>
+            <PropertyRef Name="BillID" />
+            <PropertyRef Name="Seq" />
+          </Key>
+          <Property Name="BillID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Seq" Type="Int32" Nullable="false" />
+          <Property Name="LiveID" Type="Int32" />
+          <Property Name="CheckInDate" Type="DateTime" Precision="0" />
+          <Property Name="CheckOutDate" Type="DateTime" Precision="0" />
+          <Property Name="RoomCount" Type="Int32" />
+          <Property Name="DayCount" Type="Int32" />
+          <Property Name="MoneyID" Type="Int32" />
+          <Property Name="Fee" Type="Double" />
+          <Property Name="RealTimeFee" Type="Double" />
+        </EntityType>
+        <EntityType Name="T_LiveProjects">
+          <Key>
+            <PropertyRef Name="HouseID" />
+          </Key>
+          <Property Name="HouseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HouseName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Fee" Type="Double" />
+          <Property Name="SupplierID" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CoverPic" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="AgentFee" Type="Double" />
+          <Property Name="Pics" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="T_Logs">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OperID" Type="Int32" Nullable="false" />
+          <Property Name="OperTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Operation" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="T_Moneys">
+          <Key>
+            <PropertyRef Name="MoneyID" />
+          </Key>
+          <Property Name="MoneyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MoneyName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ExchangeRate" Type="Double" />
+        </EntityType>
+        <EntityType Name="T_RoleFunction">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="Int32" Nullable="false" />
+          <Property Name="FunctionID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_Roles">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="T_Status">
+          <Key>
+            <PropertyRef Name="StatusID" />
+          </Key>
+          <Property Name="StatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StatusName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="StatusType" Type="Int32" />
+        </EntityType>
+        <EntityType Name="T_Suppliers">
+          <Key>
+            <PropertyRef Name="SupplierID" />
+          </Key>
+          <Property Name="SupplierID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SupplierName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SupplierType" Type="Int32" />
+          <Property Name="Contact" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HasHotel" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="HasService" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="T_TravelDetails">
+          <Key>
+            <PropertyRef Name="BillID" />
+            <PropertyRef Name="Seq" />
+          </Key>
+          <Property Name="BillID" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Seq" Type="Int32" Nullable="false" />
+          <Property Name="TravelProjectID" Type="Int32" />
+          <Property Name="Fee" Type="Double" />
+          <Property Name="MoneyID" Type="Int32" />
+          <Property Name="TravelDate" Type="DateTime" Precision="0" />
+          <Property Name="RealTimeFee" Type="Double" />
+        </EntityType>
+        <EntityType Name="T_TravelProjects">
+          <Key>
+            <PropertyRef Name="ProjectID" />
+          </Key>
+          <Property Name="ProjectID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AdultFee" Type="Double" />
+          <Property Name="ChildFee" Type="Double" />
+          <Property Name="SupplierID" Type="Int32" />
+          <Property Name="ProjectTypeID" Type="Int32" />
+          <Property Name="AgentAdultFee" Type="Double" />
+          <Property Name="AgentChildFee" Type="Double" />
+          <Property Name="CoverPic" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="T_TravelProjectTypes">
+          <Key>
+            <PropertyRef Name="ProjectTypeID" />
+          </Key>
+          <Property Name="ProjectTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="T_Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="LoginName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="RoleID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_VIPs">
+          <Key>
+            <PropertyRef Name="ServerID" />
+          </Key>
+          <Property Name="ServerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ServerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Tel" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Contact" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="TravelEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="T_Agents" EntityType="Self.T_Agents" />
+          <EntitySet Name="T_AirportDetails" EntityType="Self.T_AirportDetails" />
+          <EntitySet Name="T_Bills" EntityType="Self.T_Bills" />
+          <EntitySet Name="T_CarDetails" EntityType="Self.T_CarDetails" />
+          <EntitySet Name="T_Customers" EntityType="Self.T_Customers" />
+          <EntitySet Name="T_Drivers" EntityType="Self.T_Drivers" />
+          <EntitySet Name="T_Functions" EntityType="Self.T_Functions" />
+          <EntitySet Name="T_GuideDetails" EntityType="Self.T_GuideDetails" />
+          <EntitySet Name="T_Guides" EntityType="Self.T_Guides" />
+          <EntitySet Name="T_LiveDetails" EntityType="Self.T_LiveDetails" />
+          <EntitySet Name="T_LiveProjects" EntityType="Self.T_LiveProjects" />
+          <EntitySet Name="T_Logs" EntityType="Self.T_Logs" />
+          <EntitySet Name="T_Moneys" EntityType="Self.T_Moneys" />
+          <EntitySet Name="T_RoleFunction" EntityType="Self.T_RoleFunction" />
+          <EntitySet Name="T_Roles" EntityType="Self.T_Roles" />
+          <EntitySet Name="T_Status" EntityType="Self.T_Status" />
+          <EntitySet Name="T_Suppliers" EntityType="Self.T_Suppliers" />
+          <EntitySet Name="T_TravelDetails" EntityType="Self.T_TravelDetails" />
+          <EntitySet Name="T_TravelProjects" EntityType="Self.T_TravelProjects" />
+          <EntitySet Name="T_TravelProjectTypes" EntityType="Self.T_TravelProjectTypes" />
+          <EntitySet Name="T_Users" EntityType="Self.T_Users" />
+          <EntitySet Name="T_VIPs" EntityType="Self.T_VIPs" />
+          <EntitySet Name="T_Schedule" EntityType="TravelModel.T_Schedule" />
+          <EntitySet Name="T_ScheduleDetail" EntityType="TravelModel.T_ScheduleDetail" />
+        </EntityContainer>
+        <EntityType Name="T_Schedule">
+          <Key>
+            <PropertyRef Name="ScheduleID" />
+          </Key>
+          <Property Name="ScheduleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ScheduleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AgentID" Type="Int32" />
+          <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Fee" Type="Double" />
+          <Property Name="Status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Days" Type="Int32" />
+          <Property Name="CustomerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VisitDate" Type="DateTime" Precision="0" />
+          <Property Name="CustomRequire" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="T_ScheduleDetail">
+          <Key>
+            <PropertyRef Name="ScheduleID" />
+            <PropertyRef Name="Seq" />
+          </Key>
+          <Property Name="ScheduleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="Seq" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ProjectList" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TravelModelStoreContainer" CdmEntityContainer="TravelEntities">
+          <EntitySetMapping Name="T_Agents">
+            <EntityTypeMapping TypeName="TravelModel.T_Agents">
+              <MappingFragment StoreEntitySet="T_Agents">
+                <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="AgentID" ColumnName="AgentID" />
+                <ScalarProperty Name="AgentName" ColumnName="AgentName" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_AirportDetails">
+            <EntityTypeMapping TypeName="TravelModel.T_AirportDetails">
+              <MappingFragment StoreEntitySet="T_AirportDetails">
+                <ScalarProperty Name="BillID" ColumnName="BillID" />
+                <ScalarProperty Name="PickUpFlightNo" ColumnName="PickUpFlightNo" />
+                <ScalarProperty Name="PickUpDate" ColumnName="PickUpDate" />
+                <ScalarProperty Name="PickUpDriverID" ColumnName="PickUpDriverID" />
+                <ScalarProperty Name="PickUpFee" ColumnName="PickUpFee" />
+                <ScalarProperty Name="PickUpMoneyID" ColumnName="PickUpMoneyID" />
+                <ScalarProperty Name="PickUpRealTimeFee" ColumnName="PickUpRealTimeFee" />
+                <ScalarProperty Name="SendFlightNo" ColumnName="SendFlightNo" />
+                <ScalarProperty Name="SendDate" ColumnName="SendDate" />
+                <ScalarProperty Name="SendDriverID" ColumnName="SendDriverID" />
+                <ScalarProperty Name="SendFee" ColumnName="SendFee" />
+                <ScalarProperty Name="SendMoneyID" ColumnName="SendMoneyID" />
+                <ScalarProperty Name="SendRealTimeFee" ColumnName="SendRealTimeFee" />
+                <ScalarProperty Name="VIPServerID" ColumnName="VIPServerID" />
+                <ScalarProperty Name="VIPMoneyID" ColumnName="VIPMoneyID" />
+                <ScalarProperty Name="VIPFee" ColumnName="VIPFee" />
+                <ScalarProperty Name="VIPRealTimeFee" ColumnName="VIPRealTimeFee" />
+                <ScalarProperty Name="RealTimeFee" ColumnName="RealTimeFee" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Bills">
+            <EntityTypeMapping TypeName="TravelModel.T_Bills">
+              <MappingFragment StoreEntitySet="T_Bills">
+                <ScalarProperty Name="BillID" ColumnName="BillID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="WeChat" ColumnName="WeChat" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="AdultCount" ColumnName="AdultCount" />
+                <ScalarProperty Name="ChildCount" ColumnName="ChildCount" />
+                <ScalarProperty Name="MoneyID" ColumnName="MoneyID" />
+                <ScalarProperty Name="HasPaid" ColumnName="HasPaid" />
+                <ScalarProperty Name="BusinessRecordID" ColumnName="BusinessRecordID" />
+                <ScalarProperty Name="BusinessDate" ColumnName="BusinessDate" />
+                <ScalarProperty Name="DispatchRecordID" ColumnName="DispatchRecordID" />
+                <ScalarProperty Name="DispatchDate" ColumnName="DispatchDate" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="RealTimeFee" ColumnName="RealTimeFee" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_CarDetails">
+            <EntityTypeMapping TypeName="TravelModel.T_CarDetails">
+              <MappingFragment StoreEntitySet="T_CarDetails">
+                <ScalarProperty Name="BillID" ColumnName="BillID" />
+                <ScalarProperty Name="Seq" ColumnName="Seq" />
+                <ScalarProperty Name="DriverID" ColumnName="DriverID" />
+                <ScalarProperty Name="Fee" ColumnName="Fee" />
+                <ScalarProperty Name="MoneyID" ColumnName="MoneyID" />
+                <ScalarProperty Name="TravelDate" ColumnName="TravelDate" />
+                <ScalarProperty Name="RealTimeFee" ColumnName="RealTimeFee" />
+                <ScalarProperty Name="CarType" ColumnName="CarType" />
+                <ScalarProperty Name="OverTime" ColumnName="OverTime" />
+                <ScalarProperty Name="OverTimeFee" ColumnName="OverTimeFee" />
+                <ScalarProperty Name="DayCount" ColumnName="DayCount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Customers">
+            <EntityTypeMapping TypeName="TravelModel.T_Customers">
+              <MappingFragment StoreEntitySet="T_Customers">
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Drivers">
+            <EntityTypeMapping TypeName="TravelModel.T_Drivers">
+              <MappingFragment StoreEntitySet="T_Drivers">
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="DriverID" ColumnName="DriverID" />
+                <ScalarProperty Name="DriverName" ColumnName="DriverName" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="BigCarFee" ColumnName="BigCarFee" />
+                <ScalarProperty Name="SmallCarFee" ColumnName="SmallCarFee" />
+                <ScalarProperty Name="BigCarPickAirportFee" ColumnName="BigCarPickAirportFee" />
+                <ScalarProperty Name="SmallCarPickAirportFee" ColumnName="SmallCarPickAirportFee" />
+                <ScalarProperty Name="BigCarSendAirportFee" ColumnName="BigCarSendAirportFee" />
+                <ScalarProperty Name="SmallCarSendAirportFee" ColumnName="SmallCarSendAirportFee" />
+                <ScalarProperty Name="AgentBigCarFee" ColumnName="AgentBigCarFee" />
+                <ScalarProperty Name="AgentSmallCarFee" ColumnName="AgentSmallCarFee" />
+                <ScalarProperty Name="AgentBigCarPickAirportFee" ColumnName="AgentBigCarPickAirportFee" />
+                <ScalarProperty Name="AgentSmallCarPickAirportFee" ColumnName="AgentSmallCarPickAirportFee" />
+                <ScalarProperty Name="AgentBigCarSendAirportFee" ColumnName="AgentBigCarSendAirportFee" />
+                <ScalarProperty Name="AgentSmallCarSendAirportFee" ColumnName="AgentSmallCarSendAirportFee" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Functions">
+            <EntityTypeMapping TypeName="TravelModel.T_Functions">
+              <MappingFragment StoreEntitySet="T_Functions">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_GuideDetails">
+            <EntityTypeMapping TypeName="TravelModel.T_GuideDetails">
+              <MappingFragment StoreEntitySet="T_GuideDetails">
+                <ScalarProperty Name="BillID" ColumnName="BillID" />
+                <ScalarProperty Name="Seq" ColumnName="Seq" />
+                <ScalarProperty Name="GuideID" ColumnName="GuideID" />
+                <ScalarProperty Name="Fee" ColumnName="Fee" />
+                <ScalarProperty Name="MoneyID" ColumnName="MoneyID" />
+                <ScalarProperty Name="TravelDate" ColumnName="TravelDate" />
+                <ScalarProperty Name="LandDay" ColumnName="LandDay" />
+                <ScalarProperty Name="SeaDay" ColumnName="SeaDay" />
+                <ScalarProperty Name="RealTimeFee" ColumnName="RealTimeFee" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Guides">
+            <EntityTypeMapping TypeName="TravelModel.T_Guides">
+              <MappingFragment StoreEntitySet="T_Guides">
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="AgentSeaFee" ColumnName="AgentSeaFee" />
+                <ScalarProperty Name="AgentLandFee" ColumnName="AgentLandFee" />
+                <ScalarProperty Name="SeaFee" ColumnName="SeaFee" />
+                <ScalarProperty Name="GuideID" ColumnName="GuideID" />
+                <ScalarProperty Name="GuideName" ColumnName="GuideName" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="LandFee" ColumnName="LandFee" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_LiveDetails">
+            <EntityTypeMapping TypeName="TravelModel.T_LiveDetails">
+              <MappingFragment StoreEntitySet="T_LiveDetails">
+                <ScalarProperty Name="BillID" ColumnName="BillID" />
+                <ScalarProperty Name="Seq" ColumnName="Seq" />
+                <ScalarProperty Name="LiveID" ColumnName="LiveID" />
+                <ScalarProperty Name="CheckInDate" ColumnName="CheckInDate" />
+                <ScalarProperty Name="CheckOutDate" ColumnName="CheckOutDate" />
+                <ScalarProperty Name="RoomCount" ColumnName="RoomCount" />
+                <ScalarProperty Name="DayCount" ColumnName="DayCount" />
+                <ScalarProperty Name="MoneyID" ColumnName="MoneyID" />
+                <ScalarProperty Name="Fee" ColumnName="Fee" />
+                <ScalarProperty Name="RealTimeFee" ColumnName="RealTimeFee" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_LiveProjects">
+            <EntityTypeMapping TypeName="TravelModel.T_LiveProjects">
+              <MappingFragment StoreEntitySet="T_LiveProjects">
+                <ScalarProperty Name="HouseID" ColumnName="HouseID" />
+                <ScalarProperty Name="HouseName" ColumnName="HouseName" />
+                <ScalarProperty Name="Fee" ColumnName="Fee" />
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CoverPic" ColumnName="CoverPic" />
+                <ScalarProperty Name="AgentFee" ColumnName="AgentFee" />
+                <ScalarProperty Name="Pics" ColumnName="Pics" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Logs">
+            <EntityTypeMapping TypeName="TravelModel.T_Logs">
+              <MappingFragment StoreEntitySet="T_Logs">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="OperID" ColumnName="OperID" />
+                <ScalarProperty Name="OperTime" ColumnName="OperTime" />
+                <ScalarProperty Name="Operation" ColumnName="Operation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Moneys">
+            <EntityTypeMapping TypeName="TravelModel.T_Moneys">
+              <MappingFragment StoreEntitySet="T_Moneys">
+                <ScalarProperty Name="MoneyID" ColumnName="MoneyID" />
+                <ScalarProperty Name="MoneyName" ColumnName="MoneyName" />
+                <ScalarProperty Name="ExchangeRate" ColumnName="ExchangeRate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_RoleFunction">
+            <EntityTypeMapping TypeName="TravelModel.T_RoleFunction">
+              <MappingFragment StoreEntitySet="T_RoleFunction">
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="FunctionID" ColumnName="FunctionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Roles">
+            <EntityTypeMapping TypeName="TravelModel.T_Roles">
+              <MappingFragment StoreEntitySet="T_Roles">
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Status">
+            <EntityTypeMapping TypeName="TravelModel.T_Status">
+              <MappingFragment StoreEntitySet="T_Status">
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+                <ScalarProperty Name="StatusType" ColumnName="StatusType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Suppliers">
+            <EntityTypeMapping TypeName="TravelModel.T_Suppliers">
+              <MappingFragment StoreEntitySet="T_Suppliers">
+                <ScalarProperty Name="HasService" ColumnName="HasService" />
+                <ScalarProperty Name="HasHotel" ColumnName="HasHotel" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+                <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+                <ScalarProperty Name="SupplierType" ColumnName="SupplierType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_TravelDetails">
+            <EntityTypeMapping TypeName="TravelModel.T_TravelDetails">
+              <MappingFragment StoreEntitySet="T_TravelDetails">
+                <ScalarProperty Name="BillID" ColumnName="BillID" />
+                <ScalarProperty Name="Seq" ColumnName="Seq" />
+                <ScalarProperty Name="TravelProjectID" ColumnName="TravelProjectID" />
+                <ScalarProperty Name="Fee" ColumnName="Fee" />
+                <ScalarProperty Name="MoneyID" ColumnName="MoneyID" />
+                <ScalarProperty Name="TravelDate" ColumnName="TravelDate" />
+                <ScalarProperty Name="RealTimeFee" ColumnName="RealTimeFee" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_TravelProjects">
+            <EntityTypeMapping TypeName="TravelModel.T_TravelProjects">
+              <MappingFragment StoreEntitySet="T_TravelProjects">
+                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+                <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+                <ScalarProperty Name="AdultFee" ColumnName="AdultFee" />
+                <ScalarProperty Name="ChildFee" ColumnName="ChildFee" />
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+                <ScalarProperty Name="ProjectTypeID" ColumnName="ProjectTypeID" />
+                <ScalarProperty Name="AgentAdultFee" ColumnName="AgentAdultFee" />
+                <ScalarProperty Name="AgentChildFee" ColumnName="AgentChildFee" />
+                <ScalarProperty Name="CoverPic" ColumnName="CoverPic" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_TravelProjectTypes">
+            <EntityTypeMapping TypeName="TravelModel.T_TravelProjectTypes">
+              <MappingFragment StoreEntitySet="T_TravelProjectTypes">
+                <ScalarProperty Name="ProjectTypeID" ColumnName="ProjectTypeID" />
+                <ScalarProperty Name="ProjectTypeName" ColumnName="ProjectTypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Users">
+            <EntityTypeMapping TypeName="TravelModel.T_Users">
+              <MappingFragment StoreEntitySet="T_Users">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_VIPs">
+            <EntityTypeMapping TypeName="TravelModel.T_VIPs">
+              <MappingFragment StoreEntitySet="T_VIPs">
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="ServerID" ColumnName="ServerID" />
+                <ScalarProperty Name="ServerName" ColumnName="ServerName" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Schedule">
+            <EntityTypeMapping TypeName="TravelModel.T_Schedule">
+              <MappingFragment StoreEntitySet="T_Schedule">
+                <ScalarProperty Name="CustomRequire" ColumnName="CustomRequire" />
+                <ScalarProperty Name="VisitDate" ColumnName="VisitDate" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="Days" ColumnName="Days" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Fee" ColumnName="Fee" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="AgentID" ColumnName="AgentID" />
+                <ScalarProperty Name="ScheduleName" ColumnName="ScheduleName" />
+                <ScalarProperty Name="ScheduleID" ColumnName="ScheduleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_ScheduleDetail">
+            <EntityTypeMapping TypeName="TravelModel.T_ScheduleDetail">
+              <MappingFragment StoreEntitySet="T_ScheduleDetail">
+                <ScalarProperty Name="ProjectList" ColumnName="ProjectList" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Seq" ColumnName="Seq" />
+                <ScalarProperty Name="ScheduleID" ColumnName="ScheduleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

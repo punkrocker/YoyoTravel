@@ -1,0 +1,14 @@
+E:\Project\YoyoTravel\YoyoTravel\Common\bin\Release\Common.dll
+E:\Project\YoyoTravel\YoyoTravel\Common\bin\Release\Common.pdb
+E:\Project\YoyoTravel\YoyoTravel\Common\bin\Release\Newtonsoft.Json.dll
+E:\Project\YoyoTravel\YoyoTravel\Common\bin\Release\Newtonsoft.Json.xml
+E:\Project\YoyoTravel\YoyoTravel\Common\obj\Release\Common.dll
+E:\Project\YoyoTravel\YoyoTravel\Common\obj\Release\Common.pdb
+F:\Project\YoyoTravel\YoyoTravel\Common\bin\Release\Common.dll
+F:\Project\YoyoTravel\YoyoTravel\Common\bin\Release\Common.pdb
+F:\Project\YoyoTravel\YoyoTravel\Common\bin\Release\Newtonsoft.Json.dll
+F:\Project\YoyoTravel\YoyoTravel\Common\bin\Release\Newtonsoft.Json.xml
+F:\Project\YoyoTravel\YoyoTravel\Common\obj\Release\Common.csproj.CoreCompileInputs.cache
+F:\Project\YoyoTravel\YoyoTravel\Common\obj\Release\Common.dll
+F:\Project\YoyoTravel\YoyoTravel\Common\obj\Release\Common.pdb
+F:\Project\YoyoTravel\YoyoTravel\Common\obj\Release\Common.csprojResolveAssemblyReference.cache

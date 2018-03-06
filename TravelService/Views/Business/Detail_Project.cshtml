@@ -1,0 +1,58 @@
+﻿@model TravelService.Models.ServiceDetailViewModel
+@{
+    ViewBag.Title = "Detail";
+}
+
+
+@section styles{
+    <link href="~/Content/global/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
+}
+<button type="button" class="btn red-mint" onclick="window.history.go(-1);">后退</button>
+
+@{
+    var mpic = !string.IsNullOrEmpty(Model.CoverPic) ? "\\Site\\Pics\\" + Model.CoverPic : "~\\Content\\pages\\img\\no_pic.png";
+    mpic = VirtualPathUtility.ToAbsolute(mpic);
+}
+
+<div class="row">
+    <div class="col-md-6 col-sm-6">
+        <div class="product-main-image" style="position: relative; overflow: hidden;">
+            <img src="@mpic" class="img-responsive" data-bigimgsrc="@mpic">
+            <img src="@mpic" class="zoomImg" style="position: absolute; top: -137.782px; left: -92.7356px; width: 600px; height: 800px; border: none; max-width: none; opacity: 0;">
+        </div>
+    </div>
+    <div class="col-md-6 col-sm-6">
+        <h1>@Model.ServiceName</h1>
+        <div class="price-availability-block clearfix">
+            <div class="price">
+                <strong><h3><span>成人代理价格：￥</span>@Model.AgentAdultFee</h3></strong>
+            </div>
+            <div class="price">
+                <strong><h3><span>儿童代理价格：￥</span>@Model.AgentChildFee</h3></strong>
+            </div>
+            <div class="availability">
+                <h3>项目类型: <strong>@Model.ProjectTypeName</strong></h3>
+            </div>
+            <div class="availability">
+                <h3>供应商: <strong>@Model.SupplierName</strong></h3>
+            </div>
+        </div>
+    </div>
+        <div class="product-page-content">
+            <ul id="myTab" class="nav nav-tabs">
+                <li class="active"><a href="#Description" data-toggle="tab">详情描述</a></li>
+                <li><a href="#Remark" data-toggle="tab">说明</a></li>
+            </ul>
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane fade  active in" id="Description">
+                    <p>@Model.Description</p>
+                </div>
+                <div class="tab-pane fade" id="Remark">
+                    <p>@Model.Remark</p>
+                </div>
+            </div>
+        </div>
+
+      
+        <div class="sticker sticker-sale"></div>
+    </div>

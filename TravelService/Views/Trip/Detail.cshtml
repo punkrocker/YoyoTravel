@@ -1,0 +1,283 @@
+﻿@model TravelService.Models.TripDetailListViewModel
+@{
+    ViewBag.Title = "Detail";
+}
+
+@section styles{
+    <link href="~/Content/global/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
+    <link href="~/Content/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css" rel="stylesheet">
+}
+@section scripts{
+    <script src="~/Content/global/plugins/bootbox/bootbox.min.js" type="text/javascript"></script>
+    <script src="~/Content/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js" type="text/javascript"></script>
+    @*<script src="~/Content/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>*@
+    @*<script src="~/Content/global/plugins/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" type="text/javascript"></script>*@
+}
+
+<button type="button" class="btn red-mint" onclick="window.history.go(-1);">后退</button>
+<button type="button" class="btn green" onclick="newday()">新增一日行程</button>
+
+<br />
+<p></p>
+
+@foreach (var day in Model.tripDetails)
+{
+    var theDay = "第" + day.Seq.ToString() + "天行程";
+
+    <div class="portlet box green">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-remove" onclick="deleteDay(@day.Seq)"></i>@theDay
+            </div>
+            <div class="tools">
+                <a title="" class="collapse" href="javascript:;" data-original-title=""> </a>
+            </div>
+        </div>
+        <div tabindex="-1" class="modal fade" id="new_day" data-width="400">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button class="close" aria-hidden="true" type="button" data-dismiss="modal"></button>
+                        <h4 class="modal-title">新增项目</h4>
+                    </div>
+                    <form class="form-horizontal" role="form" method="post" action="~/Trip/AddProject">
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="title">开始时间:</label>
+                                        <div class="col-md-7">
+                                            <input id="trip_begin" name="trip_begin" type="text" class="form-control" value="" placeholder="请选择开始时间">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="title">结束时间:</label>
+                                        <div class="col-md-7">
+                                            <input id="trip_end" name="trip_end" type="text" class="form-control" value="" placeholder="请选择结束时间">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="title">项目名称:</label>
+                                        <div class="col-md-7">
+                                            <select name="service_option" id="service_option" aria-controls="sample_1" class="form-control input-md input-large input-inline" onchange="changeType(this.options[this.options.selectedIndex].value)">
+                                                @foreach (var service in Model.services)
+                                                {
+                                                    var id_type = service.ID + ":" + service.Type;
+                                                    <option value="@id_type">@service.Name</option>
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn dark btn-outline" type="button" data-dismiss="modal">关闭</button>
+                            <button class="btn red" type="submit" data-dismiss="modal" onclick="add(day_seq)">添加</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="portlet-body" style="display: block;">
+            
+            <label class="btn btn-transparent green btn-outline btn-circle btn-sm" data-target="#new_day" data-toggle="modal" onclick="day_seq=@day.Seq">
+                新增
+            </label>
+
+            @{
+                var desc_id = "add_desc" + day.Seq.ToString();
+            }
+            <div tabindex="-1" class="modal fade" id="@desc_id" data-width="400">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button class="close" aria-hidden="true" type="button" data-dismiss="modal"></button>
+                            <h4 class="modal-title">简要说明</h4>
+                        </div>
+                        <form class="form-horizontal" role="form" method="post">
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        @{
+                                            var desc = "";
+                                            if (day.Description != null && !day.Description.Trim().Equals(string.Empty))
+                                            {
+                                                desc = day.Description;
+                                            }
+                                            var desc_content = "desc" + day.Seq.ToString();
+                                        }
+                                        <textarea class="col-md-3 form-control" style="height: 180px;" id="@desc_content" name="@desc_content" placeholder="请输入简要行程说明">@desc</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn dark btn-outline" type="button" data-dismiss="modal">关闭</button>
+                                <button class="btn red" type="button" data-dismiss="modal" onclick="addDesc(@day.Seq)">添加</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <label class="btn btn-transparent purple btn-outline btn-circle btn-sm" data-target="#@desc_id" data-toggle="modal">
+                编辑简要说明
+            </label>
+
+            @{
+                if (day.Description != null && !day.Description.Trim().Equals(string.Empty))
+                {
+                    var desc_display = "简要说明：" + day.Description;
+                    <br />
+                    <label>
+                        @desc_display
+                    </label>
+                }
+            }
+
+
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th> # </th>
+                            <th> 开始时间 </th>
+                            <th> 结束时间 </th>
+                            <th> 项目 </th>
+                            <th> 操作 </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 0; i < day.Services.Count; i++)
+                        {
+                            <tr>
+                                <td> @(i + 1) </td>
+                                <td> @day.Services[i].Start </td>
+                                <td> @day.Services[i].End </td>
+                                <td> @day.Services[i].ServiceName </td>
+                                <td>
+                                    <a onclick="delete_project(@day.Seq, @i)" class="btn btn-outline btn-circle btn-sm red">
+                                        <i class="fa fa-remove"></i> 删除
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}
+
+<script>
+    function GetQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+
+    function newday(id) {
+        var tripID = GetQueryString("tripID");
+        $.ajax({
+            url: "AddEmptyDay",
+            type: "post",
+            data: { tripID: tripID },
+            success: function (date) {
+                window.location = "Detail?tripID=" + tripID;
+            }
+        });
+    }
+
+    function deleteDay(seq) {
+        bootbox.confirm({
+            message: "确认要删除这天的行程吗?删除后无法恢复",
+            buttons: {
+                confirm: {
+                    label: '是的',
+                    className: 'btn-success'
+                },
+                cancel: {
+                    label: '我再想想',
+                    className: 'btn-danger'
+                }
+            },
+            callback: function (result) {
+                if (result) {
+                    var tripID = GetQueryString("tripID");
+                    $.ajax({
+                        url: "DeleteDay",
+                        type: "post",
+                        data: { tripID: tripID, seq: seq },
+                        success: function (date) {
+                            window.location = "Detail?tripID=" + tripID;
+                        }
+                    });
+                }
+            }
+        });
+    }
+
+    function addDesc(seq) {
+        var tripID = GetQueryString("tripID");
+        var desc_content = "#desc" + seq;
+        var descontent = $(desc_content).val();
+        $.ajax({
+            url: "EditDayDesc",
+            type: "post",
+            data: { tripID: tripID, seq: seq, desc: descontent },
+            success: function (date) {
+                window.location = "Detail?tripID=" + tripID;
+            }
+        });
+    }
+
+    function TripPicker(beginSelector, endSelector) {
+        $(beginSelector).timepicker({
+            defaultTime: '6:00',
+            showMeridian: false,
+        });
+        $(endSelector).timepicker({
+            defaultTime: '6:00',
+            showMeridian: false,
+        });
+    }
+
+    TripPicker("#trip_begin", "#trip_end");
+
+    function add(seq) {
+        var tripID = GetQueryString("tripID");
+        var start = $("#trip_begin").val();
+        var end = $("#trip_end").val();
+        var obj = document.getElementById("service_option"); //定位id
+        var index = obj.selectedIndex; // 选中索引
+        var text = obj.options[index].text; // 选中文本
+        var value = obj.options[index].value; // 选中值
+        var project = {
+            id: value,
+            name: text
+        };
+        $.ajax({
+            url: "AddProject",
+            type: "post",
+            data: { tripID: tripID, seq: seq, start: start, end: end, projectID: value },
+            success: function (date) {
+                window.location = "Detail?tripID=" + tripID;
+            }
+        });
+    }
+
+    function delete_project(seq, i)
+    {
+        var tripID = GetQueryString("tripID");
+        $.ajax({
+            url: "DeleteProject",
+            type: "post",
+            data: { tripID: tripID, seq: seq, projectSeq: i },
+            success: function (date) {
+                window.location = "Detail?tripID=" + tripID;
+            }
+        });
+    }
+
+    day_seq = 0;
+</script>

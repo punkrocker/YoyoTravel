@@ -1,0 +1,33 @@
+﻿@model List<TravelService.Models.TripDetailViewModel>
+@{
+    ViewBag.Title = "Detail";
+}
+
+@section styles{
+    <link href="~/Content/global/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
+}
+<button type="button" class="btn red-mint" onclick="window.history.go(-1);">后退</button>
+<button type="button" class="btn green" onclick="newday()">新增一日行程</button>
+
+@foreach (var day in Model)
+{
+    var theDay = "第" + day.Seq.ToString() + "天";
+    <h1>@theDay</h1>
+    for (int i = 0; i < day.Services.Count; i++)
+    {
+        <h2>@(i + 1).<span>@day.Services[i].ServiceName</span></h2>
+    }
+}
+
+
+<script>
+    function GetQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+
+    function newday(id) {
+        window.location.href = "/Trip/NewDay?tripID=" + GetQueryString("tripID");
+    }
+</script>

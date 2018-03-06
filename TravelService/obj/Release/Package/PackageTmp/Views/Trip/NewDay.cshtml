@@ -1,0 +1,116 @@
+﻿
+@model List<TravelService.Models.BaseServiceModel>
+@{
+    ViewBag.Title = "NewDay";
+}
+
+<h2>添加新日程</h2>
+
+<div class="actions">
+    <a class=" btn green btn-outline sbold" data-target="#add" data-toggle="modal"> 新建 </a>
+</div>
+<div tabindex="-1" class="modal fade" id="add" data-width="400">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" aria-hidden="true" type="button" data-dismiss="modal"></button>
+                <h4 class="modal-title">添加项目</h4>
+            </div>
+            <form class="form-horizontal" role="form" method="post" action="~/Trip/AddProject">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="title">项目名称:</label>
+                            <div class="col-md-7">
+                                <select name="service_option" id="service_option" aria-controls="sample_1" class="form-control input-md input-large input-inline" onchange="changeType(this.options[this.options.selectedIndex].value)">
+                                    @foreach (var service in Model)
+                                    {
+                                        <option value="@service.ID">@service.Name</option>
+                                    }
+                                </select>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn dark btn-outline" type="button" data-dismiss="modal">关闭</button>
+                    <button class="btn red" type="button" data-dismiss="modal" onclick="add()">添加</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<form class="form-horizontal" role="form" method="post" action="~/Trip/Add">
+    <div class="modal-body">
+        <div class="row">
+            <div class="form-group">
+                <label class="col-md-12" for="title">描述:</label>
+                <div class="col-md-12">
+                    <textarea class="form-control" id="desc" name="desc" rows="3" placeholder=""></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="service_list">
+
+    </div>
+    <div class="modal-footer">
+        <button class="btn dark btn-outline" type="button" data-dismiss="modal" onclick="window.history.go(-1);">后退</button>
+        <button class="btn red" type="button" onclick="save()">保存</button>
+    </div>
+</form>
+
+<script>
+    var projects = new Array();
+
+    function add() {
+        var obj = document.getElementById("service_option"); //定位id
+        var index = obj.selectedIndex; // 选中索引
+        var text = obj.options[index].text; // 选中文本
+        var value = obj.options[index].value; // 选中值
+        var project = {
+            id: value,
+            name: text
+        };
+        projects.push(project);
+        divAdd(project);
+    }
+
+    function divAdd(proj) {
+        var obj = document.createElement("div");
+        obj.id = "myDiv";
+        obj.innerHTML = "<h2>" + proj.name + "</h2>";
+
+        var div = document.getElementById("service_list"); //定位id
+        div.appendChild(obj);
+        //document.getElementById(obj.id).onclick = function () { aa(); };  
+    }
+
+    function save() {
+        var tripID = GetQueryString("tripID");
+        var services = "";
+        projects.forEach(function (value, index, array) {
+            services += value.id + ",";
+        });
+
+        //var desc = document.getElementById("desc").innerHTML;
+        var descontent = $("#desc").val();
+        var params = new Array();
+        params.push({ name: "tripID", value: 1 });
+        $.ajax({
+            url: "AddNewDay",
+            type: "post",
+            data: { tripID: tripID, services: services, desc: descontent},
+            success: function (date) {
+                window.location = "Detail?tripID=" + tripID;
+            }
+        });
+    }
+
+    function GetQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+</script>
