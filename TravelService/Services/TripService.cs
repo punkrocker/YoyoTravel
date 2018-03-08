@@ -276,57 +276,89 @@ namespace TravelService.Services
                 trip.CustomerCount = schedule.CustomerCount;
                 trip.Remark = schedule.Remark;
 
-
-                //List<T_ScheduleDetail> details = db.T_ScheduleDetail.Where(a => a.ScheduleID == tripID).ToList();
-                //List<string> projectIDs = new List<string>();
-                //foreach (T_ScheduleDetail projectIDString in details)
-                //{
-                //    String[] splitProjectIDs = projectIDString.ProjectList.Split(',');
-                //    foreach (string id in splitProjectIDs)
-                //    {
-                //        if (!projectIDs.Contains(id))
-                //        {
-                //            projectIDs.Add(id);
-                //        }
-                //    }
-                //}
-                ////筛选所有在列表中的项目
-                //List<ServiceDetailViewModel> serviceDetail = (from service in db.T_TravelProjects
-                //                                              join supplier in db.T_Suppliers on service.SupplierID equals supplier.SupplierID into temp
-                //                                              from i in temp.DefaultIfEmpty()
-                //                                              join travelType in db.T_TravelProjectTypes on service.ProjectTypeID equals travelType.ProjectTypeID into projectTypes
-                //                                              from projectType in projectTypes.DefaultIfEmpty()
-                //                                              where projectIDs.Contains(service.ProjectID.ToString())
-                //                                              select new ServiceDetailViewModel
-                //                                              {
-                //                                                  ServiceID = service.ProjectID,
-                //                                                  ServiceName = service.ProjectName,
-                //                                                  ProjectTypeName = projectType.ProjectTypeName,
-                //                                                  AgentAdultFee = service.AgentAdultFee,
-                //                                                  AgentChildFee = service.AgentChildFee,
-                //                                                  SupplierName = i.SupplierName,
-                //                                                  CoverPic = service.CoverPic,
-                //                                                  Description = service.Description,
-                //                                                  Remark = service.Remark
-                //                                              }).ToList();
+                List<T_ScheduleDetail> details = db.T_ScheduleDetail.Where(a => a.ScheduleID == tripID).ToList();
+                List<int> projectIDs = new List<int>();
+                List<int> hotelIDs = new List<int>();
+                foreach (T_ScheduleDetail detail in details)
+                {
+                    if (detail.ProjectList == null || detail.ProjectList.Equals(string.Empty))
+                        continue;
+                    List<DetailProject> detailProjects = Common.AppUtils.JsonDeserialize<List<DetailProject>>(detail.ProjectList);
+                    foreach (DetailProject detailProject in detailProjects)
+                    {
+                        if (detailProject.TypeID == WebConst.HOTEL_TYPE)
+                        {
+                            if (!hotelIDs.Contains(detailProject.ProjectID))
+                            {
+                                hotelIDs.Add(detailProject.ProjectID);
+                            }
+                        }
+                        else
+                        {
+                            if (!projectIDs.Contains(detailProject.ProjectID))
+                            {
+                                projectIDs.Add(detailProject.ProjectID);
+                            }
+                        }
+                    }
+                }
+                //筛选所有在列表中的项目
+                List<ServiceDetailViewModel> projectDetail = (from service in db.T_TravelProjects
+                                                              where projectIDs.Contains(service.ProjectID)
+                                                              select new ServiceDetailViewModel
+                                                              {
+                                                                  ServiceID = service.ProjectID,
+                                                                  ServiceName = service.ProjectName,
+                                                                  CoverPic = service.CoverPic,
+                                                                  Description = service.Description,
+                                                              }).ToList();
+                List<ServiceDetailViewModel> hotelDetail = (from hotel in db.T_LiveProjects
+                                                              where hotelIDs.Contains(hotel.HouseID)
+                                                              select new ServiceDetailViewModel
+                                                              {
+                                                                  ServiceID = hotel.HouseID,
+                                                                  ServiceName = hotel.HouseName,
+                                                                  CoverPic = hotel.CoverPic,
+                                                                  Description = hotel.Description,
+                                                              }).ToList();
+                List<ServiceDetailViewModel> serviceDetail = new List<ServiceDetailViewModel>();
+                serviceDetail.AddRange(projectDetail);
+                serviceDetail.AddRange(hotelDetail);
                 //组织一个列表seq、desc、List<Project>
                 List<TripDetailViewModel> tripDetails = new List<TripDetailViewModel>();
-                //foreach (T_ScheduleDetail detail in details)
-                //{
-                //    TripDetailViewModel tripDetail = new TripDetailViewModel
-                //    {
-                //        Seq = detail.Seq,
-                //        Description = detail.Description
-                //    };
-                //    String[] splitProjectIDs = detail.ProjectList.Split(',');
-                //    List<ServiceDetailViewModel> services = new List<ServiceDetailViewModel>();
-                //    foreach (string id in splitProjectIDs)
-                //    {
-                //        services.Add(serviceDetail.Where(a => a.ServiceID.ToString().Equals(id)).FirstOrDefault());
-                //    }
-                //    tripDetail.Services = services;
-                //    tripDetails.Add(tripDetail);
-                //}
+                foreach (T_ScheduleDetail detail in details)
+                {
+                    TripDetailViewModel tripDetail = new TripDetailViewModel
+                    {
+                        Seq = detail.Seq,
+                        Description = detail.Description
+                    };
+                    if (detail.ProjectList != null && !detail.ProjectList.Equals(string.Empty))
+                    {
+                        List<DetailProject> detailProjects = Common.AppUtils.JsonDeserialize<List<DetailProject>>(detail.ProjectList);
+                        List<ServiceDetailViewModel> dayServices = new List<ServiceDetailViewModel>();
+                        foreach (DetailProject detailProject in detailProjects)
+                        {
+                            ServiceDetailViewModel service = serviceDetail.Where(a => a.ServiceID == detailProject.ProjectID).FirstOrDefault();
+                            ServiceDetailViewModel display_service = new ServiceDetailViewModel
+                            {
+                                Start = detailProject.Start,
+                                End = detailProject.End,
+                                ServiceName = service.ServiceName,
+                                Description = service.Description,
+                                CoverPic = service.CoverPic,
+                                Pics = service.Pics
+                            };
+                            dayServices.Add(display_service);
+                        }
+                        tripDetail.Services = dayServices;
+                    }
+                    else
+                    {
+                        tripDetail.Services = new List<ServiceDetailViewModel>();
+                    }
+                    tripDetails.Add(tripDetail);
+                }
 
                 trip.ScheduleDetail = tripDetails;
                 return trip;
