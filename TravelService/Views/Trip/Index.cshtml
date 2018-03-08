@@ -59,6 +59,12 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
+                                        <label class="col-md-3 control-label" for="title">游客人数:</label>
+                                        <div class="col-md-7">
+                                            <input id="customer_count" name="customer_count" type="text" class="form-control" value="0" placeholder="请输入游客人数" onchange="if(/\D/.test(this.value)){alert('只能输入不小于0的数字');this.value='0';}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
                                         <label class="col-md-3 control-label" for="title">定制要求:</label>
                                         <div class="col-md-7">
                                             <textarea class="form-control" id="custom_require" name="custom_require" rows="3" placeholder=""></textarea>
@@ -99,6 +105,9 @@
                                 <i class="fa fa-user"></i> 费用预估
                             </th>
                             <th class="hidden-xs">
+                                <i class="fa fa-user"></i> 游客人数
+                            </th>
+                            <th class="hidden-xs">
                                 <i class="fa fa-user"></i> 定制要求
                             </th>
                             <th class="hidden-xs">
@@ -124,8 +133,11 @@
                                     <td class="highlight" width="10%">
                                         @string.Format("{0:yyyy-MM-dd}", trip.VisitDate)
                                     </td>
-                                    <td class="highlight" width="10%">
+                                    <td class="highlight" width="5%">
                                         @trip.Fee
+                                    </td>
+                                    <td class="highlight" width="5%">
+                                        @trip.CustomerCount
                                     </td>
                                     <td class="highlight" width="20%">
                                         @trip.CustomRequire

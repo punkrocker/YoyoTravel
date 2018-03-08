@@ -223,6 +223,7 @@
           <Property Name="CustomerName" Type="varchar" MaxLength="50" />
           <Property Name="VisitDate" Type="date" />
           <Property Name="CustomRequire" Type="varchar" MaxLength="500" />
+          <Property Name="CustomerCount" Type="int" />
         </EntityType>
         <EntityType Name="T_ScheduleDetail">
           <Key>
@@ -660,6 +661,7 @@
           <Property Name="CustomerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="VisitDate" Type="DateTime" Precision="0" />
           <Property Name="CustomRequire" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerCount" Type="Int32" />
         </EntityType>
         <EntityType Name="T_ScheduleDetail">
           <Key>
@@ -978,6 +980,7 @@
           <EntitySetMapping Name="T_Schedule">
             <EntityTypeMapping TypeName="TravelModel.T_Schedule">
               <MappingFragment StoreEntitySet="T_Schedule">
+                <ScalarProperty Name="CustomerCount" ColumnName="CustomerCount" />
                 <ScalarProperty Name="CustomRequire" ColumnName="CustomRequire" />
                 <ScalarProperty Name="VisitDate" ColumnName="VisitDate" />
                 <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />

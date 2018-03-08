@@ -23,6 +23,7 @@ namespace TravelService.Services
                             Fee = schedule.Fee,
                             AgentID = schedule.AgentID,
                             Remark = schedule.Remark,
+                            CustomerCount = schedule.CustomerCount,
                             CustomerName = schedule.CustomerName,
                             CustomRequire = schedule.CustomRequire,
                             VisitDate = schedule.VisitDate,
@@ -35,7 +36,7 @@ namespace TravelService.Services
         public static void AddTrip(string trip_name, int trip_price,
             string customer_name, int trip_days,
             string trip_date, string custom_require,
-            string remark)
+            string remark, int customer_count)
         {
             using (var db = new TravelEntities())
             {
@@ -45,6 +46,7 @@ namespace TravelService.Services
                     Fee = trip_price,
                     CustomerName = customer_name,
                     CustomRequire = custom_require,
+                    CustomerCount = customer_count,
                     Days = trip_days,
                     VisitDate = (trip_date==null||trip_date.Equals(string.Empty))?DateTime.Today: Convert.ToDateTime(trip_date),
                     Remark = remark,
@@ -271,7 +273,10 @@ namespace TravelService.Services
                 trip.ScheduleName = schedule.ScheduleName;
                 trip.CustomRequire = schedule.CustomRequire;
                 trip.Fee = schedule.Fee;
+                trip.CustomerCount = schedule.CustomerCount;
                 trip.Remark = schedule.Remark;
+
+
                 //List<T_ScheduleDetail> details = db.T_ScheduleDetail.Where(a => a.ScheduleID == tripID).ToList();
                 //List<string> projectIDs = new List<string>();
                 //foreach (T_ScheduleDetail projectIDString in details)

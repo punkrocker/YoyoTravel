@@ -218,6 +218,7 @@
     <Property Name="CustomerName" Type="varchar" MaxLength="50" />
     <Property Name="VisitDate" Type="date" />
     <Property Name="CustomRequire" Type="varchar" MaxLength="500" />
+    <Property Name="CustomerCount" Type="int" />
   </EntityType>
   <EntityType Name="T_ScheduleDetail">
     <Key>

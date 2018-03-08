@@ -26,5 +26,6 @@ namespace Model
         public string CustomerName { get; set; }
         public Nullable<System.DateTime> VisitDate { get; set; }
         public string CustomRequire { get; set; }
+        public Nullable<int> CustomerCount { get; set; }
     }
 }

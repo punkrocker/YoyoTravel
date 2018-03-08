@@ -24,9 +24,10 @@ namespace TravelService.Controllers.Web
         public ActionResult AddTrip(string trip_name, int trip_price, 
             string customer_name, int trip_days, 
             string trip_date, string custom_require,
+            int customer_count,
             string remark)
         {
-            TripService.AddTrip(trip_name, trip_price,customer_name,trip_days,trip_date,custom_require, remark);
+            TripService.AddTrip(trip_name, trip_price,customer_name,trip_days,trip_date,custom_require, remark, customer_count);
             return RedirectToAction("Index");
         }
 
