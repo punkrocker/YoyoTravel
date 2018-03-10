@@ -302,6 +302,11 @@
     <EntitySetMapping Name="T_Schedule">
       <EntityTypeMapping TypeName="TravelModel.T_Schedule">
         <MappingFragment StoreEntitySet="T_Schedule">
+          <ScalarProperty Name="CustomerCount" ColumnName="CustomerCount" />
+          <ScalarProperty Name="CustomRequire" ColumnName="CustomRequire" />
+          <ScalarProperty Name="VisitDate" ColumnName="VisitDate" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="Days" ColumnName="Days" />
           <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="Fee" ColumnName="Fee" />
           <ScalarProperty Name="Remark" ColumnName="Remark" />

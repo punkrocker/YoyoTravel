@@ -320,6 +320,7 @@ namespace TravelService.Services
                                                                   ServiceName = hotel.HouseName,
                                                                   CoverPic = hotel.CoverPic,
                                                                   Description = hotel.Description,
+                                                                  Pics = hotel.Pics,
                                                               }).ToList();
                 List<ServiceDetailViewModel> serviceDetail = new List<ServiceDetailViewModel>();
                 serviceDetail.AddRange(projectDetail);

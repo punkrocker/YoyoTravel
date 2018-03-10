@@ -94,10 +94,9 @@
             services += value.id + ",";
         });
 
-        //var desc = document.getElementById("desc").innerHTML;
         var descontent = $("#desc").val();
         var params = new Array();
-        params.push({ name: "tripID", value: 1 });
+        params.push({ name: "tripID", value: tripID });
         $.ajax({
             url: "AddNewDay",
             type: "post",

@@ -2,41 +2,8 @@
     Layout = null;
 }
 @model TravelService.Models.TripViewModel
-<!DOCTYPE html>
+<html lang="zh">
 <head>
-    <style type="text/css">
-        [uib-typeahead-popup].dropdown-menu {
-            display: block;
-        }
-    </style>
-    <style type="text/css">
-        .uib-time input {
-            width: 50px;
-        }
-    </style>
-    <style type="text/css">
-        .uib-datepicker .uib-title {
-            width: 100%;
-        }
-
-        .uib-day button, .uib-month button, .uib-year button {
-            min-width: 100%;
-        }
-
-        .uib-datepicker-popup.dropdown-menu {
-            display: block;
-        }
-
-        .uib-button-bar {
-            padding: 10px 9px 2px;
-        }
-    </style>
-    <style type="text/css">
-        .ng-animate.item:not(.left):not(.right) {
-            -webkit-transition: 0s ease-in-out left;
-            transition: 0s ease-in-out left
-        }
-    </style>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="renderer" content="webkit">
@@ -46,139 +13,132 @@
     <meta http-equiv="x-rim-auto-match" content="none">
     <meta id="metaDescription" name="description" content="">
     <title>@Model.ScheduleName</title>
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="~/Content/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN THEME GLOBAL STYLES -->
+    <link href="~/Content/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />
+    <link href="~/Content/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
+    <!-- END THEME GLOBAL STYLES -->
+    <!-- BEGIN THEME LAYOUT STYLES -->
+    <link href="~/Content/layouts/layout/css/layout.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/layouts/layout/css/themes/darkblue.min.css" rel="stylesheet" type="text/css" id="style_color" />
+    <link href="~/Content/layouts/layout/css/custom.min.css" rel="stylesheet" type="text/css" />
+    <!-- END THEME LAYOUT STYLES -->
+    <link rel="shortcut icon" href="favicon.ico" />
+    <style>
+        .center_span {
+            text-align: center;
+            display: block;
+            padding: 10px 0;
+        }
+
+        .scale img {
+            background-size: contain|cover;
+            width: 100%;
+            height: auto;
+        }
+    </style>
 </head>
-<body class="tn-transition-end tn-platform-class tn-platform-desktop">
-    <div class="tn-reader-paper container ng-scope" ng-controller="PaperReaderController" tn-scroll-touch="onPaperScroll($event)" tn-scroll-touch-for="document">
+<!-- END HEAD -->
 
-        <section class="row tn-board-head" ng-show="displaySystemTitle" style="">
-            <h3 class="ng-binding">@Model.ScheduleName</h3>
-        </section>
-
-        <section class="row tn-article-body" ng-show="isReady" tn-opera-house="{ gesture: false }" tn-atom-context="{ type: 'paper', inReader: true, animationEnabled: false }" style="">
-
-            <article class="tn-cube-box" ng-show="!!htmlForPreview" style="">
-                <div class="dock-loader tn-scene-paper tn-show-root ng-binding ng-scope" tn-renderer-accelerate="htmlForPreview" ng-bind-html="htmlForPreview | unsafe">
-                    <section style="background-color: rgb(255, 255, 255); box-sizing: border-box;" class="ng-scope">
-                        <section  style="position: static; box-sizing: border-box;" >
-                            <section style="margin-top: 10px; margin-bottom: 10px; text-align: center; position: static; box-sizing: border-box;">
-                                <section style="display: inline-block; vertical-align: middle; text-align: left; box-sizing: border-box;">
-                                    <section style="width: 6.5em; box-sizing: border-box;">
-                                        <section style="max-width: 100%; display: inline-block; overflow: hidden !important; box-sizing: border-box;">
-                                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewbox="0 0 200 24.8" style="vertical-align: middle; max-width: 100%; box-sizing: border-box;" width="200">
-                                                <path d="M7,11.3l88.1,0c2.7,0,4.8-2.1,4.8-4.6c0-2.5-2.2-4.6-4.8-4.6H36.8V0h58.3c3.9,0,7,3,7,6.7  c0,3.7-3.2,6.7-7,6.7l-78.4,0c-2.7,0-4.8,2.1-4.8,4.6c0,2.5,2.2,4.6,4.8,4.6L200,22.7v2.1L7,24.7c-3.9,0-7-3-7-6.7S3.1,11.3,7,11.3z   M7,22.6h4.6c-1.2-1.2-1.9-2.8-1.9-4.6c0-1.8,0.7-3.4,1.9-4.6H7c-2.7,0-4.8,2.1-4.8,4.6C2.2,20.5,4.4,22.6,7,22.6z" fill="rgb(171, 171, 171)" style="box-sizing: border-box;"></path>
-                                            </svg>
-                                        </section>
-                                    </section>
-                                    <section style="box-sizing: border-box;">
-                                        <p style="margin: 0px; padding: 0px; box-sizing: border-box;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 参 &nbsp;考 &nbsp;行 &nbsp;程</p>
-                                    </section>
-                                    <section style="width: 6.5em; margin-left: auto; box-sizing: border-box;">
-                                        <section style="max-width: 100%; display: inline-block; overflow: hidden !important; box-sizing: border-box;">
-                                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewbox="0 0 200.1 23.9" style="vertical-align: middle; max-width: 100%; box-sizing: border-box;" width="200.1">
-                                                <path d="M193.1,13l-88.1,0c-2.7,0-4.8,2-4.8,4.4c0,2.4,2.2,4.4,4.8,4.4h58.3v2h-58.3c-3.9,0-7-2.9-7-6.5  c0-3.6,3.2-6.5,7-6.5l78.4,0c2.7,0,4.8-2,4.8-4.4c0-2.4-2.2-4.4-4.8-4.4L0,2V0l193.1,0.1c3.9,0,7,2.9,7,6.5S196.9,13,193.1,13z   M193.1,2.1h-4.6c1.2,1.2,1.9,2.7,1.9,4.4c0,1.7-0.7,3.3-1.9,4.4h4.6c2.7,0,4.8-2,4.8-4.4C197.9,4.1,195.7,2.1,193.1,2.1z" fill="rgb(171, 171, 171)" style="box-sizing: border-box;"></path>
-                                            </svg>
-                                        </section>
-                                    </section>
-                                </section>
-                            </section>
-                        </section>
-                        <section  style="box-sizing: border-box;" >
-                            <section style="position: static; box-sizing: border-box;">
-                                <section style="box-sizing: border-box;">
-                                    <p style="margin: 0px; padding: 0px; box-sizing: border-box;"><br style="box-sizing: border-box;" /></p>
-                                </section>
-                            </section>
-                        </section>
-
-                        @*行程*@
-                        @foreach (var day in Model.ScheduleDetail)
-                        {
-
-                            var theDay = "第" + day.Seq.ToString() + "天";
-                            <section style="position: static; box-sizing: border-box;">
-                                <section style="margin-top: 10px; margin-bottom: 10px; text-align: center; position: static; box-sizing: border-box;">
-                                    <section style="display: inline-block; vertical-align: top; box-sizing: border-box;">
-                                        <section style="display: inline-block; vertical-align: top; line-height: 1em; box-sizing: border-box;">
-                                            <section style="width: 0px; margin-right: -0.5em; display: inline-block; vertical-align: top; border-bottom: 1em solid rgb(0, 146, 69); border-left: 0.65em solid transparent; border-right: 0.65em solid transparent; box-sizing: border-box;"></section>
-                                            <section style="width: 0px; display: inline-block; vertical-align: top; border-top: 1em solid rgb(105, 206, 174); border-left: 0.65em solid transparent; border-right: 0.65em solid transparent; box-sizing: border-box;"></section>
-                                        </section>
-                                        <section style="display: inline-block; vertical-align: top; line-height: 1em; max-width: calc(100% - 2.8em); padding-left: 6px; padding-right: 6px; box-sizing: border-box;">
-                                            <p style="margin: 0px; padding: 0px; box-sizing: border-box;">@theDay</p>
-                                        </section>
-                                        <section style="display: inline-block; vertical-align: top; line-height: 1em; box-sizing: border-box;">
-                                            <section style="width: 0px; display: inline-block; vertical-align: top; margin-right: -0.5em; border-top: 1em solid rgb(0, 146, 69); border-left: 0.65em solid transparent; border-right: 0.65em solid transparent; box-sizing: border-box;"></section>
-                                            <section style="width: 0px; display: inline-block; vertical-align: top; border-bottom: 1em solid rgb(105, 206, 174); border-left: 0.65em solid transparent; border-right: 0.65em solid transparent; box-sizing: border-box;"></section>
-                                        </section>
-                                    </section>
-                                </section>
-                            </section>
-                            for (int i = 0; i < day.Services.Count; i++)
-                            {
-                                <section style="position: static; box-sizing: border-box;">
-                                    <section style="position: static; box-sizing: border-box;">
-                                        <section style="box-sizing: border-box;">
-                                            <p style="margin: 0px; padding: 0px; box-sizing: border-box;"><strong style="box-sizing: border-box;"><span style="color: rgb(249, 110, 87); letter-spacing: 0px; box-sizing: border-box;">@day.Services[i].ServiceName<br style="box-sizing: border-box;" /></span></strong></p>
-                                            <p style="margin: 0px; padding: 0px; box-sizing: border-box;">&nbsp;<span style="letter-spacing: 0px; box-sizing: border-box;">@day.Services[i].Description</span></p>
-                                        </section>
-                                    </section>
-                                    @{
-                                        var mpic = !string.IsNullOrEmpty(day.Services[i].CoverPic) ? "\\Site\\Pics\\" + day.Services[i].CoverPic : "~\\Content\\pages\\img\\no_pic.png";
-                                        mpic = VirtualPathUtility.ToAbsolute(mpic);
-                                    }
-                                    <img style="width:100%" src="@mpic" />
-                                </section>
-                            }
-                            <p style="margin: 0px; padding: 0px; box-sizing: border-box;"><strong style="box-sizing: border-box;"><span style="color: rgb(249, 110, 87); box-sizing: border-box;">&nbsp;<span style="letter-spacing: 0px; box-sizing: border-box;">@day.Description</span></span></strong></p>
-                        }
-                        
-                       
-                                    
-                        @*其他*@
-                        @if (Model.Remark != null && !Model.Remark.Equals(string.Empty))
-                        {
-                            <section style="position: static; box-sizing: border-box;">
-                                <section style="margin: 0.5em 0px; text-align: center; position: static; box-sizing: border-box;">
-                                    <section style="display: inline-block; vertical-align: top; width: 0px; margin-top: 0.4em; border-left: 0.8em solid rgb(249, 110, 87); border-top: 0.8em solid rgb(249, 110, 87); border-right: 0.8em solid transparent !important; border-bottom: 0.8em solid transparent !important; box-sizing: border-box;"></section>
-                                    <section style="display: inline-block; vertical-align: top; max-width: 80% !important; box-sizing: border-box;">
-                                        <section style="box-sizing: border-box;">
-                                            <section style="margin: 10px 0%; position: static; box-sizing: border-box;">
-                                                <section style="text-align: justify; box-sizing: border-box;">
-                                                    <p style="white-space: normal; margin: 0px; padding: 0px; box-sizing: border-box;">&nbsp; &nbsp;<span style="letter-spacing: 0px; box-sizing: border-box;">@Model.Remark</span></p>
-                                                </section>
-                                            </section>
-                                        </section>
-                                    </section>
-                                    <section style="display: inline-block; vertical-align: bottom; width: 0px; margin-bottom: 0.3em; border-right: 0.8em solid rgb(249, 110, 87); border-bottom: 0.8em solid rgb(249, 110, 87); border-left: 0.8em solid transparent !important; border-top: 0.8em solid transparent !important; box-sizing: border-box;"></section>
-                                </section>
-                            </section>
-                        }
-                        @*<section  style="position: static; box-sizing: border-box;" >
-                            <section style="margin-top: 10px; margin-bottom: 10px; white-space: nowrap; overflow: hidden; text-align: center; position: static; box-sizing: border-box;">
-                                <section style="display: inline-block; vertical-align: top; width: 0px; border-right: 0.5em solid rgb(249, 110, 87); border-top: 1em solid transparent !important; border-bottom: 1em solid transparent !important; box-sizing: border-box;"></section>
-                                <span style="display: inline-block; vertical-align: top; background-color: rgba(211, 207, 206, 0.117647); height: 2em; line-height: 2em; padding: 0px 5px; box-sizing: border-box;"><p style="margin: 0px; padding: 0px; box-sizing: border-box;">&nbsp; <span style="letter-spacing: 0px; box-sizing: border-box;">【报价包含】</span></p></span>
-                                <section style="display: inline-block; vertical-align: top; width: 0px; border-left: 0.5em solid rgb(249, 110, 87); border-top: 1em solid transparent !important; border-bottom: 1em solid transparent !important; box-sizing: border-box;"></section>
-                            </section>
-                        </section>
-                        <section  style="position: static; box-sizing: border-box;" >
-                            <section style="position: static; box-sizing: border-box;">
-                                <section style="box-sizing: border-box;">
-                                    <p style="margin: 0px; padding: 0px; box-sizing: border-box;"><span style="letter-spacing: 0px; box-sizing: border-box;">1.&nbsp;全程往返国际机票团队经济舱含税、行李；</span></p>
-                                    <p style="margin: 0px; padding: 0px; box-sizing: border-box;">2.&nbsp;行程所列酒店住宿（2人1房，若出现单男单女，请在出发前补齐单房差）；</p>
-                                    <p style="margin: 0px; padding: 0px; box-sizing: border-box;">3.&nbsp;境外空调旅游巴士及外籍司机（座位根据团队人数而定）；</p>
-                                    <p style="margin: 0px; padding: 0px; box-sizing: border-box;">4.&nbsp;行程所列用餐（自助餐、中餐或风味餐，含飞机上用餐）；</p>
-                                    <p style="margin: 0px; padding: 0px; box-sizing: border-box;">5.&nbsp;行程所列景点第一门票；</p>
-                                    <p style="margin: 0px; padding: 0px; box-sizing: border-box;">6.&nbsp;优秀中文领队服务、当地优秀中文导游服务；</p>
-                                </section>
-                            </section>
-                        </section>*@
-                       
-                    </section>
-                </div> 
-            </article>
-
-        </section>
-
+<body style="background-color:white;">
+    <div class="col-md-12" style="height:48px;background-color:#4fc1c1;">
+        <span class="center_span" style="font-size:large;color:white">悠游私人行程定制</span>
     </div>
 
+    @{
+        var date = Model.VisitDate == null ? string.Empty : Convert.ToDateTime(Model.VisitDate).ToShortDateString();
+        var custom_require = (Model.CustomRequire == null) || (Model.CustomRequire.Trim().Equals(string.Empty)) ? "无" : Model.CustomRequire;
+    }
+    <div>
+        <span class="col-xs-6">贵宾姓名：@Model.CustomerName</span>
+        <span class="col-xs-6">游览人数：@Model.CustomerCount</span>
+        <span class="col-xs-6">游览时间：@date</span>
+        <span class="col-xs-12">定制要求：@custom_require</span>
+        <span class="col-xs-6">预估费用：@Model.Fee</span>
+    </div>
+
+    <div class="col-xs-12" style="background-color:black;height:1px;" />
+
+    <span class="col-xs-12 center_span" style="font-size:large;font-weight:bold;color:#00A4A8">@Model.ScheduleName</span>
+    @for (int i = 1; i <= Model.ScheduleDetail.Count; i++)
+    {
+        <div class="col-xs-12">
+            @{
+                var title = "第" + i + "天";
+                <span style="font-size:larger;font-weight:bold;color:#00A4A8">@title</span>
+                var detail = Model.ScheduleDetail[i - 1];
+                if (detail.Description != null && !detail.Description.Trim().Equals(string.Empty))
+                {
+                    <span class="col-xs-12">行程简要说明：@detail.Description</span>
+                }
+                if (detail.Services != null && detail.Services.Count != 0)
+                {
+                    for (int j = 0; j < detail.Services.Count; j++)
+                    {
+                        var detailProject = detail.Services[j];
+                        <span class="col-xs-6" style="font-size:medium;color:#00A4A8">@detailProject.Start - @detailProject.End</span>
+                        <span class="col-xs-12" style="font-size:medium;color:#00A4A8">行程：@detailProject.ServiceName</span>
+                        if (detailProject.CoverPic != null && !detailProject.Equals(string.Empty))
+                        {
+                            var mpic = !string.IsNullOrEmpty(detailProject.CoverPic) ? "\\Site\\Pics\\" + detailProject.CoverPic : "~\\Content\\pages\\img\\no_pic.png";
+                            mpic = VirtualPathUtility.ToAbsolute(mpic);
+                            <div class="scale">
+                                <img src="@mpic" />
+                            </div>
+                        }
+                        if (detailProject.Pics != null && !detailProject.Pics.Trim().Equals(string.Empty))
+                        {
+                            var pics = Common.AppUtils.JsonDeserialize<List<string>>(detailProject.Pics);
+                            foreach (string pic_file in pics)
+                            {
+                                var mpic = !string.IsNullOrEmpty(pic_file) ? "\\Site\\Pics\\" + pic_file : "~\\Content\\pages\\img\\no_pic.png";
+                                mpic = VirtualPathUtility.ToAbsolute(mpic);
+                                <div class="scale">
+                                    <img src="@mpic" />
+                                </div>
+                            }
+                        }
+                        <span class="col-xs-12">@detailProject.Description</span>
+                        <br />
+                    }
+                }
+                else
+                {
+                    <div>当日未安排行程</div>
+                }
+                <div class="col-xs-12" style="background-color:black;height:1px;" />
+            }
+        </div>
+                }
+
+
+    <!--[if lt IE 9]>
+    <script src="~/Content/global/plugins/respond.min.js"></script>
+    <script src="~/Content/global/plugins/excanvas.min.js"></script>
+    <![endif]-->
+    <!-- BEGIN CORE PLUGINS -->
+    <script src="~/Content/global/plugins/jquery.min.js" type="text/javascript"></script>
+    <script src="~/Content/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="~/Content/global/plugins/js.cookie.min.js" type="text/javascript"></script>
+    <script src="~/Content/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+    <script src="~/Content/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <script src="~/Content/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+    <script src="~/Content/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
+    <script src="~/Content/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+    <!-- END CORE PLUGINS -->
+    <!-- BEGIN THEME GLOBAL SCRIPTS -->
+    <script src="~/Content/global/scripts/app.min.js" type="text/javascript"></script>
+    <!-- END THEME GLOBAL SCRIPTS -->
+    <!-- BEGIN THEME LAYOUT SCRIPTS -->
+    <script src="~/Content/layouts/layout/scripts/layout.min.js" type="text/javascript"></script>
+    <script src="~/Content/layouts/layout/scripts/demo.min.js" type="text/javascript"></script>
+    <script src="~/Content/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
+    <!-- END THEME LAYOUT SCRIPTS -->
 </body>
 </html>

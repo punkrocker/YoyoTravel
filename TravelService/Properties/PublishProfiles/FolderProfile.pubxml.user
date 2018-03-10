@@ -23,10 +23,10 @@
       <publishTime>10/02/2017 10:49:50</publishTime>
     </File>
     <File Include="bin/Common.dll">
-      <publishTime>02/04/2018 01:24:51</publishTime>
+      <publishTime>03/10/2018 21:57:34</publishTime>
     </File>
     <File Include="bin/Common.pdb">
-      <publishTime>02/04/2018 01:24:51</publishTime>
+      <publishTime>03/10/2018 21:57:34</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>01/04/2017 00:44:16</publishTime>
@@ -86,13 +86,13 @@
       <publishTime>01/05/2012 11:08:46</publishTime>
     </File>
     <File Include="bin/Model.dll">
-      <publishTime>02/04/2018 01:24:51</publishTime>
+      <publishTime>03/10/2018 21:57:34</publishTime>
     </File>
     <File Include="bin/Model.dll.config">
       <publishTime>10/11/2017 21:40:20</publishTime>
     </File>
     <File Include="bin/Model.pdb">
-      <publishTime>02/04/2018 01:24:51</publishTime>
+      <publishTime>03/10/2018 21:57:34</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>06/18/2017 13:57:10</publishTime>
@@ -209,10 +209,10 @@
       <publishTime>01/28/2015 04:04:30</publishTime>
     </File>
     <File Include="bin/TravelService.dll">
-      <publishTime>02/04/2018 14:27:09</publishTime>
+      <publishTime>03/10/2018 22:06:26</publishTime>
     </File>
     <File Include="bin/TravelService.pdb">
-      <publishTime>02/04/2018 14:27:09</publishTime>
+      <publishTime>03/10/2018 22:06:26</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>09/10/2013 17:28:38</publishTime>
@@ -16984,6 +16984,9 @@
     <File Include="packages.config">
       <publishTime>11/27/2017 23:46:51</publishTime>
     </File>
+    <File Include="Scripts/bootbox.min.js">
+      <publishTime>02/25/2018 22:13:18</publishTime>
+    </File>
     <File Include="Scripts/bootstrap.js">
       <publishTime>10/02/2017 10:49:36</publishTime>
     </File>
@@ -17030,7 +17033,7 @@
       <publishTime>12/10/2017 22:46:00</publishTime>
     </File>
     <File Include="Views/Business/Detail_Project.cshtml">
-      <publishTime>01/06/2018 23:08:38</publishTime>
+      <publishTime>03/10/2018 22:21:42</publishTime>
     </File>
     <File Include="Views/Business/Index.cshtml">
       <publishTime>12/07/2017 20:48:17</publishTime>
@@ -17054,19 +17057,19 @@
       <publishTime>10/02/2017 10:49:30</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>12/10/2017 21:57:10</publishTime>
+      <publishTime>02/26/2018 07:06:32</publishTime>
     </File>
     <File Include="Views/Trip/Detail.cshtml">
-      <publishTime>01/29/2018 22:42:31</publishTime>
+      <publishTime>03/06/2018 02:04:33</publishTime>
     </File>
     <File Include="Views/Trip/Index.cshtml">
-      <publishTime>02/04/2018 11:02:48</publishTime>
+      <publishTime>03/08/2018 20:44:05</publishTime>
     </File>
     <File Include="Views/Trip/NewDay.cshtml">
-      <publishTime>01/21/2018 02:03:59</publishTime>
+      <publishTime>02/26/2018 20:55:47</publishTime>
     </File>
     <File Include="Views/Trip/Share.cshtml">
-      <publishTime>02/04/2018 11:17:01</publishTime>
+      <publishTime>03/10/2018 22:26:52</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>11/23/2017 21:32:21</publishTime>

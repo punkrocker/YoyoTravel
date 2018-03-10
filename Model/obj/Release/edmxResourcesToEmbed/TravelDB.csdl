@@ -316,6 +316,11 @@
     <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
     <Property Name="Fee" Type="Double" />
     <Property Name="Status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Days" Type="Int32" />
+    <Property Name="CustomerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="VisitDate" Type="DateTime" Precision="0" />
+    <Property Name="CustomRequire" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerCount" Type="Int32" />
   </EntityType>
   <EntityType Name="T_ScheduleDetail">
     <Key>
@@ -325,6 +330,6 @@
     <Property Name="ScheduleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="None" />
     <Property Name="Seq" Type="Int32" Nullable="false" />
     <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-    <Property Name="ProjectList" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ProjectList" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
   </EntityType>
 </Schema>

@@ -214,16 +214,21 @@
     <Property Name="Remark" Type="varchar" MaxLength="500" />
     <Property Name="Fee" Type="float" />
     <Property Name="Status" Type="char" MaxLength="1" />
+    <Property Name="Days" Type="int" />
+    <Property Name="CustomerName" Type="varchar" MaxLength="50" />
+    <Property Name="VisitDate" Type="date" />
+    <Property Name="CustomRequire" Type="varchar" MaxLength="500" />
+    <Property Name="CustomerCount" Type="int" />
   </EntityType>
   <EntityType Name="T_ScheduleDetail">
     <Key>
       <PropertyRef Name="ScheduleID" />
       <PropertyRef Name="Seq" />
     </Key>
-    <Property Name="ScheduleID" Type="int" Nullable="false" StoreGeneratedPattern="None" />
+    <Property Name="ScheduleID" Type="int" Nullable="false" />
     <Property Name="Seq" Type="int" Nullable="false" />
     <Property Name="Description" Type="varchar" MaxLength="500" />
-    <Property Name="ProjectList" Type="varchar" MaxLength="200" />
+    <Property Name="ProjectList" Type="varchar(max)" />
   </EntityType>
   <EntityType Name="T_Status">
     <Key>
