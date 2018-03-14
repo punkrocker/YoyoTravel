@@ -54,11 +54,13 @@
     @{
         var date = Model.VisitDate == null ? string.Empty : Convert.ToDateTime(Model.VisitDate).ToShortDateString();
         var custom_require = (Model.CustomRequire == null) || (Model.CustomRequire.Trim().Equals(string.Empty)) ? "无" : Model.CustomRequire;
+        var end_date = Model.VisitDate == null ? string.Empty : Convert.ToDateTime(Model.VisitDate).AddDays(Model.ScheduleDetail.Count - 1).ToShortDateString();
     }
     <div>
         <span class="col-xs-6">贵宾姓名：@Model.CustomerName</span>
         <span class="col-xs-6">游览人数：@Model.CustomerCount</span>
-        <span class="col-xs-6">游览时间：@date</span>
+        <span class="col-xs-6">游览日期：@date</span>
+        <span class="col-xs-6">返程日期：@end_date</span>
         <span class="col-xs-12">定制要求：@custom_require</span>
         <span class="col-xs-6">预估费用：@Model.Fee</span>
     </div>
