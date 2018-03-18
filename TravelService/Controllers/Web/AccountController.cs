@@ -56,9 +56,12 @@ namespace TravelService.Controllers.Web
         //
         // GET: /Account/Login
         [AllowAnonymous]
-        public ActionResult Login(string returnUrl)
+        public ActionResult Login(string returnUrl, string message)
         {
+            if (returnUrl==null || returnUrl.Contains("ChangePassword"))
+                returnUrl = "/";
             ViewBag.ReturnUrl = returnUrl;
+            ViewBag.Message = message;
             return View();
         }
 
@@ -84,7 +87,10 @@ namespace TravelService.Controllers.Web
                     {
                         T_Agents agent = db.T_Agents.Where(a => a.LoginName.Equals(model.UserName)).FirstOrDefault();
                         if (agent != null)
+                        {
                             Session["UserId"] = agent.AgentID;
+                            Session["UserName"] = agent.AgentName;
+                        }
                     }
                     AuthenticationManager.SignIn(new AuthenticationProperties(), new ClaimsIdentity());
                     return RedirectToLocal(returnUrl);
@@ -92,6 +98,28 @@ namespace TravelService.Controllers.Web
                 default:
                     ModelState.AddModelError("", "无效的登录尝试。");
                     return View(model);
+            }
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult ChangePassword(string origin_password, string new_password, string re_new_password)
+        {
+            using (var db = new TravelEntities())
+            {
+                int agentID = Convert.ToInt16(Session["UserId"]);
+                T_Agents agent = db.T_Agents.Where(a => a.AgentID == agentID).FirstOrDefault();
+                if (agent != null)
+                {
+                    return RedirectToAction("Login", new
+                    {
+                        message = "Hello"
+                    });
+                }
+                else
+                {
+                    return RedirectToAction("Login");
+                }
             }
         }
 
