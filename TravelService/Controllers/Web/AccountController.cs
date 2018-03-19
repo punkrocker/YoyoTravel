@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using TravelService.Models;
 using Model;
+using Common;
 
 namespace TravelService.Controllers.Web
 {
@@ -111,10 +112,27 @@ namespace TravelService.Controllers.Web
                 T_Agents agent = db.T_Agents.Where(a => a.AgentID == agentID).FirstOrDefault();
                 if (agent != null)
                 {
-                    return RedirectToAction("Login", new
+                    if (AppUtils.SHA1Hash(origin_password).Equals(agent.Password))
                     {
-                        message = "Hello"
-                    });
+                        if (new_password.Equals(re_new_password))
+                        {
+                            agent.Password = AppUtils.SHA1Hash(new_password);
+                            db.T_Agents.Attach(agent);
+                            db.Entry(agent).State = System.Data.Entity.EntityState.Modified;
+                            db.SaveChanges();
+                        }
+                        return RedirectToAction("Login", new
+                        {
+                            message = 0
+                        });
+                    }
+                    else
+                    {
+                        return RedirectToAction("Login", new
+                        {
+                            message = -1
+                        });
+                    }
                 }
                 else
                 {
