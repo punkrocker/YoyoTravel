@@ -68,6 +68,15 @@
                                             </select>
                                         </div>
                                     </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="title">筛选条件</label>
+                                        <div class="col-md-7">
+                                            <input id="filter_content" name="filter_content" type="text" class="form-control" value="" placeholder="请输入筛选条件,如果要显示所有项目,请留空">
+                                        </div>
+                                        <a class="btn btn-circle btn-icon-only btn-default" href="javascript:;" onclick="filter()">
+                                            <i class="fa fa-search"></i>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -280,4 +289,20 @@
     }
 
     day_seq = 0;
+
+    function filter()
+    {
+        filter_content = $(" #filter_content").val();
+        var services = @Html.Raw(Json.Encode(Model.services));
+        var filterServices = new Array();
+        services.forEach(function (e) {
+            if (e.Name.indexOf(filter_content) != -1)
+                filterServices.push(e)
+        });
+        $("#service_option").empty();
+        filterServices.forEach(function (service) {
+            var id_type = service.ID + ":" + service.Type;
+            $("#service_option").append("<option value='" + id_type + "'>" + service.Name + "</option>");
+        });
+    }
 </script>
