@@ -163,7 +163,7 @@
                                 <td> @(i + 1) </td>
                                 <td> @day.Services[i].Start </td>
                                 <td> @day.Services[i].End </td>
-                                <td> @day.Services[i].ServiceName </td>
+                                <td> @day.Services[i].ServiceName <a onclick="copyToClipBoard(@day.Services[i].ServiceID, @day.Services[i].ProjectTypeName)"><i class="fa fa-link" /></a></td>
                                 <td>
                                     <a onclick="delete_project(@day.Seq, @i)" class="btn btn-outline btn-circle btn-sm red">
                                         <i class="fa fa-remove"></i> 删除
@@ -183,6 +183,17 @@
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
         var r = window.location.search.substr(1).match(reg);
         if (r != null) return unescape(r[2]); return null;
+    }
+
+    function copyToClipBoard(id, typeName) {
+        var oInput = document.createElement('input');
+        oInput.value = window.location.protocol + "//" + window.location.host + "/Trip/ShareProject" + "?serviceID=" + id + "&type=" + typeName;
+        document.body.appendChild(oInput);
+        oInput.select();
+        document.execCommand("Copy"); 
+        oInput.className = 'oInput';
+        oInput.style.display = 'none';
+        alert('链接复制成功');
     }
 
     function newday(id) {

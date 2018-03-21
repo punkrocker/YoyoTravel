@@ -214,6 +214,7 @@ namespace TravelService.Services
                                                               {
                                                                   ServiceID = service.ProjectID,
                                                                   ServiceName = service.ProjectName,
+                                                                  ProjectTypeName = service.ProjectTypeID.ToString()
                                                               }).ToList();
                 List<ServiceDetailViewModel> hotelDetail = (from hotel in db.T_LiveProjects
                                                             where hotelIDs.Contains(hotel.HouseID.ToString())
@@ -221,6 +222,7 @@ namespace TravelService.Services
                                                             {
                                                                 ServiceID = hotel.HouseID,
                                                                 ServiceName = hotel.HouseName,
+                                                                ProjectTypeName = WebConst.HOTEL_TYPE.ToString() 
                                                             }).ToList();
                 List<ServiceDetailViewModel> serviceDetail = new List<ServiceDetailViewModel>();
                 serviceDetail.AddRange(projectDetail);
@@ -245,7 +247,8 @@ namespace TravelService.Services
                             {
                                 Start = detailProject.Start,
                                 End = detailProject.End,
-                                ServiceName = service.ServiceName
+                                ServiceName = service.ServiceName,
+                                ProjectTypeName = service.ProjectTypeName
                             };
                             services.Add(display_service);
                         }

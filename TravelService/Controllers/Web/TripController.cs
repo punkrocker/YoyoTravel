@@ -121,5 +121,13 @@ namespace TravelService.Controllers.Web
             var tripDetails = TripService.GetShareSchedule(tripID);
             return View(tripDetails);
         }
+
+        [AllowAnonymous]
+        public ActionResult ShareProject(int? serviceID, int? type)
+        {
+            ViewBag.trip = serviceID;
+            ViewBag.type = type;
+            return View();
+        }
     }
 }
