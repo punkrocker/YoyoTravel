@@ -49,7 +49,7 @@ namespace TravelService.Services
             }
         }
 
-        public static ServiceDetailViewModel  GetServiceDetail(int? serviceID, int? typeID)
+        public static ServiceDetailViewModel GetServiceDetail(int? serviceID, int? typeID)
         {
             using (var db = new TravelEntities())
             {

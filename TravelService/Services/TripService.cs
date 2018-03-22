@@ -247,6 +247,7 @@ namespace TravelService.Services
                             {
                                 Start = detailProject.Start,
                                 End = detailProject.End,
+                                ServiceID = service.ServiceID,
                                 ServiceName = service.ServiceName,
                                 ProjectTypeName = service.ProjectTypeName
                             };

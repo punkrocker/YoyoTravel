@@ -125,9 +125,8 @@ namespace TravelService.Controllers.Web
         [AllowAnonymous]
         public ActionResult ShareProject(int? serviceID, int? type)
         {
-            ViewBag.trip = serviceID;
-            ViewBag.type = type;
-            return View();
+            var serviceDetail = BusinessService.GetServiceDetail(serviceID, type);
+            return View(serviceDetail);
         }
     }
 }
