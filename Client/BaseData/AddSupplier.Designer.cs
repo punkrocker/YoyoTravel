@@ -33,15 +33,19 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtSupplierName = new System.Windows.Forms.TextBox();
             this.pnlMainInfo = new System.Windows.Forms.Panel();
+            this.btnAddGuide = new System.Windows.Forms.Button();
+            this.btnAddDriver = new System.Windows.Forms.Button();
+            this.btnAddVIP = new System.Windows.Forms.Button();
             this.txtContact = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnAddHotel = new System.Windows.Forms.Button();
             this.btnAddService = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.splitSupplier = new System.Windows.Forms.SplitContainer();
-            this.dgTravelService = new System.Windows.Forms.DataGridView();
-            this.dgHotel = new System.Windows.Forms.DataGridView();
             this.addSupplierBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tbSupplierDetails = new System.Windows.Forms.TabControl();
+            this.tbPageService = new System.Windows.Forms.TabPage();
+            this.tbPageHotel = new System.Windows.Forms.TabPage();
+            this.dgTravelService = new System.Windows.Forms.DataGridView();
             this.colServiceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colAdultFee = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colChildFee = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,6 +58,7 @@
             this.colPic = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colRemark = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgHotel = new System.Windows.Forms.DataGridView();
             this.colHotelName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,14 +68,19 @@
             this.colPics = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colHotelRemark = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tbPageVIP = new System.Windows.Forms.TabPage();
+            this.tbPageDriver = new System.Windows.Forms.TabPage();
+            this.tbPageGuide = new System.Windows.Forms.TabPage();
+            this.dgVIP = new System.Windows.Forms.DataGridView();
             this.pnlMainInfo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitSupplier)).BeginInit();
-            this.splitSupplier.Panel1.SuspendLayout();
-            this.splitSupplier.Panel2.SuspendLayout();
-            this.splitSupplier.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.addSupplierBindingSource)).BeginInit();
+            this.tbSupplierDetails.SuspendLayout();
+            this.tbPageService.SuspendLayout();
+            this.tbPageHotel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgTravelService)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgHotel)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.addSupplierBindingSource)).BeginInit();
+            this.tbPageVIP.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgVIP)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -92,6 +102,9 @@
             // pnlMainInfo
             // 
             this.pnlMainInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlMainInfo.Controls.Add(this.btnAddGuide);
+            this.pnlMainInfo.Controls.Add(this.btnAddDriver);
+            this.pnlMainInfo.Controls.Add(this.btnAddVIP);
             this.pnlMainInfo.Controls.Add(this.txtContact);
             this.pnlMainInfo.Controls.Add(this.label2);
             this.pnlMainInfo.Controls.Add(this.btnAddHotel);
@@ -102,8 +115,36 @@
             this.pnlMainInfo.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlMainInfo.Location = new System.Drawing.Point(0, 0);
             this.pnlMainInfo.Name = "pnlMainInfo";
-            this.pnlMainInfo.Size = new System.Drawing.Size(967, 85);
+            this.pnlMainInfo.Size = new System.Drawing.Size(967, 115);
             this.pnlMainInfo.TabIndex = 4;
+            // 
+            // btnAddGuide
+            // 
+            this.btnAddGuide.Location = new System.Drawing.Point(852, 80);
+            this.btnAddGuide.Name = "btnAddGuide";
+            this.btnAddGuide.Size = new System.Drawing.Size(102, 23);
+            this.btnAddGuide.TabIndex = 15;
+            this.btnAddGuide.Text = "添加导游信息";
+            this.btnAddGuide.UseVisualStyleBackColor = true;
+            // 
+            // btnAddDriver
+            // 
+            this.btnAddDriver.Location = new System.Drawing.Point(852, 47);
+            this.btnAddDriver.Name = "btnAddDriver";
+            this.btnAddDriver.Size = new System.Drawing.Size(102, 23);
+            this.btnAddDriver.TabIndex = 14;
+            this.btnAddDriver.Text = "添加司机信息";
+            this.btnAddDriver.UseVisualStyleBackColor = true;
+            // 
+            // btnAddVIP
+            // 
+            this.btnAddVIP.Location = new System.Drawing.Point(727, 47);
+            this.btnAddVIP.Name = "btnAddVIP";
+            this.btnAddVIP.Size = new System.Drawing.Size(119, 23);
+            this.btnAddVIP.TabIndex = 13;
+            this.btnAddVIP.Text = "添加VIP服务";
+            this.btnAddVIP.UseVisualStyleBackColor = true;
+            this.btnAddVIP.Click += new System.EventHandler(this.btnAddVIP_Click);
             // 
             // txtContact
             // 
@@ -151,23 +192,41 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // splitSupplier
+            // tbSupplierDetails
             // 
-            this.splitSupplier.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitSupplier.Location = new System.Drawing.Point(0, 85);
-            this.splitSupplier.Name = "splitSupplier";
-            this.splitSupplier.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.tbSupplierDetails.Controls.Add(this.tbPageService);
+            this.tbSupplierDetails.Controls.Add(this.tbPageHotel);
+            this.tbSupplierDetails.Controls.Add(this.tbPageVIP);
+            this.tbSupplierDetails.Controls.Add(this.tbPageDriver);
+            this.tbSupplierDetails.Controls.Add(this.tbPageGuide);
+            this.tbSupplierDetails.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbSupplierDetails.Location = new System.Drawing.Point(0, 115);
+            this.tbSupplierDetails.Name = "tbSupplierDetails";
+            this.tbSupplierDetails.SelectedIndex = 0;
+            this.tbSupplierDetails.Size = new System.Drawing.Size(967, 439);
+            this.tbSupplierDetails.TabIndex = 6;
             // 
-            // splitSupplier.Panel1
+            // tbPageService
             // 
-            this.splitSupplier.Panel1.Controls.Add(this.dgTravelService);
+            this.tbPageService.Controls.Add(this.dgTravelService);
+            this.tbPageService.Location = new System.Drawing.Point(4, 22);
+            this.tbPageService.Name = "tbPageService";
+            this.tbPageService.Padding = new System.Windows.Forms.Padding(3);
+            this.tbPageService.Size = new System.Drawing.Size(959, 413);
+            this.tbPageService.TabIndex = 0;
+            this.tbPageService.Text = "旅游项目";
+            this.tbPageService.UseVisualStyleBackColor = true;
             // 
-            // splitSupplier.Panel2
+            // tbPageHotel
             // 
-            this.splitSupplier.Panel2.Controls.Add(this.dgHotel);
-            this.splitSupplier.Size = new System.Drawing.Size(967, 469);
-            this.splitSupplier.SplitterDistance = 222;
-            this.splitSupplier.TabIndex = 5;
+            this.tbPageHotel.Controls.Add(this.dgHotel);
+            this.tbPageHotel.Location = new System.Drawing.Point(4, 22);
+            this.tbPageHotel.Name = "tbPageHotel";
+            this.tbPageHotel.Padding = new System.Windows.Forms.Padding(3);
+            this.tbPageHotel.Size = new System.Drawing.Size(959, 413);
+            this.tbPageHotel.TabIndex = 1;
+            this.tbPageHotel.Text = "别墅住宿";
+            this.tbPageHotel.UseVisualStyleBackColor = true;
             // 
             // dgTravelService
             // 
@@ -188,37 +247,12 @@
             this.colDesc,
             this.colRemark});
             this.dgTravelService.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgTravelService.Location = new System.Drawing.Point(0, 0);
+            this.dgTravelService.Location = new System.Drawing.Point(3, 3);
             this.dgTravelService.Name = "dgTravelService";
             this.dgTravelService.ReadOnly = true;
             this.dgTravelService.RowTemplate.Height = 23;
-            this.dgTravelService.Size = new System.Drawing.Size(967, 222);
-            this.dgTravelService.TabIndex = 0;
-            this.dgTravelService.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgTravelService_CellDoubleClick);
-            // 
-            // dgHotel
-            // 
-            this.dgHotel.AllowUserToAddRows = false;
-            this.dgHotel.AllowUserToDeleteRows = false;
-            this.dgHotel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgHotel.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colHotelName,
-            this.Column1,
-            this.Column2,
-            this.colFee,
-            this.colAgentFee,
-            this.colCover,
-            this.colPics,
-            this.colHotelRemark,
-            this.colDescription});
-            this.dgHotel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgHotel.Location = new System.Drawing.Point(0, 0);
-            this.dgHotel.Name = "dgHotel";
-            this.dgHotel.ReadOnly = true;
-            this.dgHotel.RowTemplate.Height = 23;
-            this.dgHotel.Size = new System.Drawing.Size(967, 243);
-            this.dgHotel.TabIndex = 1;
-            this.dgHotel.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgHotel_CellDoubleClick);
+            this.dgTravelService.Size = new System.Drawing.Size(953, 407);
+            this.dgTravelService.TabIndex = 1;
             // 
             // colServiceName
             // 
@@ -309,6 +343,29 @@
             this.colRemark.Name = "colRemark";
             this.colRemark.ReadOnly = true;
             // 
+            // dgHotel
+            // 
+            this.dgHotel.AllowUserToAddRows = false;
+            this.dgHotel.AllowUserToDeleteRows = false;
+            this.dgHotel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgHotel.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colHotelName,
+            this.Column1,
+            this.Column2,
+            this.colFee,
+            this.colAgentFee,
+            this.colCover,
+            this.colPics,
+            this.colHotelRemark,
+            this.colDescription});
+            this.dgHotel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgHotel.Location = new System.Drawing.Point(3, 3);
+            this.dgHotel.Name = "dgHotel";
+            this.dgHotel.ReadOnly = true;
+            this.dgHotel.RowTemplate.Height = 23;
+            this.dgHotel.Size = new System.Drawing.Size(953, 407);
+            this.dgHotel.TabIndex = 2;
+            // 
             // colHotelName
             // 
             this.colHotelName.DataPropertyName = "HouseName";
@@ -376,12 +433,57 @@
             this.colDescription.Name = "colDescription";
             this.colDescription.ReadOnly = true;
             // 
+            // tbPageVIP
+            // 
+            this.tbPageVIP.Controls.Add(this.dgVIP);
+            this.tbPageVIP.Location = new System.Drawing.Point(4, 22);
+            this.tbPageVIP.Name = "tbPageVIP";
+            this.tbPageVIP.Padding = new System.Windows.Forms.Padding(3);
+            this.tbPageVIP.Size = new System.Drawing.Size(959, 413);
+            this.tbPageVIP.TabIndex = 2;
+            this.tbPageVIP.Text = "VIP服务";
+            this.tbPageVIP.UseVisualStyleBackColor = true;
+            // 
+            // tbPageDriver
+            // 
+            this.tbPageDriver.Location = new System.Drawing.Point(4, 22);
+            this.tbPageDriver.Name = "tbPageDriver";
+            this.tbPageDriver.Padding = new System.Windows.Forms.Padding(3);
+            this.tbPageDriver.Size = new System.Drawing.Size(959, 413);
+            this.tbPageDriver.TabIndex = 3;
+            this.tbPageDriver.Text = "司机服务";
+            this.tbPageDriver.UseVisualStyleBackColor = true;
+            // 
+            // tbPageGuide
+            // 
+            this.tbPageGuide.Location = new System.Drawing.Point(4, 22);
+            this.tbPageGuide.Name = "tbPageGuide";
+            this.tbPageGuide.Padding = new System.Windows.Forms.Padding(3);
+            this.tbPageGuide.Size = new System.Drawing.Size(959, 413);
+            this.tbPageGuide.TabIndex = 4;
+            this.tbPageGuide.Text = "导游服务";
+            this.tbPageGuide.UseVisualStyleBackColor = true;
+            // 
+            // dgVIP
+            // 
+            this.dgVIP.AllowUserToAddRows = false;
+            this.dgVIP.AllowUserToDeleteRows = false;
+            this.dgVIP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgVIP.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgVIP.Location = new System.Drawing.Point(3, 3);
+            this.dgVIP.Name = "dgVIP";
+            this.dgVIP.ReadOnly = true;
+            this.dgVIP.RowTemplate.Height = 23;
+            this.dgVIP.Size = new System.Drawing.Size(953, 407);
+            this.dgVIP.TabIndex = 1;
+            this.dgVIP.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgVIP_CellDoubleClick);
+            // 
             // AddSupplier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(967, 554);
-            this.Controls.Add(this.splitSupplier);
+            this.Controls.Add(this.tbSupplierDetails);
             this.Controls.Add(this.pnlMainInfo);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddSupplier";
@@ -389,13 +491,14 @@
             this.Text = "添加供应商";
             this.pnlMainInfo.ResumeLayout(false);
             this.pnlMainInfo.PerformLayout();
-            this.splitSupplier.Panel1.ResumeLayout(false);
-            this.splitSupplier.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitSupplier)).EndInit();
-            this.splitSupplier.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.addSupplierBindingSource)).EndInit();
+            this.tbSupplierDetails.ResumeLayout(false);
+            this.tbPageService.ResumeLayout(false);
+            this.tbPageHotel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgTravelService)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgHotel)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.addSupplierBindingSource)).EndInit();
+            this.tbPageVIP.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgVIP)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -406,14 +509,17 @@
         private System.Windows.Forms.TextBox txtSupplierName;
         private System.Windows.Forms.Panel pnlMainInfo;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.SplitContainer splitSupplier;
-        private System.Windows.Forms.DataGridView dgTravelService;
         private System.Windows.Forms.Button btnAddHotel;
         private System.Windows.Forms.Button btnAddService;
-        private System.Windows.Forms.DataGridView dgHotel;
         private System.Windows.Forms.TextBox txtContact;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.BindingSource addSupplierBindingSource;
+        private System.Windows.Forms.Button btnAddDriver;
+        private System.Windows.Forms.Button btnAddVIP;
+        private System.Windows.Forms.Button btnAddGuide;
+        private System.Windows.Forms.TabControl tbSupplierDetails;
+        private System.Windows.Forms.TabPage tbPageService;
+        private System.Windows.Forms.DataGridView dgTravelService;
         private System.Windows.Forms.DataGridViewTextBoxColumn colServiceName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colAdultFee;
         private System.Windows.Forms.DataGridViewTextBoxColumn colChildFee;
@@ -426,6 +532,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colPic;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDesc;
         private System.Windows.Forms.DataGridViewTextBoxColumn colRemark;
+        private System.Windows.Forms.TabPage tbPageHotel;
+        private System.Windows.Forms.DataGridView dgHotel;
         private System.Windows.Forms.DataGridViewTextBoxColumn colHotelName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
@@ -435,5 +543,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colPics;
         private System.Windows.Forms.DataGridViewTextBoxColumn colHotelRemark;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDescription;
+        private System.Windows.Forms.TabPage tbPageVIP;
+        private System.Windows.Forms.TabPage tbPageDriver;
+        private System.Windows.Forms.TabPage tbPageGuide;
+        private System.Windows.Forms.DataGridView dgVIP;
     }
 }

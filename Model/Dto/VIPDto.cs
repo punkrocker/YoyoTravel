@@ -20,6 +20,11 @@ namespace Model.Dto
         [DisplayName("备注")]
         public string Remark { get; set; }
 
+        public int SupplierID
+        {
+            get;set;
+        }
+
         public override string ToString()
         {
             return ServerName;

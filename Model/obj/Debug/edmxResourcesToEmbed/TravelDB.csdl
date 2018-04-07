@@ -104,6 +104,7 @@
     <Property Name="AgentSmallCarSendAirportFee" Type="Double" />
     <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
     <Property Name="Contact" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="SupplierID" Type="Int32" />
   </EntityType>
   <EntityType Name="T_Functions">
     <Key>
@@ -142,6 +143,7 @@
     <Property Name="AgentLandFee" Type="Double" />
     <Property Name="AgentSeaFee" Type="Double" />
     <Property Name="Contact" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="SupplierID" Type="Int32" />
   </EntityType>
   <EntityType Name="T_LiveDetails">
     <Key>
@@ -279,6 +281,7 @@
     <Property Name="Tel" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
     <Property Name="Contact" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="SupplierID" Type="Int32" />
   </EntityType>
   <EntityContainer Name="TravelEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="T_Agents" EntityType="Self.T_Agents" />

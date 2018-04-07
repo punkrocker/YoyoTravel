@@ -25,5 +25,6 @@ namespace Model
         public Nullable<double> AgentLandFee { get; set; }
         public Nullable<double> AgentSeaFee { get; set; }
         public string Contact { get; set; }
+        public Nullable<int> SupplierID { get; set; }
     }
 }

@@ -109,6 +109,7 @@
           <Property Name="AgentBigCarSendAirportFee" Type="float" />
           <Property Name="AgentSmallCarSendAirportFee" Type="float" />
           <Property Name="Remark" Type="varchar" MaxLength="500" />
+          <Property Name="SupplierID" Type="int" />
         </EntityType>
         <EntityType Name="T_Functions">
           <Key>
@@ -147,6 +148,7 @@
           <Property Name="Remark" Type="varchar" MaxLength="500" />
           <Property Name="AgentLandFee" Type="float" />
           <Property Name="AgentSeaFee" Type="float" />
+          <Property Name="SupplierID" Type="int" />
         </EntityType>
         <EntityType Name="T_LiveDetails">
           <Key>
@@ -310,6 +312,7 @@
           <Property Name="Tel" Type="varchar" MaxLength="20" />
           <Property Name="Contact" Type="varchar" MaxLength="200" />
           <Property Name="Remark" Type="varchar" MaxLength="500" />
+          <Property Name="SupplierID" Type="int" />
         </EntityType>
         <EntityContainer Name="TravelModelStoreContainer">
           <EntitySet Name="T_Agents" EntityType="Self.T_Agents" Schema="dbo" store:Type="Tables" />
@@ -445,6 +448,7 @@
           <Property Name="AgentSmallCarSendAirportFee" Type="Double" />
           <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="Contact" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SupplierID" Type="Int32" />
         </EntityType>
         <EntityType Name="T_Functions">
           <Key>
@@ -483,6 +487,7 @@
           <Property Name="AgentLandFee" Type="Double" />
           <Property Name="AgentSeaFee" Type="Double" />
           <Property Name="Contact" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SupplierID" Type="Int32" />
         </EntityType>
         <EntityType Name="T_LiveDetails">
           <Key>
@@ -620,6 +625,7 @@
           <Property Name="Tel" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="Contact" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SupplierID" Type="Int32" />
         </EntityType>
         <EntityContainer Name="TravelEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="T_Agents" EntityType="Self.T_Agents" />
@@ -769,6 +775,7 @@
           <EntitySetMapping Name="T_Drivers">
             <EntityTypeMapping TypeName="TravelModel.T_Drivers">
               <MappingFragment StoreEntitySet="T_Drivers">
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
                 <ScalarProperty Name="Contact" ColumnName="Contact" />
                 <ScalarProperty Name="DriverID" ColumnName="DriverID" />
                 <ScalarProperty Name="DriverName" ColumnName="DriverName" />
@@ -817,6 +824,7 @@
           <EntitySetMapping Name="T_Guides">
             <EntityTypeMapping TypeName="TravelModel.T_Guides">
               <MappingFragment StoreEntitySet="T_Guides">
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
                 <ScalarProperty Name="Contact" ColumnName="Contact" />
                 <ScalarProperty Name="AgentSeaFee" ColumnName="AgentSeaFee" />
                 <ScalarProperty Name="AgentLandFee" ColumnName="AgentLandFee" />
@@ -969,6 +977,7 @@
           <EntitySetMapping Name="T_VIPs">
             <EntityTypeMapping TypeName="TravelModel.T_VIPs">
               <MappingFragment StoreEntitySet="T_VIPs">
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
                 <ScalarProperty Name="Contact" ColumnName="Contact" />
                 <ScalarProperty Name="ServerID" ColumnName="ServerID" />
                 <ScalarProperty Name="ServerName" ColumnName="ServerName" />

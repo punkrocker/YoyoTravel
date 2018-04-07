@@ -20,10 +20,17 @@ namespace Client.BaseData
     {
         private bool isModify = false;
         private VIPDto vip = null;
+        private int supplierID = 0;
 
         public AddVip()
         {
             InitializeComponent();
+        }
+
+        public AddVip(int _supplierID)
+        {
+            InitializeComponent();
+            supplierID = _supplierID;
         }
 
         public AddVip(VIPDto selectedVip)
@@ -50,6 +57,7 @@ namespace Client.BaseData
             VIPDto param = new VIPDto 
             {
                 ServerID = id,
+                SupplierID = supplierID,
                 ServerName = txtName.Text,
                 Contact = txtContact.Text,
                 Tel = txtTel.Text,

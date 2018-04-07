@@ -21,5 +21,6 @@ namespace Model
         public string Tel { get; set; }
         public string Remark { get; set; }
         public string Contact { get; set; }
+        public Nullable<int> SupplierID { get; set; }
     }
 }

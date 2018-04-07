@@ -65,7 +65,8 @@ namespace Travel.Client.Utils
                     }
                     param.Append(paramlist[index].Key);
                     param.Append("=");
-                    param.Append(paramlist[index].Value);}
+                    param.Append(paramlist[index].Value);
+                }
             }
             using (var client = new HttpClient())
             {
@@ -73,7 +74,8 @@ namespace Travel.Client.Utils
                     BaseUrl + methodName + param,
                     UriKind.Absolute))
                     .Result.Content.ReadAsStringAsync()
-                    .Result;var resultInfo = AppUtils.JsonDeserialize<T>(result);
+                    .Result;
+                var resultInfo = AppUtils.JsonDeserialize<T>(result);
                 return resultInfo;
             }
         }
@@ -115,27 +117,27 @@ namespace Travel.Client.Utils
 
         public static void LoadUrl()
         {
-            using (var client = new HttpClient())
-            {
-                Configuration config = System.Configuration.ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-                string ip = config.AppSettings.Settings["url"].Value;
-                try
-                {
-                    var result = client.GetAsync(new Uri(
-        "http://www.thaiyuda.com:114/ip/get",
-        UriKind.Absolute))
-        .Result.Content.ReadAsStringAsync()
-        .Result;
-                    ip = result;
-                    config.AppSettings.Settings["url"].Value = ip;
-                    config.Save(ConfigurationSaveMode.Modified);
-                }
-                catch (Exception e)
-                {
+        //    using (var client = new HttpClient())
+        //    {
+        //        Configuration config = System.Configuration.ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+        //        string ip = config.AppSettings.Settings["url"].Value;
+        //        try
+        //        {
+        //            var result = client.GetAsync(new Uri(
+        //"http://www.thaiyuda.com:114/ip/get",
+        //UriKind.Absolute))
+        //.Result.Content.ReadAsStringAsync()
+        //.Result;
+        //            ip = result;
+        //            config.AppSettings.Settings["url"].Value = ip;
+        //            config.Save(ConfigurationSaveMode.Modified);
+        //        }
+        //        catch (Exception e)
+        //        {
 
-                }
-                BaseUrl = string.Format("http://{0}:8730/", ip);
-            }
+        //        }
+        //        BaseUrl = string.Format("http://{0}:8730/", ip);
+        //    }
             //BaseUrl = "http://localhost:8730/";
         }
     }

@@ -30,7 +30,7 @@ namespace Client.BaseData
             dgHotel.AutoGenerateColumns = false;
             dgTravelService.AutoGenerateColumns = false;
             dgTravelService.DataSource = travelProjects;
-            dgHotel.DataSource = hotels; 
+            dgHotel.DataSource = hotels;
         }
 
         public AddSupplier(Supplier _supplier)
@@ -72,14 +72,15 @@ namespace Client.BaseData
             {
                 ClientUtils.WarningCode(supplierResult.Message);
             }
+            GetAllVipServices();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (!ClientUtils.CheckEmpty(txtSupplierName, "EMPTY_SUPPLIER_NAME")||
-                !ClientUtils.CheckEmpty(txtContact,"EMPTY_SUPPLIER_CONTACT"))
+            if (!ClientUtils.CheckEmpty(txtSupplierName, "EMPTY_SUPPLIER_NAME") ||
+                !ClientUtils.CheckEmpty(txtContact, "EMPTY_SUPPLIER_CONTACT"))
                 return;
-            
+
             if (!isModify)
             {
                 SupplierPara supplierPara = new SupplierPara();
@@ -133,7 +134,7 @@ namespace Client.BaseData
                 return;
             modifyTravelService();
         }
-        
+
         private void btnAddService_Click(object sender, EventArgs e)
         {
             AddTravelProject addTravel = new AddTravelProject();
@@ -303,6 +304,47 @@ namespace Client.BaseData
             }
         }
         #endregion
+
+        #region VIP服务
+        List<VIPDto> vips = new List<VIPDto>();
+        private void btnAddVIP_Click(object sender, EventArgs e)
+        {
+            if (new AddVip().ShowDialog() == DialogResult.OK)
+                GetAllVipServices();
+        }
+
+        private void GetAllVipServices()
+        {
+            vips = WebCall.GetMethod<List<VIPDto>>(WebCall.GetVips, null);
+            dgVIP.DataSource = vips;
+        }
+
+        private void dgVIP_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == -1)
+            {
+                return;
+            }
+            ModifyVip();
+        }
+
+        private void ModifyVip()
+        {
+            if (dgVIP.SelectedCells.Count == 0)
+            {
+                MessageBox.Show(LangBase.GetString("NOT_SELECT_VIP"));
+                return;
+            }
+            else
+            {
+                int rowIndex = dgVIP.SelectedCells[0].RowIndex;
+                AddVip fmodify = new AddVip(vips[rowIndex]);
+                if (fmodify.ShowDialog() == DialogResult.OK)
+                    GetAllVipServices();
+            }
+        }
+        #endregion
+
 
     }
 }

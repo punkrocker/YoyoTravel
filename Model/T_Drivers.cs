@@ -33,5 +33,6 @@ namespace Model
         public Nullable<double> AgentSmallCarSendAirportFee { get; set; }
         public string Remark { get; set; }
         public string Contact { get; set; }
+        public Nullable<int> SupplierID { get; set; }
     }
 }

@@ -91,6 +91,7 @@
     <EntitySetMapping Name="T_Drivers">
       <EntityTypeMapping TypeName="TravelModel.T_Drivers">
         <MappingFragment StoreEntitySet="T_Drivers">
+          <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
           <ScalarProperty Name="Contact" ColumnName="Contact" />
           <ScalarProperty Name="DriverID" ColumnName="DriverID" />
           <ScalarProperty Name="DriverName" ColumnName="DriverName" />
@@ -139,6 +140,7 @@
     <EntitySetMapping Name="T_Guides">
       <EntityTypeMapping TypeName="TravelModel.T_Guides">
         <MappingFragment StoreEntitySet="T_Guides">
+          <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
           <ScalarProperty Name="Contact" ColumnName="Contact" />
           <ScalarProperty Name="AgentSeaFee" ColumnName="AgentSeaFee" />
           <ScalarProperty Name="AgentLandFee" ColumnName="AgentLandFee" />
@@ -291,6 +293,7 @@
     <EntitySetMapping Name="T_VIPs">
       <EntityTypeMapping TypeName="TravelModel.T_VIPs">
         <MappingFragment StoreEntitySet="T_VIPs">
+          <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
           <ScalarProperty Name="Contact" ColumnName="Contact" />
           <ScalarProperty Name="ServerID" ColumnName="ServerID" />
           <ScalarProperty Name="ServerName" ColumnName="ServerName" />
