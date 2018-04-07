@@ -27,5 +27,9 @@ namespace Model.Dto
         public Nullable<double> AgentSeaFee { get; set; }
         [DisplayName("备注")]
         public string Remark { get; set; }
+        public int? SupplierID
+        {
+            get;set;
+        }
     }
 }

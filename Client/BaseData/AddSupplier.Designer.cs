@@ -75,6 +75,8 @@
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgDrivers = new System.Windows.Forms.DataGridView();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgGuides = new System.Windows.Forms.DataGridView();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlMainInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.addSupplierBindingSource)).BeginInit();
             this.tbSupplierDetails.SuspendLayout();
@@ -84,8 +86,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgHotel)).BeginInit();
             this.tbPageVIP.SuspendLayout();
             this.tbPageDriver.SuspendLayout();
+            this.tbPageGuide.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgVIP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgDrivers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgGuides)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -131,6 +135,7 @@
             this.btnAddGuide.TabIndex = 15;
             this.btnAddGuide.Text = "添加导游信息";
             this.btnAddGuide.UseVisualStyleBackColor = true;
+            this.btnAddGuide.Click += new System.EventHandler(this.btnAddGuide_Click);
             // 
             // btnAddDriver
             // 
@@ -463,6 +468,7 @@
             // 
             // tbPageGuide
             // 
+            this.tbPageGuide.Controls.Add(this.dgGuides);
             this.tbPageGuide.Location = new System.Drawing.Point(4, 22);
             this.tbPageGuide.Name = "tbPageGuide";
             this.tbPageGuide.Padding = new System.Windows.Forms.Padding(3);
@@ -520,6 +526,31 @@
             this.Column4.ReadOnly = true;
             this.Column4.Visible = false;
             // 
+            // dgGuides
+            // 
+            this.dgGuides.AllowUserToAddRows = false;
+            this.dgGuides.AllowUserToDeleteRows = false;
+            this.dgGuides.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgGuides.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column5});
+            this.dgGuides.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgGuides.Location = new System.Drawing.Point(3, 3);
+            this.dgGuides.Name = "dgGuides";
+            this.dgGuides.ReadOnly = true;
+            this.dgGuides.RowHeadersWidth = 100;
+            this.dgGuides.RowTemplate.Height = 23;
+            this.dgGuides.Size = new System.Drawing.Size(953, 407);
+            this.dgGuides.TabIndex = 1;
+            this.dgGuides.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgGuides_CellDoubleClick);
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "SupplierID";
+            this.Column5.HeaderText = "Column5";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            this.Column5.Visible = false;
+            // 
             // AddSupplier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -541,8 +572,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgHotel)).EndInit();
             this.tbPageVIP.ResumeLayout(false);
             this.tbPageDriver.ResumeLayout(false);
+            this.tbPageGuide.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgVIP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgDrivers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgGuides)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -594,5 +627,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridView dgDrivers;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridView dgGuides;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
     }
 }

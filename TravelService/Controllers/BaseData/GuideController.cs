@@ -12,28 +12,40 @@ namespace TravelService.Controllers.BaseData
 {
     public class GuideController : Controller
     {
-        // GET: Guide
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-        public ActionResult GetAll()
+        public ActionResult GetAll(int? supplierID)
         {
             var db = new TravelEntities();
-            var guides = (from guide in db.T_Guides
-                               select new GuideDto
-                               {
-                                   GuideID = guide.GuideID,
-                                   GuideName = guide.GuideName,
-                                   Tel = guide.Tel,
-                                   Contact= guide.Contact,
-                                   LandFee = guide.LandFee,
-                                   AgentLandFee = guide.AgentLandFee,
-                                   SeaFee = guide.SeaFee,
-                                   AgentSeaFee = guide.AgentSeaFee,
-                                   Remark = guide.Remark,
-                               }).ToList();
+            List<GuideDto> guides;
+            if (supplierID == null)
+                guides = (from guide in db.T_Guides
+                          select new GuideDto
+                          {
+                              GuideID = guide.GuideID,
+                              GuideName = guide.GuideName,
+                              Tel = guide.Tel,
+                              Contact = guide.Contact,
+                              LandFee = guide.LandFee,
+                              AgentLandFee = guide.AgentLandFee,
+                              SeaFee = guide.SeaFee,
+                              AgentSeaFee = guide.AgentSeaFee,
+                              Remark = guide.Remark,
+                              SupplierID = guide.SupplierID
+                          }).ToList();
+            else
+                guides = (from guide in db.T_Guides
+                          select new GuideDto
+                          {
+                              GuideID = guide.GuideID,
+                              GuideName = guide.GuideName,
+                              Tel = guide.Tel,
+                              Contact = guide.Contact,
+                              LandFee = guide.LandFee,
+                              AgentLandFee = guide.AgentLandFee,
+                              SeaFee = guide.SeaFee,
+                              AgentSeaFee = guide.AgentSeaFee,
+                              Remark = guide.Remark,
+                              SupplierID = guide.SupplierID
+                          }).Where(a=>a.SupplierID==supplierID).ToList();
             return Content(AppUtils.JsonSerializer(guides));
         }
 
@@ -58,7 +70,8 @@ namespace TravelService.Controllers.BaseData
                         AgentLandFee = newGuide.AgentLandFee,
                         SeaFee = newGuide.SeaFee,
                         AgentSeaFee = newGuide.AgentSeaFee,
-                        Remark = newGuide.Remark
+                        Remark = newGuide.Remark,
+                        SupplierID = newGuide.SupplierID
                     };
                     db.T_Guides.Add(guide);
                     db.SaveChanges();
@@ -92,6 +105,7 @@ namespace TravelService.Controllers.BaseData
                     theGuide.AgentLandFee = guide.AgentLandFee;
                     theGuide.AgentSeaFee = guide.AgentSeaFee;
                     theGuide.Remark = guide.Remark;
+                    theGuide.SupplierID = guide.SupplierID;
                     db.T_Guides.Attach(theGuide);
                     db.Entry(theGuide).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();

@@ -20,9 +20,17 @@ namespace Client.BaseData
     {
         private bool isModify = false;
         private GuideDto selectedGuide = null;
+        private int? supplierID = 0;
+
         public AddGuide()
         {
             InitializeComponent();
+        }
+
+        public AddGuide(int? _supplierID)
+        {
+            InitializeComponent();
+            supplierID = _supplierID;
         }
 
         public AddGuide(GuideDto guide)
@@ -38,6 +46,7 @@ namespace Client.BaseData
             txtAgentLandFee.Text = guide.AgentLandFee.ToString();
             txtAgentSeaFee.Text = guide.AgentSeaFee.ToString();
             txtRemark.Text = guide.Remark;
+            supplierID = guide.SupplierID;
             isModify = true;
         }
 
@@ -65,7 +74,8 @@ namespace Client.BaseData
                 AgentLandFee = Convert.ToSingle(txtAgentLandFee.Text),
                 SeaFee = Convert.ToSingle(txtSeaFee.Text),
                 AgentSeaFee = Convert.ToSingle(txtAgentSeaFee.Text),
-                Remark = txtRemark.Text
+                Remark = txtRemark.Text,
+                SupplierID = supplierID
             };
             string strResult = WebCall.PostMethod<GuideDto>(isModify ? WebCall.ModifyGuides: WebCall.AddGuides, param);
             WebResult result = AppUtils.JsonDeserialize<WebResult>(strResult);

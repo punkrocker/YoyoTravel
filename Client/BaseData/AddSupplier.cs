@@ -74,6 +74,7 @@ namespace Client.BaseData
             }
             GetAllVipServices();
             GetAllDrivers();
+            GetAllGuides();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -349,6 +350,7 @@ namespace Client.BaseData
 
         #endregion
 
+        #region 司机
         List<DriverDto> drivers = new List<DriverDto>();
         private void btnAddDriver_Click(object sender, EventArgs e)
         {
@@ -385,6 +387,46 @@ namespace Client.BaseData
                 AddDriver modifyTravelProject = new AddDriver(driver);
                 if (modifyTravelProject.ShowDialog() == DialogResult.OK)
                     GetAllDrivers();
+            }
+        }
+        #endregion
+
+        List<GuideDto> guides = new List<GuideDto>();
+        private void GetAllGuides()
+        {
+            List<KeyValuePair<string, string>> paramlist = new List<KeyValuePair<string, string>>();
+            paramlist.Add(new KeyValuePair<string, string>("supplierID", supplier.SupplierID.ToString()));
+            guides = WebCall.GetMethod<List<GuideDto>>(WebCall.GetGuides, paramlist);
+            dgGuides.DataSource = guides;
+        }
+
+        private void btnAddGuide_Click(object sender, EventArgs e)
+        {
+            if (new AddGuide(supplier.SupplierID).ShowDialog() == DialogResult.OK)
+                GetAllGuides();
+        }
+
+        private void dgGuides_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == -1)
+                return;
+            modifyGuide();
+        }
+
+        private void modifyGuide()
+        {
+            if (dgGuides.SelectedCells.Count == 0)
+            {
+                MessageBox.Show(LangBase.GetString("NOT_SELECT_GUIDE"));
+                return;
+            }
+            else
+            {
+                int rowIndex = dgGuides.SelectedCells[0].RowIndex;
+                GuideDto travelProject = guides[rowIndex];
+                AddGuide modifyTravelProject = new AddGuide(travelProject);
+                if (modifyTravelProject.ShowDialog() == DialogResult.OK)
+                    GetAllGuides();
             }
         }
     }
