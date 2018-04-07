@@ -54,7 +54,6 @@
     <Compile Include="CallResult\RolesResult.cs" />
     <Compile Include="CallResult\SupplierResult.cs" />
     <Compile Include="CallResult\WebResult.cs" />
-    <Compile Include="Dto\AgentDto.cs" />
     <Compile Include="Dto\DriverDto.cs" />
     <Compile Include="Dto\GuideDto.cs" />
     <Compile Include="Dto\HotelDto.cs" />
@@ -81,9 +80,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>TravelDB.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="T_Agents.cs">
-      <DependentUpon>TravelDB.tt</DependentUpon>
     </Compile>
     <Compile Include="T_AirportDetails.cs">
       <DependentUpon>TravelDB.tt</DependentUpon>

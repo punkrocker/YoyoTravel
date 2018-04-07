@@ -54,12 +54,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppConst.cs" />
-    <Compile Include="BaseData\AddAgent.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BaseData\AddAgent.Designer.cs">
-      <DependentUpon>AddAgent.cs</DependentUpon>
-    </Compile>
     <Compile Include="BaseData\AddDriver.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,12 +101,6 @@
     </Compile>
     <Compile Include="BaseData\AddVip.Designer.cs">
       <DependentUpon>AddVip.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseData\AgentManage.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BaseData\AgentManage.Designer.cs">
-      <DependentUpon>AgentManage.cs</DependentUpon>
     </Compile>
     <Compile Include="BaseData\BaseDataMain.cs">
       <SubType>Form</SubType>
@@ -168,9 +156,6 @@
     <Compile Include="Utils\Configure.cs" />
     <Compile Include="Utils\LangBase.cs" />
     <Compile Include="Utils\WebCall.cs" />
-    <EmbeddedResource Include="BaseData\AddAgent.resx">
-      <DependentUpon>AddAgent.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="BaseData\AddDriver.resx">
       <DependentUpon>AddDriver.cs</DependentUpon>
     </EmbeddedResource>
@@ -194,9 +179,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BaseData\AddVip.resx">
       <DependentUpon>AddVip.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BaseData\AgentManage.resx">
-      <DependentUpon>AgentManage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BaseData\BaseDataMain.resx">
       <DependentUpon>BaseDataMain.cs</DependentUpon>

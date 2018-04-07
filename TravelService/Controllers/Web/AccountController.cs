@@ -86,11 +86,11 @@ namespace TravelService.Controllers.Web
                 case SignInStatus.Success:
                     using (var db = new TravelEntities())
                     {
-                        T_Agents agent = db.T_Agents.Where(a => a.LoginName.Equals(model.UserName)).FirstOrDefault();
-                        if (agent != null)
+                        T_Users user = db.T_Users.Where(a => a.LoginName.Equals(model.UserName)).FirstOrDefault();
+                        if (user != null)
                         {
-                            Session["UserId"] = agent.AgentID;
-                            Session["UserName"] = agent.AgentName;
+                            Session["UserId"] = user.UserID;
+                            Session["UserName"] = user.UserName;
                         }
                     }
                     AuthenticationManager.SignIn(new AuthenticationProperties(), new ClaimsIdentity());
@@ -108,17 +108,17 @@ namespace TravelService.Controllers.Web
         {
             using (var db = new TravelEntities())
             {
-                int agentID = Convert.ToInt16(Session["UserId"]);
-                T_Agents agent = db.T_Agents.Where(a => a.AgentID == agentID).FirstOrDefault();
-                if (agent != null)
+                int userID = Convert.ToInt16(Session["UserId"]);
+                T_Users user = db.T_Users.Where(a => a.UserID == userID).FirstOrDefault();
+                if (user != null)
                 {
-                    if (AppUtils.SHA1Hash(origin_password).Equals(agent.Password))
+                    if (AppUtils.SHA1Hash(origin_password).Equals(user.Password))
                     {
                         if (new_password.Equals(re_new_password))
                         {
-                            agent.Password = AppUtils.SHA1Hash(new_password);
-                            db.T_Agents.Attach(agent);
-                            db.Entry(agent).State = System.Data.Entity.EntityState.Modified;
+                            user.Password = AppUtils.SHA1Hash(new_password);
+                            db.T_Users.Attach(user);
+                            db.Entry(user).State = System.Data.Entity.EntityState.Modified;
                             db.SaveChanges();
                         }
                         return RedirectToAction("Login", new

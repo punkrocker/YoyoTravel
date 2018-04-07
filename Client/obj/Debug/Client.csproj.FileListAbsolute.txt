@@ -53,8 +53,6 @@ F:\Project\YoyoTravel\YoyoTravel\Client\obj\Debug\Client.exe
 F:\Project\YoyoTravel\YoyoTravel\Client\obj\Debug\Client.pdb
 F:\Project\YoyoTravel\YoyoTravel\Client\obj\Debug\Client.BaseData.UserManage.resources
 F:\Project\YoyoTravel\YoyoTravel\Client\obj\Debug\Client.BaseData.AddUser.resources
-F:\Project\YoyoTravel\YoyoTravel\Client\obj\Debug\Client.BaseData.AgentManage.resources
-F:\Project\YoyoTravel\YoyoTravel\Client\obj\Debug\Client.BaseData.AddAgent.resources
 F:\Project\YoyoTravel\YoyoTravel\Client\obj\Debug\Client.BaseData.VipManage.resources
 F:\Project\YoyoTravel\YoyoTravel\Client\obj\Debug\Client.BaseData.AddVip.resources
 F:\Project\YoyoTravel\YoyoTravel\Client\obj\Debug\Client.BaseData.GuideManage.resources

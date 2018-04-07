@@ -38,11 +38,6 @@ namespace Client.BaseData
             ChangeWindow(new UserManage());
         }
 
-        private void btnAgent_Click(object sender, EventArgs e)
-        {
-            ChangeWindow(new AgentManage());
-        }
-
         private void btnVIP_Click(object sender, EventArgs e)
         {
             ChangeWindow(new VipManage());

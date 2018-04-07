@@ -1,20 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="TravelModelStoreContainer" CdmEntityContainer="TravelEntities">
-    <EntitySetMapping Name="T_Agents">
-      <EntityTypeMapping TypeName="TravelModel.T_Agents">
-        <MappingFragment StoreEntitySet="T_Agents">
-          <ScalarProperty Name="LoginName" ColumnName="LoginName" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="AgentID" ColumnName="AgentID" />
-          <ScalarProperty Name="AgentName" ColumnName="AgentName" />
-          <ScalarProperty Name="Tel" ColumnName="Tel" />
-          <ScalarProperty Name="Remark" ColumnName="Remark" />
-          <ScalarProperty Name="Password" ColumnName="Password" />
-          <ScalarProperty Name="ParentID" ColumnName="ParentID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="T_AirportDetails">
       <EntityTypeMapping TypeName="TravelModel.T_AirportDetails">
         <MappingFragment StoreEntitySet="T_AirportDetails">

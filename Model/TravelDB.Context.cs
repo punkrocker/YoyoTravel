@@ -25,7 +25,6 @@ namespace Model
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<T_Agents> T_Agents { get; set; }
         public virtual DbSet<T_AirportDetails> T_AirportDetails { get; set; }
         public virtual DbSet<T_Bills> T_Bills { get; set; }
         public virtual DbSet<T_CarDetails> T_CarDetails { get; set; }

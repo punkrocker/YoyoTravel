@@ -112,8 +112,8 @@ namespace TravelService
         {
             using (var db = new TravelEntities())
             {
-                T_Agents agent = db.T_Agents.Where(a => a.LoginName.Equals(userName)).FirstOrDefault();
-                if (agent != null && agent.Password.Equals(AppUtils.SHA1Hash(password)))
+                T_Users user = db.T_Users.Where(a => a.LoginName.Equals(userName)).FirstOrDefault();
+                if (user != null && user.Password.Equals(AppUtils.SHA1Hash(password)))
                     return SignInStatus.Success;
                 else
                     return SignInStatus.Failure;

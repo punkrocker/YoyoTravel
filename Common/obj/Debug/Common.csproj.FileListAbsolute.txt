@@ -12,4 +12,3 @@ F:\Project\YoyoTravel\YoyoTravel\Common\bin\Debug\Newtonsoft.Json.xml
 F:\Project\YoyoTravel\YoyoTravel\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
 F:\Project\YoyoTravel\YoyoTravel\Common\obj\Debug\Common.dll
 F:\Project\YoyoTravel\YoyoTravel\Common\obj\Debug\Common.pdb
-F:\Project\YoyoTravel\YoyoTravel\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache

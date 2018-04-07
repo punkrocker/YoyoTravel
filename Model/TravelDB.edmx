@@ -5,19 +5,6 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="TravelModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="T_Agents">
-          <Key>
-            <PropertyRef Name="AgentID" />
-          </Key>
-          <Property Name="AgentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="AgentName" Type="varchar" MaxLength="50" />
-          <Property Name="LoginName" Type="varchar" MaxLength="20" />
-          <Property Name="Tel" Type="varchar" MaxLength="20" />
-          <Property Name="Remark" Type="varchar" MaxLength="500" />
-          <Property Name="Password" Type="varchar" MaxLength="50" />
-          <Property Name="ParentID" Type="int" />
-          <Property Name="Status" Type="char" MaxLength="1" />
-        </EntityType>
         <EntityType Name="T_AirportDetails">
           <Key>
             <PropertyRef Name="BillID" />
@@ -315,7 +302,6 @@
           <Property Name="SupplierID" Type="int" />
         </EntityType>
         <EntityContainer Name="TravelModelStoreContainer">
-          <EntitySet Name="T_Agents" EntityType="Self.T_Agents" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="T_AirportDetails" EntityType="Self.T_AirportDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="T_Bills" EntityType="Self.T_Bills" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="T_CarDetails" EntityType="Self.T_CarDetails" Schema="dbo" store:Type="Tables" />
@@ -344,19 +330,6 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TravelModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="T_Agents">
-          <Key>
-            <PropertyRef Name="AgentID" />
-          </Key>
-          <Property Name="AgentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="AgentName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Tel" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ParentID" Type="Int32" />
-          <Property Name="Status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
-          <Property Name="LoginName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="T_AirportDetails">
           <Key>
             <PropertyRef Name="BillID" />
@@ -628,7 +601,6 @@
           <Property Name="SupplierID" Type="Int32" />
         </EntityType>
         <EntityContainer Name="TravelEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="T_Agents" EntityType="Self.T_Agents" />
           <EntitySet Name="T_AirportDetails" EntityType="Self.T_AirportDetails" />
           <EntitySet Name="T_Bills" EntityType="Self.T_Bills" />
           <EntitySet Name="T_CarDetails" EntityType="Self.T_CarDetails" />
@@ -685,20 +657,6 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="TravelModelStoreContainer" CdmEntityContainer="TravelEntities">
-          <EntitySetMapping Name="T_Agents">
-            <EntityTypeMapping TypeName="TravelModel.T_Agents">
-              <MappingFragment StoreEntitySet="T_Agents">
-                <ScalarProperty Name="LoginName" ColumnName="LoginName" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="AgentID" ColumnName="AgentID" />
-                <ScalarProperty Name="AgentName" ColumnName="AgentName" />
-                <ScalarProperty Name="Tel" ColumnName="Tel" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="T_AirportDetails">
             <EntityTypeMapping TypeName="TravelModel.T_AirportDetails">
               <MappingFragment StoreEntitySet="T_AirportDetails">

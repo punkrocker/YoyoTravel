@@ -22,4 +22,3 @@ F:\Project\YoyoTravel\YoyoTravel\Model\bin\Debug\zh-Hans\EntityFramework.SqlServ
 F:\Project\YoyoTravel\YoyoTravel\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
 F:\Project\YoyoTravel\YoyoTravel\Model\obj\Debug\Model.dll
 F:\Project\YoyoTravel\YoyoTravel\Model\obj\Debug\Model.pdb
-F:\Project\YoyoTravel\YoyoTravel\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache

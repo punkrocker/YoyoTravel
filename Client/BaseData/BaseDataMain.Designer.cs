@@ -34,7 +34,6 @@
             this.btnVIP = new System.Windows.Forms.Button();
             this.btnDriver = new System.Windows.Forms.Button();
             this.btnGuide = new System.Windows.Forms.Button();
-            this.btnAgent = new System.Windows.Forms.Button();
             this.btnSupplier = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.split)).BeginInit();
             this.split.Panel1.SuspendLayout();
@@ -58,7 +57,6 @@
             this.split.Panel1.Controls.Add(this.btnVIP);
             this.split.Panel1.Controls.Add(this.btnDriver);
             this.split.Panel1.Controls.Add(this.btnGuide);
-            this.split.Panel1.Controls.Add(this.btnAgent);
             this.split.Panel1.Controls.Add(this.btnSupplier);
             this.split.Panel1MinSize = 64;
             this.split.Size = new System.Drawing.Size(1025, 544);
@@ -68,7 +66,7 @@
             // btnFunction
             // 
             this.btnFunction.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnFunction.Location = new System.Drawing.Point(384, 0);
+            this.btnFunction.Location = new System.Drawing.Point(320, 0);
             this.btnFunction.Name = "btnFunction";
             this.btnFunction.Size = new System.Drawing.Size(64, 62);
             this.btnFunction.TabIndex = 6;
@@ -79,7 +77,7 @@
             // btnUser
             // 
             this.btnUser.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnUser.Location = new System.Drawing.Point(320, 0);
+            this.btnUser.Location = new System.Drawing.Point(256, 0);
             this.btnUser.Name = "btnUser";
             this.btnUser.Size = new System.Drawing.Size(64, 62);
             this.btnUser.TabIndex = 5;
@@ -90,7 +88,7 @@
             // btnVIP
             // 
             this.btnVIP.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnVIP.Location = new System.Drawing.Point(256, 0);
+            this.btnVIP.Location = new System.Drawing.Point(192, 0);
             this.btnVIP.Name = "btnVIP";
             this.btnVIP.Size = new System.Drawing.Size(64, 62);
             this.btnVIP.TabIndex = 4;
@@ -102,7 +100,7 @@
             // btnDriver
             // 
             this.btnDriver.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnDriver.Location = new System.Drawing.Point(192, 0);
+            this.btnDriver.Location = new System.Drawing.Point(128, 0);
             this.btnDriver.Name = "btnDriver";
             this.btnDriver.Size = new System.Drawing.Size(64, 62);
             this.btnDriver.TabIndex = 3;
@@ -114,7 +112,7 @@
             // btnGuide
             // 
             this.btnGuide.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnGuide.Location = new System.Drawing.Point(128, 0);
+            this.btnGuide.Location = new System.Drawing.Point(64, 0);
             this.btnGuide.Name = "btnGuide";
             this.btnGuide.Size = new System.Drawing.Size(64, 62);
             this.btnGuide.TabIndex = 2;
@@ -122,17 +120,6 @@
             this.btnGuide.UseVisualStyleBackColor = true;
             this.btnGuide.Visible = false;
             this.btnGuide.Click += new System.EventHandler(this.btnGuide_Click);
-            // 
-            // btnAgent
-            // 
-            this.btnAgent.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnAgent.Location = new System.Drawing.Point(64, 0);
-            this.btnAgent.Name = "btnAgent";
-            this.btnAgent.Size = new System.Drawing.Size(64, 62);
-            this.btnAgent.TabIndex = 1;
-            this.btnAgent.Text = "代理Agent";
-            this.btnAgent.UseVisualStyleBackColor = true;
-            this.btnAgent.Click += new System.EventHandler(this.btnAgent_Click);
             // 
             // btnSupplier
             // 
@@ -169,7 +156,6 @@
         private System.Windows.Forms.Button btnVIP;
         private System.Windows.Forms.Button btnDriver;
         private System.Windows.Forms.Button btnGuide;
-        private System.Windows.Forms.Button btnAgent;
         private System.Windows.Forms.Button btnSupplier;
     }
 }
