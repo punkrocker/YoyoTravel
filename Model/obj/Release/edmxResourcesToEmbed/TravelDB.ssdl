@@ -104,6 +104,7 @@
     <Property Name="AgentBigCarSendAirportFee" Type="float" />
     <Property Name="AgentSmallCarSendAirportFee" Type="float" />
     <Property Name="Remark" Type="varchar" MaxLength="500" />
+    <Property Name="SupplierID" Type="int" />
   </EntityType>
   <EntityType Name="T_Functions">
     <Key>
@@ -142,6 +143,7 @@
     <Property Name="Remark" Type="varchar" MaxLength="500" />
     <Property Name="AgentLandFee" Type="float" />
     <Property Name="AgentSeaFee" Type="float" />
+    <Property Name="SupplierID" Type="int" />
   </EntityType>
   <EntityType Name="T_LiveDetails">
     <Key>
@@ -305,6 +307,7 @@
     <Property Name="Tel" Type="varchar" MaxLength="20" />
     <Property Name="Contact" Type="varchar" MaxLength="200" />
     <Property Name="Remark" Type="varchar" MaxLength="500" />
+    <Property Name="SupplierID" Type="int" />
   </EntityType>
   <EntityContainer Name="TravelModelStoreContainer">
     <EntitySet Name="T_Agents" EntityType="Self.T_Agents" Schema="dbo" store:Type="Tables" />

@@ -96,6 +96,7 @@
             this.btnVIP.TabIndex = 4;
             this.btnVIP.Text = "VIP";
             this.btnVIP.UseVisualStyleBackColor = true;
+            this.btnVIP.Visible = false;
             this.btnVIP.Click += new System.EventHandler(this.btnVIP_Click);
             // 
             // btnDriver

@@ -20,7 +20,7 @@ namespace Client.BaseData
     {
         private bool isModify = false;
         private VIPDto vip = null;
-        private int supplierID = 0;
+        private int? supplierID = 0;
 
         public AddVip()
         {
@@ -42,6 +42,7 @@ namespace Client.BaseData
             txtTel.Text = vip.Tel;
             txtContact.Text = vip.Contact;
             txtRemark.Text = vip.Remark;
+            supplierID = vip.SupplierID;
         }
 
         private void btnClose_Click(object sender, EventArgs e)

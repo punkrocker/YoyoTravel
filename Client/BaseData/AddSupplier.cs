@@ -309,13 +309,15 @@ namespace Client.BaseData
         List<VIPDto> vips = new List<VIPDto>();
         private void btnAddVIP_Click(object sender, EventArgs e)
         {
-            if (new AddVip().ShowDialog() == DialogResult.OK)
+            if (new AddVip(this.supplier.SupplierID).ShowDialog() == DialogResult.OK)
                 GetAllVipServices();
         }
 
         private void GetAllVipServices()
         {
-            vips = WebCall.GetMethod<List<VIPDto>>(WebCall.GetVips, null);
+            List<KeyValuePair<string, string>> paramlist = new List<KeyValuePair<string, string>>();
+            paramlist.Add(new KeyValuePair<string, string>("supplierID", supplier.SupplierID.ToString()));
+            vips = WebCall.GetMethod<List<VIPDto>>(WebCall.GetVips, paramlist);
             dgVIP.DataSource = vips;
         }
 

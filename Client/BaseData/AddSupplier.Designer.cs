@@ -72,6 +72,7 @@
             this.tbPageDriver = new System.Windows.Forms.TabPage();
             this.tbPageGuide = new System.Windows.Forms.TabPage();
             this.dgVIP = new System.Windows.Forms.DataGridView();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlMainInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.addSupplierBindingSource)).BeginInit();
             this.tbSupplierDetails.SuspendLayout();
@@ -469,6 +470,8 @@
             this.dgVIP.AllowUserToAddRows = false;
             this.dgVIP.AllowUserToDeleteRows = false;
             this.dgVIP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgVIP.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column3});
             this.dgVIP.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgVIP.Location = new System.Drawing.Point(3, 3);
             this.dgVIP.Name = "dgVIP";
@@ -477,6 +480,14 @@
             this.dgVIP.Size = new System.Drawing.Size(953, 407);
             this.dgVIP.TabIndex = 1;
             this.dgVIP.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgVIP_CellDoubleClick);
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "SupplierID";
+            this.Column3.HeaderText = "Column3";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Visible = false;
             // 
             // AddSupplier
             // 
@@ -547,5 +558,6 @@
         private System.Windows.Forms.TabPage tbPageDriver;
         private System.Windows.Forms.TabPage tbPageGuide;
         private System.Windows.Forms.DataGridView dgVIP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
     }
 }
