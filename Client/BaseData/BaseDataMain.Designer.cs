@@ -108,6 +108,7 @@
             this.btnDriver.TabIndex = 3;
             this.btnDriver.Text = "司机Driver";
             this.btnDriver.UseVisualStyleBackColor = true;
+            this.btnDriver.Visible = false;
             this.btnDriver.Click += new System.EventHandler(this.btnDriver_Click);
             // 
             // btnGuide
@@ -119,6 +120,7 @@
             this.btnGuide.TabIndex = 2;
             this.btnGuide.Text = "导游Guide";
             this.btnGuide.UseVisualStyleBackColor = true;
+            this.btnGuide.Visible = false;
             this.btnGuide.Click += new System.EventHandler(this.btnGuide_Click);
             // 
             // btnAgent
