@@ -12,16 +12,12 @@ namespace TravelService.Controllers.BaseData
 {
     public class DriverController : Controller
     {
-        // GET: Driver
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-        public ActionResult GetAll()
+        public ActionResult GetAll(int? supplierID)
         {
             var db = new TravelEntities();
-            var drivers = (from driver in db.T_Drivers
+            List<DriverDto> drivers;
+            if (supplierID != null)
+                drivers = (from driver in db.T_Drivers
                            select new DriverDto
                            {
                                DriverID = driver.DriverID,
@@ -41,6 +37,30 @@ namespace TravelService.Controllers.BaseData
                                AgentBigCarSendAirportFee = driver.AgentBigCarSendAirportFee,
                                AgentSmallCarSendAirportFee = driver.AgentSmallCarSendAirportFee,
                                Remark = driver.Remark,
+                               SupplierID = driver.SupplierID
+                           }).Where(a => a.SupplierID == supplierID).ToList();
+            else
+                drivers = (from driver in db.T_Drivers
+                           select new DriverDto
+                           {
+                               DriverID = driver.DriverID,
+                               DriverName = driver.DriverName,
+                               Tel = driver.Tel,
+                               Contact = driver.Contact,
+                               BigCarFee = driver.BigCarFee,
+                               SmallCarFee = driver.SmallCarFee,
+                               BigCarPickAirportFee = driver.BigCarPickAirportFee,
+                               SmallCarPickAirportFee = driver.SmallCarPickAirportFee,
+                               BigCarSendAirportFee = driver.BigCarSendAirportFee,
+                               SmallCarSendAirportFee = driver.SmallCarSendAirportFee,
+                               AgentBigCarFee = driver.AgentBigCarFee,
+                               AgentSmallCarFee = driver.AgentSmallCarFee,
+                               AgentBigCarPickAirportFee = driver.AgentBigCarPickAirportFee,
+                               AgentSmallCarPickAirportFee = driver.AgentSmallCarPickAirportFee,
+                               AgentBigCarSendAirportFee = driver.AgentBigCarSendAirportFee,
+                               AgentSmallCarSendAirportFee = driver.AgentSmallCarSendAirportFee,
+                               Remark = driver.Remark,
+                               SupplierID = driver.SupplierID
                            }).ToList();
             return Content(AppUtils.JsonSerializer(drivers));
         }
@@ -75,6 +95,7 @@ namespace TravelService.Controllers.BaseData
                         AgentBigCarSendAirportFee = newDriver.AgentBigCarSendAirportFee,
                         AgentSmallCarSendAirportFee = newDriver.AgentSmallCarSendAirportFee,
                         Remark = newDriver.Remark,
+                        SupplierID = newDriver.SupplierID
                     };
                     db.T_Drivers.Add(driver);
                     db.SaveChanges();
@@ -117,6 +138,7 @@ namespace TravelService.Controllers.BaseData
                     theDriver.AgentBigCarSendAirportFee = driver.AgentBigCarSendAirportFee;
                     theDriver.AgentSmallCarSendAirportFee = driver.AgentSmallCarSendAirportFee;
                     theDriver.Remark = driver.Remark;
+                    theDriver.SupplierID = driver.SupplierID;
                     db.T_Drivers.Attach(theDriver);
                     db.Entry(theDriver).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();

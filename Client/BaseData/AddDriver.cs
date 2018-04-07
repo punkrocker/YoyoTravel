@@ -20,10 +20,17 @@ namespace Client.BaseData
     {
         private bool isModify = false;
         private DriverDto selectedDriver;
+        private int? supplierID = 0;
 
         public AddDriver()
         {
             InitializeComponent();
+        }
+
+        public AddDriver(int? _supplierID)
+        {
+            InitializeComponent();
+            supplierID = _supplierID;
         }
 
         public AddDriver(DriverDto driver)
@@ -46,6 +53,7 @@ namespace Client.BaseData
             txtSmallCarSend.Text = driver.SmallCarSendAirportFee.ToString();
             txtRemark.Text = driver.Remark;
             selectedDriver = driver;
+            supplierID = driver.SupplierID;
             isModify = true;
         }
 
@@ -89,7 +97,8 @@ namespace Client.BaseData
                 AgentSmallCarSendAirportFee = Convert.ToSingle(txtAgentSmallCarSend.Text),
                 SmallCarPickAirportFee = Convert.ToSingle(txtSmallCarPick.Text),
                 SmallCarSendAirportFee = Convert.ToSingle(txtSmallCarSend.Text),
-                Remark = txtRemark.Text
+                Remark = txtRemark.Text,
+                SupplierID = supplierID
             };
             string strResult = WebCall.PostMethod<DriverDto>(isModify ? WebCall.ModifyDrivers: WebCall.AddDrivers, param);
             WebResult result = AppUtils.JsonDeserialize<WebResult>(strResult);

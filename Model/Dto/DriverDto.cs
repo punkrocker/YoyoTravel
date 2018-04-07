@@ -43,5 +43,9 @@ namespace Model.Dto
         public Nullable<double> AgentSmallCarSendAirportFee { get; set; }
         [DisplayName("备注")]
         public string Remark { get; set; }
+        public int? SupplierID
+        {
+            get;set;
+        }
     }
 }

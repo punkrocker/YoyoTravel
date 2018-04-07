@@ -73,6 +73,8 @@
             this.tbPageGuide = new System.Windows.Forms.TabPage();
             this.dgVIP = new System.Windows.Forms.DataGridView();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgDrivers = new System.Windows.Forms.DataGridView();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlMainInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.addSupplierBindingSource)).BeginInit();
             this.tbSupplierDetails.SuspendLayout();
@@ -81,7 +83,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgTravelService)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgHotel)).BeginInit();
             this.tbPageVIP.SuspendLayout();
+            this.tbPageDriver.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgVIP)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgDrivers)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -136,6 +140,7 @@
             this.btnAddDriver.TabIndex = 14;
             this.btnAddDriver.Text = "添加司机信息";
             this.btnAddDriver.UseVisualStyleBackColor = true;
+            this.btnAddDriver.Click += new System.EventHandler(this.btnAddDriver_Click);
             // 
             // btnAddVIP
             // 
@@ -447,6 +452,7 @@
             // 
             // tbPageDriver
             // 
+            this.tbPageDriver.Controls.Add(this.dgDrivers);
             this.tbPageDriver.Location = new System.Drawing.Point(4, 22);
             this.tbPageDriver.Name = "tbPageDriver";
             this.tbPageDriver.Padding = new System.Windows.Forms.Padding(3);
@@ -489,6 +495,31 @@
             this.Column3.ReadOnly = true;
             this.Column3.Visible = false;
             // 
+            // dgDrivers
+            // 
+            this.dgDrivers.AllowUserToAddRows = false;
+            this.dgDrivers.AllowUserToDeleteRows = false;
+            this.dgDrivers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgDrivers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column4});
+            this.dgDrivers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgDrivers.Location = new System.Drawing.Point(3, 3);
+            this.dgDrivers.Name = "dgDrivers";
+            this.dgDrivers.ReadOnly = true;
+            this.dgDrivers.RowHeadersWidth = 100;
+            this.dgDrivers.RowTemplate.Height = 23;
+            this.dgDrivers.Size = new System.Drawing.Size(953, 407);
+            this.dgDrivers.TabIndex = 1;
+            this.dgDrivers.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgDrivers_CellDoubleClick);
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "SupplierID";
+            this.Column4.HeaderText = "Column4";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Visible = false;
+            // 
             // AddSupplier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -509,7 +540,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgTravelService)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgHotel)).EndInit();
             this.tbPageVIP.ResumeLayout(false);
+            this.tbPageDriver.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgVIP)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgDrivers)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -559,5 +592,7 @@
         private System.Windows.Forms.TabPage tbPageGuide;
         private System.Windows.Forms.DataGridView dgVIP;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridView dgDrivers;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
     }
 }

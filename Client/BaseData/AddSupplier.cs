@@ -73,6 +73,7 @@ namespace Client.BaseData
                 ClientUtils.WarningCode(supplierResult.Message);
             }
             GetAllVipServices();
+            GetAllDrivers();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -345,8 +346,46 @@ namespace Client.BaseData
                     GetAllVipServices();
             }
         }
+
         #endregion
 
+        List<DriverDto> drivers = new List<DriverDto>();
+        private void btnAddDriver_Click(object sender, EventArgs e)
+        {
+            if (new AddDriver(supplier.SupplierID).ShowDialog() == DialogResult.OK)
+                GetAllDrivers();
+        }
 
+        private void GetAllDrivers()
+        {
+            List<KeyValuePair<string, string>> paramlist = new List<KeyValuePair<string, string>>();
+            paramlist.Add(new KeyValuePair<string, string>("supplierID", supplier.SupplierID.ToString()));
+            drivers = WebCall.GetMethod<List<DriverDto>>(WebCall.GetDrivers, paramlist);
+            dgDrivers.DataSource = drivers;
+        }
+
+        private void dgDrivers_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == -1)
+                return;
+            modifyDriver();
+        }
+
+        private void modifyDriver()
+        {
+            if (dgDrivers.SelectedCells.Count == 0)
+            {
+                MessageBox.Show(LangBase.GetString("NOT_SELECT_DRIVER"));
+                return;
+            }
+            else
+            {
+                int rowIndex = dgDrivers.SelectedCells[0].RowIndex;
+                DriverDto driver = drivers[rowIndex];
+                AddDriver modifyTravelProject = new AddDriver(driver);
+                if (modifyTravelProject.ShowDialog() == DialogResult.OK)
+                    GetAllDrivers();
+            }
+        }
     }
 }
