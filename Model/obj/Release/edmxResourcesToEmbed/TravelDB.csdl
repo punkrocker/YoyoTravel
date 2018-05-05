@@ -1,18 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="TravelModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="T_Agents">
-    <Key>
-      <PropertyRef Name="AgentID" />
-    </Key>
-    <Property Name="AgentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="AgentName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Tel" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="ParentID" Type="Int32" />
-    <Property Name="Status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
-    <Property Name="LoginName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-  </EntityType>
   <EntityType Name="T_AirportDetails">
     <Key>
       <PropertyRef Name="BillID" />
@@ -174,6 +161,8 @@
     <Property Name="AgentFee" Type="Double" />
     <Property Name="Pics" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Location" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="RoomCount" Type="Int32" />
   </EntityType>
   <EntityType Name="T_Logs">
     <Key>
@@ -284,7 +273,6 @@
     <Property Name="SupplierID" Type="Int32" />
   </EntityType>
   <EntityContainer Name="TravelEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="T_Agents" EntityType="Self.T_Agents" />
     <EntitySet Name="T_AirportDetails" EntityType="Self.T_AirportDetails" />
     <EntitySet Name="T_Bills" EntityType="Self.T_Bills" />
     <EntitySet Name="T_CarDetails" EntityType="Self.T_CarDetails" />

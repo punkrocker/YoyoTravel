@@ -43,11 +43,15 @@
             this.btnPic = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.btnOtherPic = new System.Windows.Forms.Button();
+            this.txtLocation = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtRoomCount = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(351, 360);
+            this.btnClose.Location = new System.Drawing.Point(358, 456);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 15;
@@ -57,7 +61,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(198, 360);
+            this.btnSave.Location = new System.Drawing.Point(205, 456);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 14;
@@ -117,16 +121,16 @@
             // 
             // txtDesc
             // 
-            this.txtDesc.Location = new System.Drawing.Point(37, 179);
+            this.txtDesc.Location = new System.Drawing.Point(37, 246);
             this.txtDesc.Multiline = true;
             this.txtDesc.Name = "txtDesc";
-            this.txtDesc.Size = new System.Drawing.Size(162, 140);
+            this.txtDesc.Size = new System.Drawing.Size(162, 177);
             this.txtDesc.TabIndex = 19;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(37, 164);
+            this.label4.Location = new System.Drawing.Point(37, 231);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 12);
             this.label4.TabIndex = 18;
@@ -134,16 +138,16 @@
             // 
             // txtRemark
             // 
-            this.txtRemark.Location = new System.Drawing.Point(236, 179);
+            this.txtRemark.Location = new System.Drawing.Point(236, 246);
             this.txtRemark.Multiline = true;
             this.txtRemark.Name = "txtRemark";
-            this.txtRemark.Size = new System.Drawing.Size(162, 140);
+            this.txtRemark.Size = new System.Drawing.Size(162, 177);
             this.txtRemark.TabIndex = 21;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(234, 164);
+            this.label5.Location = new System.Drawing.Point(234, 231);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(53, 12);
             this.label5.TabIndex = 20;
@@ -152,7 +156,7 @@
             // btnPic
             // 
             this.btnPic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnPic.Location = new System.Drawing.Point(425, 42);
+            this.btnPic.Location = new System.Drawing.Point(425, 59);
             this.btnPic.Name = "btnPic";
             this.btnPic.Size = new System.Drawing.Size(166, 148);
             this.btnPic.TabIndex = 23;
@@ -171,7 +175,7 @@
             // 
             // btnOtherPic
             // 
-            this.btnOtherPic.Location = new System.Drawing.Point(425, 206);
+            this.btnOtherPic.Location = new System.Drawing.Point(425, 246);
             this.btnOtherPic.Name = "btnOtherPic";
             this.btnOtherPic.Size = new System.Drawing.Size(166, 113);
             this.btnOtherPic.TabIndex = 24;
@@ -179,11 +183,48 @@
             this.btnOtherPic.UseVisualStyleBackColor = true;
             this.btnOtherPic.Click += new System.EventHandler(this.btnOtherPic_Click);
             // 
+            // txtLocation
+            // 
+            this.txtLocation.Location = new System.Drawing.Point(35, 186);
+            this.txtLocation.Name = "txtLocation";
+            this.txtLocation.Size = new System.Drawing.Size(363, 21);
+            this.txtLocation.TabIndex = 26;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(35, 160);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(53, 12);
+            this.label6.TabIndex = 25;
+            this.label6.Text = "别墅位置";
+            // 
+            // txtRoomCount
+            // 
+            this.txtRoomCount.Location = new System.Drawing.Point(425, 402);
+            this.txtRoomCount.Name = "txtRoomCount";
+            this.txtRoomCount.Size = new System.Drawing.Size(162, 21);
+            this.txtRoomCount.TabIndex = 28;
+            this.txtRoomCount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRoomCount_KeyPress);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(423, 386);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(53, 12);
+            this.label7.TabIndex = 27;
+            this.label7.Text = "房间数量";
+            // 
             // AddHotel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(628, 405);
+            this.ClientSize = new System.Drawing.Size(628, 522);
+            this.Controls.Add(this.txtRoomCount);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.txtLocation);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.btnOtherPic);
             this.Controls.Add(this.btnPic);
             this.Controls.Add(this.label9);
@@ -225,5 +266,9 @@
         private System.Windows.Forms.Button btnPic;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnOtherPic;
+        private System.Windows.Forms.TextBox txtLocation;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtRoomCount;
+        private System.Windows.Forms.Label label7;
     }
 }

@@ -161,6 +161,8 @@
     <Property Name="AgentFee" Type="float" />
     <Property Name="Pics" Type="varchar(max)" />
     <Property Name="Remark" Type="varchar" MaxLength="500" />
+    <Property Name="Location" Type="varchar(max)" />
+    <Property Name="RoomCount" Type="int" />
   </EntityType>
   <EntityType Name="T_Logs">
     <Key>

@@ -25,5 +25,7 @@ namespace Model
         public Nullable<double> AgentFee { get; set; }
         public string Pics { get; set; }
         public string Remark { get; set; }
+        public string Location { get; set; }
+        public Nullable<int> RoomCount { get; set; }
     }
 }

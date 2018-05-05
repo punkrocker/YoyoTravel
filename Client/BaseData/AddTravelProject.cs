@@ -49,9 +49,12 @@ namespace Client.BaseData
             cbxType.Text = modifyTravelProject.ProjectTypeName;
             if (modifyTravelProject.CoverPic!=null && !modifyTravelProject.CoverPic.ToString().Equals(string.Empty))
             {
-                Stream picSteam = WebCall.GetPic(modifyTravelProject.CoverPic);
-                btnPic.BackgroundImage = Image.FromStream(picSteam);
-                picSteam.Close();
+                Stream picStream = WebCall.GetPic(modifyTravelProject.CoverPic);
+                if (picStream != null)
+                {
+                    btnPic.BackgroundImage = Image.FromStream(picStream);
+                    picStream.Close();
+                }
                 pic = modifyTravelProject.CoverPic;
             }
         }

@@ -3,11 +3,14 @@ using Model;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Windows.Forms;
 
 namespace Travel.Client.Utils
 {
@@ -105,13 +108,21 @@ namespace Travel.Client.Utils
 
         public static Stream GetPic(string url)
         {
-            Uri mUri = new Uri(WebCall.BaseUrl + SystemConst.PIC_PATH + url);
-            HttpWebRequest mRequest = (HttpWebRequest)WebRequest.Create(mUri);
-            mRequest.Method = "GET";
-            mRequest.Timeout = 200;
-            mRequest.ContentType = "text/html;charset=utf-8";
-            HttpWebResponse mResponse = (HttpWebResponse)mRequest.GetResponse();
-            Stream mStream = mResponse.GetResponseStream();
+            Stream mStream;
+            try
+            {
+                Uri mUri = new Uri(WebCall.BaseUrl + SystemConst.PIC_PATH + url);
+                HttpWebRequest mRequest = (HttpWebRequest)WebRequest.Create(mUri);
+                mRequest.Method = "GET";
+                mRequest.Timeout = 200;
+                mRequest.ContentType = "text/html;charset=utf-8";
+                HttpWebResponse mResponse = (HttpWebResponse)mRequest.GetResponse();
+                mStream = mResponse.GetResponseStream();
+            }
+            catch
+            {
+                return null;
+            }
             return mStream;
         }
 

@@ -1,18 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="TravelModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityType Name="T_Agents">
-    <Key>
-      <PropertyRef Name="AgentID" />
-    </Key>
-    <Property Name="AgentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="AgentName" Type="varchar" MaxLength="50" />
-    <Property Name="LoginName" Type="varchar" MaxLength="20" />
-    <Property Name="Tel" Type="varchar" MaxLength="20" />
-    <Property Name="Remark" Type="varchar" MaxLength="500" />
-    <Property Name="Password" Type="varchar" MaxLength="50" />
-    <Property Name="ParentID" Type="int" />
-    <Property Name="Status" Type="char" MaxLength="1" />
-  </EntityType>
   <EntityType Name="T_AirportDetails">
     <Key>
       <PropertyRef Name="BillID" />
@@ -174,6 +161,8 @@
     <Property Name="AgentFee" Type="float" />
     <Property Name="Pics" Type="varchar(max)" />
     <Property Name="Remark" Type="varchar" MaxLength="500" />
+    <Property Name="Location" Type="varchar(max)" />
+    <Property Name="RoomCount" Type="int" />
   </EntityType>
   <EntityType Name="T_Logs">
     <Key>
@@ -310,7 +299,6 @@
     <Property Name="SupplierID" Type="int" />
   </EntityType>
   <EntityContainer Name="TravelModelStoreContainer">
-    <EntitySet Name="T_Agents" EntityType="Self.T_Agents" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="T_AirportDetails" EntityType="Self.T_AirportDetails" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="T_Bills" EntityType="Self.T_Bills" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="T_CarDetails" EntityType="Self.T_CarDetails" Schema="dbo" store:Type="Tables" />

@@ -42,5 +42,17 @@ namespace Model.Dto
         public string Pics { get; set; }
         [DisplayName("代理商说明")]
         public string Remark { get; set; }
+
+        [DisplayName("别墅位置")]
+        public string Location
+        {
+            get;set;
+        }
+
+        [DisplayName("房间数")]
+        public int? RoomCount
+        {
+            get;set;
+        }
     }
 }

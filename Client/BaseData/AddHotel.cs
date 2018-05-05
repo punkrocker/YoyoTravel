@@ -36,6 +36,8 @@ namespace Client.BaseData
             txtAgentFee.Text = hotel.AgentFee.ToString();
             txtRemark.Text = hotel.Remark;
             txtDesc.Text = hotel.Description;
+            txtLocation.Text = hotel.Location;
+            txtRoomCount.Text = hotel.RoomCount.ToString();
             pic = AppUtils.ToString(hotel.CoverPic);
             if (!pic.Equals(string.Empty))
             {
@@ -43,7 +45,8 @@ namespace Client.BaseData
                 btnPic.BackgroundImage = Image.FromStream(picSteam);
                 picSteam.Close();
             }
-            otherPics = hotel.Pics.ToString();
+            if (hotel.Pics != null)
+                otherPics = hotel.Pics.ToString();
         }
 
         private void txtFee_KeyPress(object sender, KeyPressEventArgs e)
@@ -60,6 +63,14 @@ namespace Client.BaseData
         {
             if (!ClientUtils.CheckEmpty(txtHotelName, "EMPTY_HOTEL_NAME") || !ClientUtils.CheckEmpty(txtFee, "EMPTY_FEE"))
                 return;
+            try
+            {
+                Convert.ToInt16(txtRoomCount.Text);
+            }
+            catch
+            {
+                txtRoomCount.Text = "0";
+            }
             hotel = new HotelDto 
             {
                 HouseName = txtHotelName.Text,
@@ -69,6 +80,8 @@ namespace Client.BaseData
                 Description = txtDesc.Text,
                 Remark = txtRemark.Text,
                 Pics = otherPics,
+                Location = txtLocation.Text,
+                RoomCount = Convert.ToInt16(txtRoomCount.Text)
             };
             this.DialogResult = DialogResult.OK;
             this.Close();
@@ -103,6 +116,11 @@ namespace Client.BaseData
             AddHotelPictures addHotelPictures = new AddHotelPictures(otherPics);
             if (addHotelPictures.ShowDialog() == DialogResult.OK)
                 otherPics = addHotelPictures.Pics;
+        }
+
+        private void txtRoomCount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ClientUtils.CheckIntegerInput(sender, e);
         }
     }
 }

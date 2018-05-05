@@ -85,7 +85,9 @@ namespace TravelService.Controllers.BaseData
                                 CoverPic = hotelDto.CoverPic,
                                 Description = hotelDto.Description,
                                 Remark = hotelDto.Remark,
-                                Pics = hotelDto.Pics
+                                Pics = hotelDto.Pics,
+                                Location = hotelDto.Location,
+                                RoomCount = hotelDto.RoomCount
                             };
                             db.T_LiveProjects.Add(hotel);
                             needSave = true;
@@ -169,7 +171,9 @@ namespace TravelService.Controllers.BaseData
                                                CoverPic = hotel.CoverPic,
                                                Description = hotel.Description,
                                                Remark = hotel.Remark,
-                                               Pics = hotel.Pics
+                                               Pics = hotel.Pics,
+                                               Location = hotel.Location,
+                                               RoomCount = hotel.RoomCount
                                            }).ToList();
                 }
                 result.Code = SystemConst.MSG_SUCCESS;

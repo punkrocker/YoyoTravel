@@ -38,7 +38,9 @@ namespace TravelService.Controllers.BaseData
                     Pics = hotel.Pics,
                     CoverPic = hotel.CoverPic,
                     Description = hotel.Description,
-                    Remark = hotel.Remark
+                    Remark = hotel.Remark,
+                    Location = hotel.Location,
+                    RoomCount = hotel.RoomCount
                 };
                 db.T_LiveProjects.Add(selectedHotel);
                 db.SaveChanges();
@@ -66,6 +68,8 @@ namespace TravelService.Controllers.BaseData
                 selectedHotel.Description = hotel.Description;
                 selectedHotel.Remark = hotel.Remark;
                 selectedHotel.Pics = hotel.Pics;
+                selectedHotel.Location = hotel.Location;
+                selectedHotel.RoomCount = hotel.RoomCount;
                 db.T_LiveProjects.Attach(selectedHotel);
                 db.Entry(selectedHotel).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();

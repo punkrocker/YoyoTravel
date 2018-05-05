@@ -158,6 +158,8 @@
     <EntitySetMapping Name="T_LiveProjects">
       <EntityTypeMapping TypeName="TravelModel.T_LiveProjects">
         <MappingFragment StoreEntitySet="T_LiveProjects">
+          <ScalarProperty Name="RoomCount" ColumnName="RoomCount" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
           <ScalarProperty Name="HouseID" ColumnName="HouseID" />
           <ScalarProperty Name="HouseName" ColumnName="HouseName" />
           <ScalarProperty Name="Fee" ColumnName="Fee" />

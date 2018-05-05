@@ -284,6 +284,8 @@ namespace Client.BaseData
                             hotel.Pics = modifyHotel.hotel.Pics;
                             hotel.Description = modifyHotel.hotel.Description;
                             hotel.Remark = modifyHotel.hotel.Remark;
+                            hotel.Location = modifyHotel.hotel.Location;
+                            hotel.RoomCount = modifyHotel.hotel.RoomCount;
                             dgHotel.DataSource = null;
                             dgHotel.DataSource = hotels;
                         }
@@ -391,6 +393,7 @@ namespace Client.BaseData
         }
         #endregion
 
+        #region 导游信息
         List<GuideDto> guides = new List<GuideDto>();
         private void GetAllGuides()
         {
@@ -429,5 +432,6 @@ namespace Client.BaseData
                     GetAllGuides();
             }
         }
+        #endregion
     }
 }
