@@ -42,6 +42,15 @@
             width: 100%;
             height: auto;
         }
+
+
+        span.rightImg {
+            vertical-align: middle;
+            display: inline-block;
+            width: 90px;
+            height: 20px;
+            background: url('../../Content/apps/img/bk.png') no-repeat x y;
+        }
     </style>
 </head>
 <!-- END HEAD -->
@@ -106,7 +115,9 @@
                                 </div>
                             }
                         }
-                        <span class="col-xs-12">@detailProject.Description</span>
+                        <span class="col-xs-12"  style='background-image:url("../../Content/apps/img/bk.png");background-size:100%'>
+                            @detailProject.Description
+                        </span>
                         <br />
                     }
                 }

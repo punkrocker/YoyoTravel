@@ -37,17 +37,38 @@
             padding: 10px 0;
         }
 
+        .center_day {
+            text-align: center;
+            display: block;
+            padding: 5px 0;
+        }
+
         .scale img {
             background-size: contain|cover;
             width: 100%;
             height: auto;
+        }
+
+
+        span.rightImg {
+            vertical-align: middle;
+            display: inline-block;
+            width: 90px;
+            height: 20px;
+            background: url('../../Content/apps/img/bk.png') no-repeat x y;
+        }
+
+        #day_trip_title {
+            height: 30px;
+            width: 80%;
+            margin-top: 2px;
         }
     </style>
 </head>
 <!-- END HEAD -->
 
 <body style="background-color:white;">
-    <div class="col-md-12" style="height:48px;background-color:#4fc1c1;">
+    <div class="col-xs-12" style="height:48px;background-color:#092e5e;">
         <span class="center_span" style="font-size:large;color:white">悠游私人行程定制</span>
     </div>
 
@@ -63,36 +84,48 @@
         <span class="col-xs-6">返程日期：@end_date</span>
         <span class="col-xs-12">定制要求：@custom_require</span>
         <span class="col-xs-6">预估费用：@Model.Fee</span>
+        <span class="col-xs-6">@Model.ScheduleName</span>
     </div>
 
-    <div class="col-xs-12" style="background-color:black;height:1px;" />
-
-    <span class="col-xs-12 center_span" style="font-size:large;font-weight:bold;color:#00A4A8">@Model.ScheduleName</span>
-    @for (int i = 1; i <= Model.ScheduleDetail.Count; i++)
-    {
-        <div class="col-xs-12">
-            @{
-                var title = "第" + i + "天";
-                <span style="font-size:larger;font-weight:bold;color:#00A4A8">@title</span>
+    
+        @for (int i = 1; i <= Model.ScheduleDetail.Count; i++)
+        {
+            <div class="col-xs-12">
+                @{
+                    var title = "第" + i + "天";
+            <div class="col-md-12" style="height:36px;width:100%;background-color:#092e5e;">
+                <span class="center_day" style="font-size:large;color:white">@title</span>
+            </div>
                 var detail = Model.ScheduleDetail[i - 1];
                 if (detail.Description != null && !detail.Description.Trim().Equals(string.Empty))
                 {
-                    <span class="col-xs-12">行程简要说明：@detail.Description</span>
+            <span class="col-xs-12">行程简要说明：@detail.Description</span>
                 }
                 if (detail.Services != null && detail.Services.Count != 0)
                 {
                     for (int j = 0; j < detail.Services.Count; j++)
                     {
                         var detailProject = detail.Services[j];
-                        <span class="col-xs-6" style="font-size:medium;color:#00A4A8">@detailProject.Start - @detailProject.End</span>
-                        <span class="col-xs-12" style="font-size:medium;color:#00A4A8">行程：@detailProject.ServiceName</span>
+            <div id="day_trip_title">
+                <svg id="svgLineTutorial" height="30px" width="100%" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="linear" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#05a" />
+                            <stop offset="100%" stop-color="#0a5" />
+                        </linearGradient>
+                    </defs>
+                    <polygon id="myPolygon" points="0,0 230,0 250,30 0,30" fill="url(#linear)" />
+                    <text x="10" dy="20" style="fill: white">@detailProject.Start - @detailProject.End 行程：@detailProject.ServiceName</text>
+                    <polygon id="myPolygon" points="235,0 245,0 265,30 255,30" fill="url(#linear)" />
+                </svg>
+            </div>
                         if (detailProject.CoverPic != null && !detailProject.Equals(string.Empty))
                         {
                             var mpic = !string.IsNullOrEmpty(detailProject.CoverPic) ? "\\Site\\Pics\\" + detailProject.CoverPic : "~\\Content\\pages\\img\\no_pic.png";
                             mpic = VirtualPathUtility.ToAbsolute(mpic);
-                            <div class="scale">
-                                <img src="@mpic" />
-                            </div>
+            <div class="scale">
+                <img src="@mpic" />
+            </div>
                         }
                         if (detailProject.Pics != null && !detailProject.Pics.Trim().Equals(string.Empty))
                         {
@@ -101,23 +134,24 @@
                             {
                                 var mpic = !string.IsNullOrEmpty(pic_file) ? "\\Site\\Pics\\" + pic_file : "~\\Content\\pages\\img\\no_pic.png";
                                 mpic = VirtualPathUtility.ToAbsolute(mpic);
-                                <div class="scale">
-                                    <img src="@mpic" />
-                                </div>
+            <div class="scale">
+                <img src="@mpic" />
+            </div>
                             }
                         }
-                        <span class="col-xs-12">@detailProject.Description</span>
-                        <br />
+            <span class="col-xs-12" style='background-image:url("../../Content/apps/img/bk.png");background-size:100%'>
+                @detailProject.Description
+            </span>
+            <br />
                     }
                 }
                 else
                 {
-                    <div>当日未安排行程</div>
+            <div>当日未安排行程</div>
                 }
-                <div class="col-xs-12" style="background-color:black;height:1px;" />
-            }
-        </div>
                 }
+            </div>
+                    }
 
 
     <!--[if lt IE 9]>

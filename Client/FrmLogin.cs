@@ -26,7 +26,7 @@ namespace Client
         public FrmLogin(FrmMain parent)
         {
             InitializeComponent();
-            //WebCall.LoadUrl();
+            WebCall.LoadUrl();
             frmParent = parent;
         }
 
