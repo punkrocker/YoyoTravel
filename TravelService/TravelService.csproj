@@ -5841,6 +5841,7 @@
     <Content Include="Views\Trip\NewDay.cshtml" />
     <Content Include="Views\Trip\Share.cshtml" />
     <Content Include="Views\Trip\ShareProject.cshtml" />
+    <Content Include="Views\Bill\Add.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

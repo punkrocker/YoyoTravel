@@ -15,5 +15,10 @@ namespace TravelService.Controllers.Web
         {
             return View();
         }
+
+        public ActionResult Add()
+        {
+            return View();
+        }
     }
 }
